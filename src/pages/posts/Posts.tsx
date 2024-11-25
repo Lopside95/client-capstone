@@ -18,7 +18,6 @@ const Posts = () => {
   return (
     <main className="main">
       <h1>Welcome to the page</h1>
-
       <section className="posts">
         {posts?.map((post) => (
           <article className="post" key={post.id}>
