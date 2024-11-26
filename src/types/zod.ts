@@ -1,6 +1,6 @@
 import z from "zod";
 
-const postSchema = z.object({
+export const postSchema = z.object({
   id: z.string(),
   title: z.string(),
   img: z.string().optional(),
@@ -8,6 +8,8 @@ const postSchema = z.object({
   urgency: z.number(),
   type: z.enum(["General", "Report"]),
   status: z.enum(["Open", "Closed"]),
+  longitude: z.number().optional(),
+  latitude: z.number().optional(),
   created_at: z.date(),
   updated_at: z.date(),
 });
@@ -27,13 +29,3 @@ export type Post = z.infer<typeof postSchema>;
 //   created_at: Date;
 //   updated_at: Date;
 // };
-
-export enum PostType {
-  "GENERAL",
-  "REPORT",
-}
-
-export enum PostStatus {
-  "OPEN",
-  "CLOSED",
-}
