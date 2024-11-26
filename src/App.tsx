@@ -1,24 +1,26 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./App.scss";
-import Posts from "./pages/posts/Posts";
-
 import { FormProvider, useForm } from "react-hook-form";
+import Posts from "./pages/posts/Posts";
 import CreatePost from "./pages/post/CreatePost";
+import Nav from "./components/Nav/Nav";
 
 export const App = () => {
   const form = useForm();
 
   return (
-    <FormProvider {...form}>
-      <BrowserRouter>
-        <Routes>
-          <Route />
-          <Route path="/" element={<Posts />} />
-          <Route path="/posts/new-post" element={<CreatePost />} />
-          {/* <Route path="/posts/:id" element={<Post />} /> */}
-        </Routes>
-      </BrowserRouter>
-    </FormProvider>
+    <>
+      <FormProvider {...form}>
+        <BrowserRouter>
+          <Nav />
+          <Routes>
+            <Route />
+            <Route path="/" element={<Posts />} />
+            <Route path="/create-post" element={<CreatePost />} />
+          </Routes>
+        </BrowserRouter>
+      </FormProvider>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@components/ui/Input";
-import { Post, postSchema } from "@utils/types/zod";
+import { Post, postSchema } from "../../utils/types/posts";
+import Button from "../../components/ui/Button/Button";
+import Input from "../../components/ui/Input/Input";
 
 const CreatePost = () => {
   const form = useForm<Post>({
@@ -14,7 +15,8 @@ const CreatePost = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <Input name="" />
+        <Input name="" label="Hello" />
+        <Button onClick={() => console.log("clicked")} />
       </form>
     </FormProvider>
   );
