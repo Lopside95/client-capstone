@@ -6,7 +6,7 @@ export type InputProps = {
   placeholder?: string;
 };
 
-export const TextInput = ({ name, label, placeholder }: InputProps) => {
+export const Input = ({ name, label, placeholder }: InputProps) => {
   return (
     <div className="input">
       <p className="input__label">{label}</p>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Post } from "../../types/zod";
+import { Post } from "../../utils/types/zod";
 import { getPosts } from "../../utils/api";
 import "./Posts.scss";
-import { TextInput } from "../../components/ui/Input";
+import { Input } from "../../components/ui/Input";
+import Button from "@ui/Button";
 
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>();
@@ -28,7 +29,8 @@ const Posts = () => {
           </article>
         ))}
       </section>
-      <TextInput label="Title" name="title" placeholder="Title" />
+      <Button />
+      <Input label="Title" name="title" placeholder="Title" />
     </main>
   );
 };
