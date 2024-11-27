@@ -11,4 +11,11 @@ const getPosts = async () => {
   }
 };
 
-export { getPosts };
+const createPost = async () => {
+  try {
+    const res = await axios.post(`${baseUrl}/create-post`, {});
+  } catch (error) {
+    console.error(error);
+  }
+};
+export { getPosts, createPost };

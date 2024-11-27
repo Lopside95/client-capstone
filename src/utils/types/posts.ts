@@ -1,5 +1,10 @@
 import z from "zod";
 
+export const tag = z.object({
+  name: z.string(),
+  active: z.boolean(),
+});
+
 export const postSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -8,12 +13,14 @@ export const postSchema = z.object({
   urgency: z.number(),
   type: z.enum(["General", "Report"]),
   status: z.enum(["Open", "Closed"]),
+  tags: z.array(tag),
   longitude: z.number().optional(),
   latitude: z.number().optional(),
   created_at: z.date(),
   updated_at: z.date(),
 });
 
+export type Tag = z.infer<typeof tag>;
 export type Post = z.infer<typeof postSchema>;
 
 // export type Post = {
