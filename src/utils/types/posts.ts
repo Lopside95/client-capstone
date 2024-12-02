@@ -1,9 +1,14 @@
 import z from "zod";
 
 export const tag = z.object({
+  id: z.string(),
   name: z.string(),
-  active: z.boolean(),
+  // active: z.boolean(),
 });
+// export const tag = z.object({
+//   id: z.string(),
+//   name: z.string(),
+// });
 
 export const postSchema = z.object({
   id: z.string(),
@@ -20,19 +25,18 @@ export const postSchema = z.object({
   updated_at: z.date(),
 });
 
-export type Tag = z.infer<typeof tag>;
-export type Post = z.infer<typeof postSchema>;
+export const userSchema = z.object({
+  id: z.string(),
+  firstName: z.string().min(1),
+  lastName: z.string(),
+  email: z.string().email(),
+  password: z.string(),
+  active: z.boolean(),
+  posts: z.array(postSchema),
+  created_at: z.date(),
+  updated_at: z.date(),
+});
 
-// export type Post = {
-//   id: number;
-//   title: string;
-//   longitude: number;
-//   latitude: number;
-//   img: string;
-//   description: string;
-//   urgency: number;
-//   type: PostType;
-//   status: PostStatus;
-//   created_at: Date;
-//   updated_at: Date;
-// };
+export type Post = z.infer<typeof postSchema>;
+export type Tag = z.infer<typeof tag>;
+export type User = z.infer<typeof userSchema>;

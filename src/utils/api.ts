@@ -18,4 +18,14 @@ const createPost = async () => {
     console.error(error);
   }
 };
-export { getPosts, createPost };
+
+const getTags = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/tags`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { getPosts, createPost, getTags };
