@@ -7,9 +7,15 @@ import { createPost, getTags } from "../../utils/api";
 import { z } from "zod";
 import TagButton from "../../components/ui/Tag/Tag";
 import { useEffect, useState } from "react";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
+export type TagType = {
+  name: string;
+};
 
 const CreatePost = () => {
-  const [allTags, setAllTags] = useState<Tag[]>();
+  const [allTags, setAllTags] = useState<TagType[]>();
 
   // const [selectedTags, setSelectedTags] = useState<Tag[]>();
   const fetchData = async () => {
@@ -28,6 +34,8 @@ const CreatePost = () => {
     fetchData();
   }, []);
 
+  console.log(allTags);
+
   const form = useForm<Post>({
     resolver: zodResolver(postSchema),
     defaultValues: {
@@ -36,6 +44,8 @@ const CreatePost = () => {
   });
 
   const onSubmit: SubmitHandler<Post> = async (data: Post) => {
+    console.log("logging");
+
     try {
       console.log("datat", data);
     } catch (error) {
@@ -47,40 +57,72 @@ const CreatePost = () => {
     e.preventDefault();
   };
 
-  const tagVals = form.watch("tags");
+  const handleSelectChange = () => {};
 
-  console.log(newTags);
+  const tagOptions = allTags?.map((tag) => ({
+    label: tag.name,
+    value: tag.name,
+  }));
+  // const tagOptions = allTags?.map((tag) => {
+  //   return tag.name;
+  // });
 
-  // console.log(form.getValues("tags"));
-
-  console.log("tagVal", tagVals);
   // console.log("allTags", allTags);
 
   const { register } = form;
+
+  useEffect(() => {
+    console.log("Form Errors:", form.formState.errors);
+  }, [form.getValues()]);
+
+  const tagVals = form.watch("tags");
+  // console.log("the tags", form.getValues("tags"));
+  // useEffect(() => {
+  //   console.log("Updated tagVals:", tagVals); // Should show array of objects with id and name
+  // }, [tagVals]);
+
+  console.log(tagVals);
 
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
-        {/* <label htmlFor="tags" className="form_label">
-          Select function
-        </label> */}
-        <select>
+
+        <Select
+          isMulti
+          // name="tags"
+          options={tagOptions}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          {...register("tags")}
+          onChange={(selectedOptions) => {
+            console.log("selected options", selectedOptions);
+            // form.setValue("tags" selectedOptions);
+            // form.setValue("tags", {
+            //   name: selectedOptions.label,
+            //   id: selectedOptions.value,
+            // });
+          }}
+
+          // onChange={(selectedOptions) => {
+          //   const selectedValues =
+          //     selectedOptions?.map((option) => ({
+          //       id: option.value,
+          //       name: option.label,
+          //     })) || [];
+          //   form.setValue("tags", selectedValues);
+          // }}
+          // onChange={(selectedOptions) => {
+          //   const selectedValues = selectedOptions
+          //     ? selectedOptions.map((option) => option.value)
+          //     : [];
+          //   console.log("selectedValues", selectedValues);
+          //   form.setValue("tags", selectedValues);
+          // }}
+        />
+
+        {/* <select>
           {allTags?.map((tag) => {
-            return (
-              <option key={tag.name} value={tag.name}>
-                {tag.name}
-              </option>
-            );
-          })}
-
-          {/* {tags?.map((tag) => {
-            return <p key={tag.id}>{tag.name}</p>;
-          })} */}
-        </select>
-
-        {/* <select {...form.register("tags")}>
-          {tags?.map((tag) => {
             return (
               <option key={tag.id} value={tag.name}>
                 {tag.name}
@@ -89,22 +131,7 @@ const CreatePost = () => {
           })}
         </select> */}
 
-        {/* {tags?.map((tag) => {
-          return (
-            <button {...form.register("tags")} key={tag.id}>
-              {tag.name}
-            </button>
-          );
-        })} */}
-        {/* {tagItems.map((tag, index) => (
-          <button
-            onClick={() => form.setValue(`tags.${index}.active`, !tag.active)}
-          >
-            {tag.name}
-          </button>
-        ))} */}
-
-        <Button type="submit">Submit</Button>
+        <button type="submit">Submit</button>
       </form>
     </FormProvider>
   );

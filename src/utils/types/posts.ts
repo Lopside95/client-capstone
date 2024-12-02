@@ -1,7 +1,7 @@
 import z from "zod";
 
 export const tag = z.object({
-  id: z.string(),
+  // id: z.string(),
   name: z.string(),
   // active: z.boolean(),
 });
@@ -11,18 +11,18 @@ export const tag = z.object({
 // });
 
 export const postSchema = z.object({
-  id: z.string(),
+  // id: z.string(),
   title: z.string(),
-  img: z.string().optional(),
-  description: z.string(),
-  urgency: z.number(),
-  type: z.enum(["General", "Report"]),
-  status: z.enum(["Open", "Closed"]),
+  // img: z.string().optional(),
+  // description: z.string(),
+  // urgency: z.number(),
+  // type: z.enum(["General", "Report"]),
+  // status: z.enum(["Open", "Closed"]),
   tags: z.array(tag),
-  longitude: z.number().optional(),
-  latitude: z.number().optional(),
-  created_at: z.date(),
-  updated_at: z.date(),
+  // longitude: z.number().optional(),
+  // latitude: z.number().optional(),
+  // created_at: z.date(),
+  // updated_at: z.date(),
 });
 
 export const userSchema = z.object({
