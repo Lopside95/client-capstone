@@ -2,6 +2,7 @@ import z from "zod";
 
 export const tag = z.object({
   name: z.string(),
+  id: z.number(),
 });
 
 export const postSchema = z.object({

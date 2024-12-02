@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PostSchema } from "./types/schemas";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -11,9 +12,10 @@ const getPosts = async () => {
   }
 };
 
-const createPost = async () => {
+const createPost = async (post: PostSchema) => {
   try {
-    const res = await axios.post(`${baseUrl}/create-post`, {});
+    const res = await axios.post(`${baseUrl}/`, post);
+    return res;
   } catch (error) {
     console.error(error);
   }

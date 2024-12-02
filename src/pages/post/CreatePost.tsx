@@ -7,13 +7,11 @@ import { z } from "zod";
 import TagButton from "../../components/ui/Tag/Tag";
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import makeAnimated from "react-select/animated";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
 
-  // const [selectedTags, setSelectedTags] = useState<Tag[]>();
   const fetchData = async () => {
     try {
       const res = await getTags();
@@ -31,10 +29,13 @@ const CreatePost = () => {
   const form = useForm<PostSchema>({
     resolver: zodResolver(postSchema),
     defaultValues: {
+      title: "Test Title",
       tags: [],
       status: "Open",
       type: "General",
       urgency: 3,
+      longitude: 335607.8,
+      latitude: 1842144,
       description: "Dog here",
     },
   });
@@ -42,20 +43,16 @@ const CreatePost = () => {
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
       console.log("datat", data);
+      const res = await createPost(data);
+      return res;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleTagChange = (e: Event) => {
-    e.preventDefault();
-  };
-
-  const handleSelectChange = () => {};
-
   const tagOptions = allTags?.map((tag) => ({
     label: tag.name,
-    value: tag.name,
+    value: tag.id,
   }));
 
   const { register } = form;
@@ -68,7 +65,7 @@ const CreatePost = () => {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
-
+        <Input label="Description" name="description" />
         <Select
           isMulti
           options={tagOptions}
@@ -77,8 +74,10 @@ const CreatePost = () => {
           {...register("tags")}
           onChange={(selectedOptions) => {
             const selectedTags = selectedOptions.map((option) => ({
-              name: option.value,
+              name: option.label,
+              id: option.value,
             }));
+            console.log(selectedTags);
             form.setValue("tags", selectedTags);
           }}
         />
