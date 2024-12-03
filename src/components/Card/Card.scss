@@ -1,4 +1,16 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+
 .card {
+  border: 1px solid black;
+  margin: 0.5rem 0;
+  padding: 1rem;
+
+  &__heading {
+    @include flex($direction: row, $justify: unset, $align: center);
+    gap: 0.25rem;
+  }
+
   &__img {
     width: 200px;
   }

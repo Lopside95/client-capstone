@@ -4,7 +4,8 @@ import { getPosts } from "../../utils/api";
 import "./Posts.scss";
 import Input from "../../components/ui/Input/Input";
 import Card from "../../components/Card/Card";
-import PostCard from "../../components/PostCard/PostCard";
+import { Pill } from "evergreen-ui";
+import type { PillProps } from "evergreen-ui";
 
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>();
@@ -23,16 +24,9 @@ const Posts = () => {
       <h1>Welcome to the page</h1>
       <section className="posts">
         {posts?.map((post) => (
-          <PostCard {...post} key={post.id} />
-          // <Card key={post.id} {...post} />
-          // <article className="post" key={post.id}>
-          //   <h2>{post.title}</h2>
-          //   <p className="post__description">{post.description}</p>
-          //   <p className="post__status">{post.status}</p>
-          // </article>
+          <Card key={post.id} {...post} />
         ))}
       </section>
-      <Input label="Title" name="title" placeholder="Title" />
     </main>
   );
 };

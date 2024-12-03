@@ -1,6 +1,9 @@
+// import { Pill } from "evergreen-ui";
+import MyPill from "../ui/Pill/MyPill";
 import { Post } from "../../utils/types/posts";
 import TagButton from "../ui/Tag/TagButton";
 import "./Card.scss";
+import StatusBadge from "../ui/StatusBadge/StatusBadge";
 
 const Card = (post: Post) => {
   const {
@@ -20,7 +23,12 @@ const Card = (post: Post) => {
 
   return (
     <section className="card">
-      <h1 className="card__title">{title}</h1>
+      <article className="card__heading">
+        <h1 className="card__title">{title}</h1>
+        <MyPill color="red">{urgency}</MyPill>
+        <StatusBadge color="blue">{status}</StatusBadge>
+        {/* <MyPill>{status}</MyPill> */}
+      </article>
       <img className="card__img" src={img} />
       <p>{description}</p>
       <ul className="card__tags">

@@ -1,3 +1,9 @@
+import {
+  BadgeProps,
+  BoxComponent,
+  PillOwnProps,
+  PillProps,
+} from "evergreen-ui";
 import { ButtonHTMLAttributes } from "react";
 
 export type TextProps = {
@@ -13,6 +19,18 @@ export type TagProps = {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  title?: string;
+}
+
+// export type MyPillProps = {
+//   title: string | number;
+// };
+
+export interface MyPillProps extends PillProps {
+  title?: string;
+}
+
+export interface MyBadgeProps extends BadgeProps {
   title?: string;
 }
 

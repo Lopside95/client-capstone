@@ -4,5 +4,5 @@
 
 .main {
   padding: $global-padding;
-  @include flex($direction: row, $align: unset, $justify: unset);
+  @include flex($direction: column, $align: unset, $justify: unset);
 }
