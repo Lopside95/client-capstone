@@ -14,7 +14,6 @@ export const App = () => {
         <BrowserRouter>
           <Nav />
           <Routes>
-            <Route />
             <Route path="/" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
           </Routes>

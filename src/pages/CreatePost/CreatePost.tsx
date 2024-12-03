@@ -8,6 +8,7 @@ import TagButton from "../../components/ui/Tag/TagButton";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
+import "./CreatePost.scss";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
@@ -64,7 +65,7 @@ const CreatePost = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
         <Select

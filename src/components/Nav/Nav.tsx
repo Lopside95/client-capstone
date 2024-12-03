@@ -8,9 +8,7 @@ const Nav = () => {
   return (
     <nav className="nav">
       <Button onClick={() => navigate("/")}>Main</Button>
-      {/* <Button label="Home" onClick={() => navigate("/")} /> */}
       <Button onClick={() => navigate("/create-post")}>Create new post</Button>
-      {/* <Button label="Create" onClick={() => navigate("/create-post")} /> */}
     </nav>
   );
 };
