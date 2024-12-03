@@ -2,7 +2,8 @@
 @use "../../../styles/partials/mixins" as *;
 
 .input {
-  height: 30px;
+  // height: 30px;
   @include flex($direction: column, $justify: unset, $align: unset);
   border-radius: 6px;
+  width: 200px;
 }
