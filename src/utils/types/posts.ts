@@ -5,6 +5,10 @@ export type Tag = {
   name: string;
 };
 
+export interface PostInterface {
+  post?: Post;
+}
+
 export type Post = {
   id: string;
   title: string;
@@ -13,7 +17,6 @@ export type Post = {
   urgency: number;
   type: PostType;
   status: PostStatus;
-
   tags: Tag[];
   longitude?: number;
   latitude?: number;

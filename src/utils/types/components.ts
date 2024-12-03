@@ -6,6 +6,11 @@ export type TextProps = {
   placeholder?: string;
 };
 
+export type TagProps = {
+  onClick?: () => void;
+  title: string;
+};
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title?: string;

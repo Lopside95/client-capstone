@@ -4,7 +4,7 @@ import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
 import { createPost, getTags } from "../../utils/api";
 import { z } from "zod";
-import TagButton from "../../components/ui/Tag/Tag";
+import TagButton from "../../components/ui/Tag/TagButton";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
@@ -33,6 +33,7 @@ const CreatePost = () => {
       tags: [],
       status: "Open",
       type: "General",
+      img: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*",
       urgency: 3,
       longitude: 335607.8,
       latitude: 1842144,
@@ -82,7 +83,7 @@ const CreatePost = () => {
           }}
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );
