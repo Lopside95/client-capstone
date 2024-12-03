@@ -25,7 +25,7 @@ const Card = (post: Post) => {
       <p>{description}</p>
       <ul className="card__tags">
         {tags?.map((tag) => (
-          <TagButton title={tag.name} />
+          <TagButton key={tag.id} title={tag.name} />
 
           // <li key={tag.id} className="card__tag">
           //   {tag.name}

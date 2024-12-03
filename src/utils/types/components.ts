@@ -8,7 +8,7 @@ export type TextProps = {
 
 export type TagProps = {
   onClick?: () => void;
-  title: string;
+  title?: string;
 };
 
 export interface ButtonProps
