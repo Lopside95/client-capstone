@@ -43,8 +43,7 @@ const getTags = async () => {
 const getUsers = async () => {
   try {
     const res = await axios.get(`${baseUrl}/users`);
-    // console.log("resData", res.data);
-    const data = res.data;
+    return res.data;
   } catch (error) {
     console.error(error);
   }

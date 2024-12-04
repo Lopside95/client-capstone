@@ -13,7 +13,8 @@ const Nav = () => {
       <Button onClick={() => navigate("/posts")}>Posts</Button>
       <Button onClick={() => navigate("/create-post")}>Create new post</Button>
       <Button onClick={() => navigate("/signup")}>Sign Up</Button>
-      <Button onClick={() => navigate(`/users/${id}`)}>Account</Button>
+      <Button onClick={() => navigate(`/users/1`)}>Account</Button>
+      {/* <Button onClick={() => navigate(`/users/${id}`)}>Account</Button> */}
     </nav>
   );
 };
