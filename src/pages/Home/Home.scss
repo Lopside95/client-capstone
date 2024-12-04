@@ -1,6 +1,20 @@
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .main {
   padding: $global-padding;
+  @include flex($direction: column, $justify: unset, $align: center);
 }
+
+.landing {
+  &__image {
+    margin-left: 100px;
+  }
+}
+
+// .subnav {
+//   &__button {
+//     border-radius: 11px;
+//   }
+// }

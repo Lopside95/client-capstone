@@ -43,6 +43,12 @@ export interface MyBadgeProps extends BadgeProps {
   title?: string;
 }
 
+export type MyImageProps = {
+  width?: string | number;
+  height?: string | number;
+  className?: string;
+};
+
 // export type ButtonProps = {
 //   name?: string;
 //   label?: string;
