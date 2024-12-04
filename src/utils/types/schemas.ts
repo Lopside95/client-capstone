@@ -22,7 +22,7 @@ export const userSchema = z.object({
   lastName: z.string(),
   email: z.string().email(),
   password: z.string(),
-  // active: z.boolean(),
+  active: z.boolean().optional(),
   // posts: z.array(postSchema),
 });
 

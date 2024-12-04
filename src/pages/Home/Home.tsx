@@ -6,17 +6,19 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="main">
+    <div className="home">
       <header className="header">HOME</header>
-      <section className="section">
-        <Button onClick={() => navigate("/create-post")}>
-          I'm reporting a dog
-        </Button>
-        <Button onClick={() => navigate("/posts")}>
-          I'm looking for a dog
-        </Button>
-      </section>
-    </main>
+      <main className="main">
+        <section className="section">
+          <Button onClick={() => navigate("/create-post")}>
+            I'm reporting a dog
+          </Button>
+          <Button onClick={() => navigate("/posts")}>
+            I'm looking for a dog
+          </Button>
+        </section>
+      </main>
+    </div>
   );
 };
 

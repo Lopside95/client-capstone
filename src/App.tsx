@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/Signup/SignUp";
+import Account from "./pages/Account/Account";
 
 export const App = () => {
   const form = useForm();
@@ -20,6 +21,8 @@ export const App = () => {
             <Route path="/posts" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/users" element={<Account />} />
+            <Route path="/users/:id" element={<Account />} />
           </Routes>
         </BrowserRouter>
       </FormProvider>
