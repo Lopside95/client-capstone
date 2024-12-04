@@ -6,6 +6,10 @@ import MapComponent from "../../components/Map/Map";
 const Home = () => {
   const navigate = useNavigate();
 
+  navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position.coords.latitude, position.coords.longitude);
+  });
+
   return (
     <div className="home">
       <header className="header">HOME</header>
