@@ -7,7 +7,9 @@ import Map, {
   NavigationControl,
   LngLat,
   MarkerDragEvent,
+  GeolocateResultEvent,
 } from "react-map-gl";
+import mapboxgl from "mapbox-gl";
 import "./Map.scss";
 export type LocationType = {
   latitude: number;
@@ -18,12 +20,28 @@ export interface MyMapProps {
   userLocation: LocationType;
 }
 
+// Initialize the geolocate control.
+
 const MapComponent = ({ userLocation }: MyMapProps) => {
   const mapRef = useRef<MapRef | null>(null);
   //   const initialPosition = () =>
   //     navigator.geolocation.getCurrentPosition((position) => {
   //       return position.coords.latitude, position.coords.longitude;
   //     });
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true,
+    },
+    trackUserLocation: true,
+  });
+
+  console.log("geloac", geolocate);
+
+  // // Add the control to the map.
+  // map.addControl(geolocate);
+  // map.on("load", () => {
+  //   geolocate.trigger();
+  // });
 
   //   useEffect(() => {
   //     initialPosition();
@@ -38,6 +56,9 @@ const MapComponent = ({ userLocation }: MyMapProps) => {
     latitude: 0,
     longitude: 0,
   });
+
+  const handleDrag = () => {};
+
   const [events, logEvents] = useState<Record<string, LngLat>>({});
   // console.log(mapRef.bearing)
 
@@ -70,32 +91,64 @@ const MapComponent = ({ userLocation }: MyMapProps) => {
   }, []);
 
   return (
-    <Map
-      ref={mapRef}
-      mapboxAccessToken={import.meta.env.VITE_MAPBOX_API_TOKEN}
-      initialViewState={{
-        longitude: 23.3747778,
-        latitude: -34.0656944,
-        zoom: 14,
-      }}
-      style={{ width: "90vw", maxHeight: 600 }}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
-      logoPosition="bottom-left"
-    >
-      <Marker
-        latitude={userLocation.latitude}
-        longitude={userLocation.longitude}
-        draggable
-      />
-      {/* <Marker latitude={-34.0656944} longitude={23.3747778} draggable /> */}
-      <GeolocateControl
-        positionOptions={{ enableHighAccuracy: true }}
-        trackUserLocation={true}
-        showUserLocation={true}
-        showUserHeading={true}
-        position="bottom-right"
-      />
-    </Map>
+    <>
+      {/* <head>
+        <link
+          rel="stylesheet"
+          href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css"
+          type="text/css"
+        />
+      </head> */}
+      <Map
+        ref={mapRef}
+        mapboxAccessToken={import.meta.env.VITE_MAPBOX_API_TOKEN}
+        initialViewState={{
+          longitude: -0.1420972,
+          latitude: 51.5646965,
+          // longitude: userLocation.longitude,
+          // latitude: userLocation.latitude,
+          zoom: 14,
+        }}
+        style={{ width: "90vw", height: 400 }}
+        mapStyle="mapbox://styles/mapbox/streets-v12"
+
+        //  attributionControl={false}
+        //   logoPosition="bottom-left"
+      >
+        <Marker
+          latitude={0}
+          longitude={0}
+          // latitude={userLocation.latitude}
+          // longitude={userLocation.longitude}
+          draggable
+        />
+        {/* <Marker latitude={-34.0656944} longitude={23.3747778} draggable /> */}
+        <GeolocateControl
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+          // onGeolocate={(e: GeolocateResultEvent) => {
+          //   const { coords } = e;
+          //   console.log(
+          //     `Longitude: ${coords.longitude}, Latitude: ${coords.latitude}`
+          //   );
+          //   console.log(e);
+          // }}
+          // onGeolocate={()=> console.log(lngLat)}
+          showUserLocation={true}
+          showUserHeading={true}
+          position="bottom-right"
+        />
+        <NavigationControl
+          showCompass
+          position="top-left"
+          style={{ background: "red" }}
+          //   style={{ height: 80 }}
+          showZoom
+        >
+          {}
+        </NavigationControl>
+      </Map>
+    </>
   );
 };
 

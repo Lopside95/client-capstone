@@ -43,9 +43,9 @@ const Home = () => {
             I'm looking for a dog
           </Button>
         </section>
-        <section className="map">
+        {/* <section className="map">
           <MapComponent userLocation={userLocation} />
-        </section>
+        </section> */}
       </main>
     </div>
   );

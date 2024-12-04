@@ -1,3 +1,42 @@
 .map {
   margin: 1rem;
 }
+
+.mapboxgl-ctrl-geolocate {
+  height: 100px;
+  width: 100px;
+
+  font-size: "13px";
+  color: "#404040";
+  display: "block";
+  margin: "0";
+  padding: "10px";
+  text-decoration: "none";
+  border: "none";
+  text-align: "center";
+  cursor: "pointer";
+  width: "100%";
+}
+
+.mapboxgl-ctrl-geolocate-active {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+}
+
+.mapboxgl-ctrl-attrib-button {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+}
+
+// fontSize: '13px',
+// color: '#404040',
+// display: 'block',
+// margin: '0',
+// padding: '10px',
+// textDecoration: 'none',
+// border: 'none',
+// textAlign: 'center',
+// cursor: 'pointer',
+// width: '100%'
