@@ -3,17 +3,17 @@ import { TextProps } from "../../../utils/types/components";
 import { TextInput, TextInputField } from "evergreen-ui";
 import "./Input.scss";
 
-const Input = ({ name, label, placeholder }: TextProps) => {
+const Input = ({ name, label, placeholder, className }: TextProps) => {
   const { register } = useFormContext();
 
   return (
-    <div className="input">
-      <TextInputField className="" {...register(name)} label={label} />
+    <div className={`input ${className || ""}`}>
+      <TextInputField
+        placeholder={placeholder}
+        {...register(name)}
+        label={label}
+      />
     </div>
-    // <>
-    //   <label className="label">{label}</label>
-    //   <input className="input" {...register(name)} placeholder={placeholder} />
-    // </>
   );
 };
 

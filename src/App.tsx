@@ -4,6 +4,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Nav from "./components/Nav/Nav";
 import Posts from "./pages/Posts/Posts";
+import Home from "./pages/Home/Home";
+import SignUp from "./pages/Signup/SignUp";
 
 export const App = () => {
   const form = useForm();
@@ -14,8 +16,10 @@ export const App = () => {
         <BrowserRouter>
           <Nav />
           <Routes>
-            <Route path="/" element={<Posts />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/posts" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       </FormProvider>

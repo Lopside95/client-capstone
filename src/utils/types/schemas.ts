@@ -23,7 +23,7 @@ export const userSchema = z.object({
   email: z.string().email(),
   password: z.string(),
   active: z.boolean(),
-  posts: z.array(postSchema),
+  // posts: z.array(postSchema),
 });
 
 export type PostSchema = z.infer<typeof postSchema>;
