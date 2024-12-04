@@ -1,19 +1,62 @@
-import { useEffect, useRef, useState } from "react";
-import Map, { GeolocateControl, MapRef, Marker, useMap } from "react-map-gl";
+import { useCallback, useEffect, useRef, useState } from "react";
+import Map, {
+  GeolocateControl,
+  MapRef,
+  Marker,
+  useMap,
+  NavigationControl,
+  LngLat,
+  MarkerDragEvent,
+} from "react-map-gl";
 import "./Map.scss";
 export type LocationType = {
-  latitude: number | null;
-  longitude: number | null;
+  latitude: number;
+  longitude: number;
 };
 
-const MapComponent = () => {
-  const mapRef = useRef<MapRef | null>(null);
-  const [userLocation, setUserLocation] = useState<LocationType>({
-    latitude: null,
-    longitude: null,
-  });
+export interface MyMapProps {
+  userLocation: LocationType;
+}
 
+const MapComponent = ({ userLocation }: MyMapProps) => {
+  const mapRef = useRef<MapRef | null>(null);
+  //   const initialPosition = () =>
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       return position.coords.latitude, position.coords.longitude;
+  //     });
+
+  //   useEffect(() => {
+  //     initialPosition();
+  //   });
+
+  //   const [userLocation, setUserLocation] = useState<LocationType>({
+  //     latitude: null,
+  //     longitude: null,
+  //   });
+
+  const [marker, setMarker] = useState<LocationType>({
+    latitude: 0,
+    longitude: 0,
+  });
+  const [events, logEvents] = useState<Record<string, LngLat>>({});
   // console.log(mapRef.bearing)
+
+  //   const onMarkerDragStart = useCallback((event: MarkerDragEvent) => {
+  //     logEvents((_events) => ({ ..._events, onDragStart: event.lngLat }));
+  //   }, []);
+
+  //   const onMarkerDrag = useCallback((event: MarkerDragEvent) => {
+  //     logEvents((_events) => ({ ..._events, onDrag: event.lngLat }));
+
+  //     setMarker({
+  //       longitude: event.lngLat.lng,
+  //       latitude: event.lngLat.lat,
+  //     });
+  //   }, []);
+
+  //   const onMarkerDragEnd = useCallback((event: MarkerDragEvent) => {
+  //     logEvents((_events) => ({ ..._events, onDragEnd: event.lngLat }));
+  //   }, []);
 
   const mapControl = useMap();
 
@@ -39,7 +82,12 @@ const MapComponent = () => {
       mapStyle="mapbox://styles/mapbox/streets-v9"
       logoPosition="bottom-left"
     >
-      <Marker latitude={-34.0656944} longitude={23.3747778} draggable />
+      <Marker
+        latitude={userLocation.latitude}
+        longitude={userLocation.longitude}
+        draggable
+      />
+      {/* <Marker latitude={-34.0656944} longitude={23.3747778} draggable /> */}
       <GeolocateControl
         positionOptions={{ enableHighAccuracy: true }}
         trackUserLocation={true}
