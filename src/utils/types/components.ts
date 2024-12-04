@@ -7,23 +7,24 @@ import {
 } from "evergreen-ui";
 import { ButtonHTMLAttributes } from "react";
 
-export type TextProps = {
-  name: string;
-  label?: string;
-  placeholder?: string;
-  className?: string;
-};
+// export type TextProps = {
+//   name: string;
+//   label?: string;
+//   placeholder?: string;
+//   className?: string;
+// };
 
 export type TagProps = {
   onClick?: () => void;
   title?: string;
 };
 
-// export interface TextProps extends TextInputFieldProps {
-//   name: string;
-//   label?: string;
-//   className?: string;
-// }
+export interface TextProps extends TextInputFieldProps {
+  name: string;
+  label?: string;
+  className?: string;
+  type?: string;
+}
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

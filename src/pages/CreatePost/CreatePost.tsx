@@ -59,9 +59,9 @@ const CreatePost = () => {
 
   const { register } = form;
 
-  useEffect(() => {
-    console.log("Form Errors:", form.formState.errors);
-  }, [form.formState]);
+  // useEffect(() => {
+  //   console.log("Form Errors:", form.formState.errors);
+  // }, [form.formState]);
 
   return (
     <FormProvider {...form}>
