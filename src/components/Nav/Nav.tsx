@@ -28,9 +28,11 @@ const Nav = () => {
         isShown={isShown}
         width={"50vw"}
         position="right"
-        containerProps={{
-          background: "#000000",
-        }}
+        containerProps={
+          {
+            // background: "#000000",
+          }
+        }
         onCloseComplete={() => setIsShown(false)}
       >
         <p onClick={() => setIsShown(false)}>Hello</p>
@@ -39,20 +41,18 @@ const Nav = () => {
         {/* <Button onClick={() => navigate("/create-post")}>
           Create new post
         </Button> */}
-        <Button onClick={() => handleNavigate("/posts")}>Posts</Button>
-        <Button onClick={() => handleNavigate("/")}>Home</Button>
-        <Button onClick={() => handleNavigate("/create-post")}>
+        <span onClick={() => handleNavigate("/posts")}>Posts</span>
+        <span onClick={() => handleNavigate("/")}>Home</span>
+        <span onClick={() => handleNavigate("/create-post")}>
           Create new post
-        </Button>
-        <Button onClick={() => handleNavigate("/users/signup")}>Sign Up</Button>
-        <Button onClick={() => handleNavigate("/users/login")}>Log In</Button>
-        <Button onClick={() => handleNavigate("/users/account")}>
-          Account
-        </Button>
+        </span>
+        <span onClick={() => handleNavigate("/users/signup")}>Sign Up</span>
+        <span onClick={() => handleNavigate("/users/login")}>Log In</span>
+        <span onClick={() => handleNavigate("/users/account")}>Account</span>
         {/* <Button onClick={() => navigate("/users/signup")}>Sign Up</Button>
         <Button onClick={() => navigate("/users/login")}>Log In</Button>
         <Button onClick={() => navigate(`/users/account`)}>Account</Button> */}
-        <Button onClick={handleLogOut}>Log out</Button>
+        <span onClick={handleLogOut}>Log out</span>
       </SideSheet>
 
       <MenuIcon

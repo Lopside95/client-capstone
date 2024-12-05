@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { FileUploader } from "evergreen-ui";
+import { FileUploader, TextInput, TextInputField } from "evergreen-ui";
 import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 
@@ -67,9 +67,15 @@ const CreatePost = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="create" onSubmit={form.handleSubmit(onSubmit)}>
+        {/* <TextInputField
+          label="Title"
+          {...form.register("title")}
+          border="none"
+        /> */}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
+        {/* <TextInput name="description" /> */}
         <Select
           isMulti
           options={tagOptions}

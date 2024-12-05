@@ -1,9 +1,25 @@
 @use "../../../styles/partials/globals" as *;
 @use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
 
 .input {
   // height: 30px;
-  @include flex($direction: column, $justify: unset, $align: unset);
-  border-radius: 6px;
-  width: 200px;
+  // @include flex($direction: column, $justify: unset, $align: unset);
+  // border-radius: 6px;
+  background-color: $secondary;
+  border: none;
+  width: 90%;
+
+  &__container {
+    @include flex($direction: column, $justify: unset, $align: unset);
+  }
 }
+
+// .only-input {
+//   backgroundcolor: red;
+// }
+
+// .no-border {
+//   background: #000;
+//   border: none;
+// }

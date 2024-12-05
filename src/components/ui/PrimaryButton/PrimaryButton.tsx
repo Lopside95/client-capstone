@@ -5,6 +5,7 @@ import "./PrimaryButton.scss";
 const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <Button
+      borderRadius={"11px"}
       className={props.className}
       onClick={props.onClick}
       appearance="primary"

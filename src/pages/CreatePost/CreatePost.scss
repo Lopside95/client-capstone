@@ -1,6 +1,7 @@
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/variables" as *;
 
-.main {
+.create {
   padding: $global-padding;
+  margin-top: 2rem;
 }

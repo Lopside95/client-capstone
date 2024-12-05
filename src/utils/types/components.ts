@@ -4,6 +4,7 @@ import {
   PillOwnProps,
   PillProps,
   TextInputFieldProps,
+  TextInputOwnProps,
 } from "evergreen-ui";
 import { ButtonHTMLAttributes } from "react";
 
@@ -19,12 +20,18 @@ export type TagProps = {
   title?: string;
 };
 
-export interface TextProps extends TextInputFieldProps {
+export interface TextProps extends TextInputOwnProps {
   name: string;
   label?: string;
   className?: string;
   type?: string;
 }
+// export interface TextProps extends TextInputFieldProps {
+//   name: string;
+//   label?: string;
+//   className?: string;
+//   type?: string;
+// }
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

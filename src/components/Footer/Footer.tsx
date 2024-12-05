@@ -16,11 +16,6 @@ const Footer = () => {
     navigate(`/users/login`);
   };
 
-  //   const handleNavigate = async (path: string) => {
-  //     navigate(path);
-  //     setIsShown(false);
-  //   };
-
   return (
     <footer className="footer">
       <span className="footer__button" onClick={() => navigate("/")}>
@@ -29,28 +24,14 @@ const Footer = () => {
       <span className="footer__button" onClick={() => navigate("/create-post")}>
         <EditIcon />
       </span>
-      <span className="footer__button" onClick={() => navigate("/account")}>
+      <span
+        className="footer__button"
+        onClick={() => navigate("/users/account")}
+      >
         <PersonIcon />
       </span>
-      {/* <span className="footer__button"onClick={() => navigate("/create-post")} ></span> */}
-      {/* <Button onClick={() => navigate("/")}>Home</Button> */}
-      {/* <Button onClick={() => navigate("/posts")}>Posts</Button>
-      <Button onClick={() => navigate("/create-post")}>Create new post</Button>
-      <Button onClick={() => navigate("/users/signup")}>Sign Up</Button>
-      <Button onClick={() => navigate("/users/login")}>Log In</Button>
-      <Button onClick={() => navigate(`/users/account`)}>Account</Button>
-      <Button onClick={handleLogOut}>Log out</Button> */}
     </footer>
   );
 };
 
 export default Footer;
-{
-  /* <Button onClick={() => navigate("/")}>Home</Button>
-      <Button onClick={() => navigate("/posts")}>Posts</Button>
-      <Button onClick={() => navigate("/create-post")}>Create new post</Button>
-      <Button onClick={() => navigate("/users/signup")}>Sign Up</Button>
-      <Button onClick={() => navigate("/users/login")}>Log In</Button>
-      <Button onClick={() => navigate(`/users/account`)}>Account</Button>
-      <Button onClick={handleLogOut}>Log out</Button> */
-}
