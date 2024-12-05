@@ -4,7 +4,6 @@ import Card from "../../components/Card/Card";
 import { Pill } from "evergreen-ui";
 import type { PillProps } from "evergreen-ui";
 import { User } from "../../utils/types/posts";
-import { getAuthedUser, getUserById, getUsers } from "../../utils/api";
 import { useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

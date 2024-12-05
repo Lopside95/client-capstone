@@ -7,7 +7,8 @@ import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/Signup/SignUp";
 import Account from "./pages/Account/Account";
-import LogIn from "./pages/Login/Login";
+import LogIn from "./pages/Login/LogIn";
+import { Button } from "evergreen-ui";
 
 export const App = () => {
   const form = useForm();
@@ -16,6 +17,9 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
+          <Button position="absolute" top={2} left={2}>
+            Home
+          </Button>
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />

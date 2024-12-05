@@ -5,7 +5,7 @@ import { Pill } from "evergreen-ui";
 import type { PillProps } from "evergreen-ui";
 import { User } from "../../utils/types/posts";
 import { getUserById, getUsers, login } from "../../utils/api";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
@@ -15,31 +15,6 @@ import axios from "axios";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
-
-  //   const { id } = useParams();
-
-  //   const fetchUser = async () => {
-  //     try {
-  //       const res = await getUserById(id);
-
-  //       setUser(res);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     fetchUser();
-  //   }, []);
-  //   const { data } = await axios.post(
-  //     `${import.meta.env.VITE_API_BASE_URL}/users/login`,
-  //     {
-  //       email: formData.email,
-  //       password: formData.password,
-  //     }
-  //   );
-
-  //   localStorage.setItem("authToken", data.authToken);
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -55,18 +30,7 @@ const LogIn = () => {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      // const res = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/users/login`,
-      //   data
-      // );
-
-      const loginData = await login(data);
-      //   const data = res.data;
-      console.log("data in login", data);
-
-      // localStorage.setItem("authToken", loginData.data.authToken);
-      //   const res = await login();
-      //   return res;
+      const res = await login(data);
     } catch (error) {
       console.error(error);
     }

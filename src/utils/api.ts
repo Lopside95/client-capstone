@@ -76,8 +76,6 @@ const login = async (loginData: LoginSchema) => {
 const getAuthedUser = async () => {
   const authToken = localStorage.getItem("authToken");
 
-  // console.log(authToken);
-
   try {
     const res = await axios.get(`${baseUrl}/users/account`, {
       headers: {
