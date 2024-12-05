@@ -1,7 +1,12 @@
 @use "../../../styles/partials/variables" as *;
 
-.subnav__button {
-  background-color: $primary;
-  border: none;
-  //   height: 100px;
+// .subnav__button {
+//   background: $primary;
+//   border: none;
+//   height: 100px;
+// }
+
+.primary__button {
+  width: 100px;
+  border-radius: 11px;
 }

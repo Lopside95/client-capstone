@@ -4,6 +4,7 @@ import "./Home.scss";
 import MapComponent, { LocationType } from "../../components/Map/Map";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
+import { Button } from "evergreen-ui";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
@@ -12,29 +13,35 @@ const Home = () => {
   return (
     <div className="home">
       <header className="header">HOME</header>
-      <main className="main">
+      <main className="home__main">
         <section className="landing">
-          <img
-            src="../../../../public/cover_2.svg"
-            className="landing__image"
-          />
+          <h1 className="landing__text">
+            We help people find find lost dogs and help stray dogs find homes
+          </h1>
+          <img src="/cover_2.svg" className="landing__image" />
 
           {/* <HomeImage className="image" /> */}
           {/* <img src="../../../public/cover_2.svg" /> */}
         </section>
         <section className="subnav">
+          {/* <Button
+            backgroundColor="white"
+            className="subnav__button"
+            appearance="primary"
+          >
+            Report
+          </Button> */}
+
           <PrimaryButton
             className="subnav__button"
             onClick={() => navigate("/create-post")}
           >
-            I'm reporting a dog
+            Report
           </PrimaryButton>
-          <PrimaryButton className="subnav__button">
-            I'm looking for a dog
-          </PrimaryButton>
+          <PrimaryButton className="subnav__button">Find</PrimaryButton>
           {/* <PrimaryButton
             className="sub__button"
-            onClick={() => navigate("/posts")}
+            onClick={() => navigate("/posts")}§
           >
             I'm looking for a dog
           </PrimaryButton> */}

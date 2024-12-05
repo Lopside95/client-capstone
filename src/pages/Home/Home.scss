@@ -2,19 +2,35 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.main {
+.home__main {
   padding: $global-padding;
   @include flex($direction: column, $justify: unset, $align: center);
 }
 
 .landing {
+  padding-bottom: 5rem;
+
+  &__text {
+    width: 75%;
+    font-size: 35px;
+    font-weight: 300;
+  }
+
   &__image {
-    margin-left: 100px;
+    margin-right: -100px;
   }
 }
 
-// .subnav {
-//   &__button {
-//     border-radius: 11px;
-//   }
-// }
+.subnav {
+  @include flex($direction: column, $justify: center, $align: center);
+
+  height: 31.25rem;
+  width: 100%;
+  background: $primary;
+  gap: 5rem;
+
+  &__button {
+    width: 10rem;
+    border-radius: 11px;
+  }
+}
