@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import "./Nav.scss";
 import Button from "../ui/Button/Button";
-import { SideSheet } from "evergreen-ui";
+import { MenuIcon, SideSheet } from "evergreen-ui";
 import { useState } from "react";
 
 const Nav = () => {
@@ -54,14 +54,14 @@ const Nav = () => {
         <Button onClick={() => navigate(`/users/account`)}>Account</Button> */}
         <Button onClick={handleLogOut}>Log out</Button>
       </SideSheet>
-      <Button
+
+      <MenuIcon
+        className=""
         onClick={() => {
           console.log(isShown);
           setIsShown(true);
         }}
-      >
-        Side
-      </Button>
+      />
     </nav>
   );
 };

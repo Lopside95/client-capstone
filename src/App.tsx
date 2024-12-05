@@ -8,7 +8,8 @@ import Home from "./pages/Home/Home";
 import SignUp from "./pages/Signup/SignUp";
 import Account from "./pages/Account/Account";
 import LogIn from "./pages/Login/LogIn";
-import { Button } from "evergreen-ui";
+import { Button, HomeIcon } from "evergreen-ui";
+import Footer from "./components/Footer/Footer";
 
 export const App = () => {
   const form = useForm();
@@ -17,8 +18,8 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
-          <Button position="absolute" top={2} left={2}>
-            Home
+          <Button position="absolute" outline="none" top={2} left={2}>
+            <HomeIcon />
           </Button>
           <Nav />
           <Routes>
@@ -29,6 +30,7 @@ export const App = () => {
             <Route path="/users/login" element={<LogIn />} />
             <Route path="/users/account" element={<Account />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </FormProvider>
     </>

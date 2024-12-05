@@ -1,0 +1,10 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  @include flex($direction: row, $justify: space-around, $align: unset);
+  position: sticky;
+  bottom: 0;
+  background: $primary;
+}
