@@ -1,32 +1,66 @@
 import { useEffect, useState } from "react";
-import { Post } from "../../utils/types/posts";
-import { getPosts } from "../../utils/api";
+import { Post, UserComment } from "../../utils/types/posts";
 import "./Posts.scss";
 import Input from "../../components/ui/Input/Input";
 import Card from "../../components/Card/Card";
 import { Pill } from "evergreen-ui";
 import type { PillProps } from "evergreen-ui";
+import { getPostById, getPosts } from "../../utils/posts";
+import { useParams } from "react-router";
+import { getComments } from "../../utils/comments";
 
 const Posts = () => {
-  const [posts, setPosts] = useState<Post[]>();
+  const [post, setPost] = useState<Post>();
+  // const [comments, setComments] = useState<UserComment[] | null>(null);
 
-  const fetchPosts = async () => {
-    const postsData = await getPosts();
-    setPosts(postsData);
+  const { id } = useParams();
+
+  const fetchPost = async () => {
+    try {
+      const postsData = await getPostById(id!);
+      const commentsData = await getComments(id!);
+
+      setPost(postsData);
+      // setComments(commentsData);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  // const fetchComments = async () => {
+  //   try {
+  //     const commentsData = await getComments(id!);
+
+  //     setComments(commentsData);
+  //     console.log("comment", comments);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchPosts();
+    fetchPost();
   }, []);
+
+  // useEffect(() => {
+  //   fetchComments();
+  // }, [post]);
+
+  if (!post) {
+    return <div>Loading</div>;
+  }
 
   return (
     <main className="main">
       <h1>Welcome to the page</h1>
-      <section className="posts">
+
+      <Card {...post} />
+      {/* {comments ? <p>{comments[0].content}</p> : <p>Waiting</p>} */}
+      {/* {comments ? <p>{comments[0].content}</p> : <p>Waiting</p>} */}
+      {/* <section className="posts">
         {posts?.map((post) => (
           <Card key={post.id} {...post} />
         ))}
-      </section>
+      </section> */}
     </main>
   );
 };

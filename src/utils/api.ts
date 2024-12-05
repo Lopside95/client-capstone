@@ -13,24 +13,6 @@ const getHome = async () => {
   }
 };
 
-const getPosts = async () => {
-  try {
-    const res = await axios.get(`${baseUrl}/posts`);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const createPost = async (post: PostSchema) => {
-  try {
-    const res = await axios.post(`${baseUrl}/`, post);
-    return res;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 const getTags = async () => {
   try {
     const res = await axios.get(`${baseUrl}/tags`);
@@ -79,12 +61,4 @@ const createUser = async (user: UserSchema) => {
   }
 };
 
-export {
-  getPosts,
-  createPost,
-  getTags,
-  getHome,
-  createUser,
-  getUserById,
-  getUsers,
-};
+export { getTags, getHome, createUser, getUserById, getUsers };

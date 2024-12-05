@@ -18,7 +18,7 @@ export const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/users" element={<Account />} />

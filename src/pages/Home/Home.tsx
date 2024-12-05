@@ -5,10 +5,25 @@ import MapComponent, { LocationType } from "../../components/Map/Map";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { Button } from "evergreen-ui";
+import { getPosts } from "../../utils/posts";
+import { Post } from "../../utils/types/posts";
+import Card from "../../components/Card/Card";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const [posts, setPosts] = useState<Post[]>();
+
+  const fetchPosts = async () => {
+    const postsData = await getPosts();
+    setPosts(postsData);
+  };
+
+  console.log("postsonpage", posts);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <div className="home">
@@ -46,6 +61,12 @@ const Home = () => {
             I'm looking for a dog
           </PrimaryButton> */}
         </section>
+        <section className="posts">
+          {posts?.map((post) => (
+            <Card key={post.id} {...post} />
+          ))}
+        </section>
+        {/* <MapComponent /> */}
         {/* <section className="map">
           <MapComponent userLocation={userLocation} />
         </section> */}

@@ -19,6 +19,7 @@ const Card = (post: Post) => {
     latitude,
     longitude,
     id,
+    comments,
   }: Post = post;
 
   return (
@@ -31,6 +32,7 @@ const Card = (post: Post) => {
       </article>
       <img className="card__img" src={img} />
       <p>{description}</p>
+      {/* <p>{comments[0].content}</p> */}
       <ul className="card__tags">
         {tags?.map((tag) => (
           <TagButton key={tag.id} title={tag.name} />

@@ -2,13 +2,15 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
-import { createPost, getTags } from "../../utils/api";
 import { z } from "zod";
 import TagButton from "../../components/ui/Tag/TagButton";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 import "./CreatePost.scss";
+import { FileUploader } from "evergreen-ui";
+import { getTags } from "../../utils/api";
+import { createPost } from "../../utils/posts";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
@@ -83,6 +85,7 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
+        <FileUploader />
 
         <Button type="submit">Submit</Button>
       </form>
