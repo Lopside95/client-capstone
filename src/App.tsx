@@ -23,7 +23,6 @@ export const App = () => {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/login" element={<LogIn />} />
-            {/* <Route path="/users" element={<Account />} /> */}
             <Route path="/users/account" element={<Account />} />
           </Routes>
         </BrowserRouter>

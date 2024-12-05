@@ -10,7 +10,12 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
 import UserCard from "../../components/UserCard/UserCard";
-import { loginSchema, LoginSchema } from "../../utils/types/schemas";
+import {
+  loginSchema,
+  LoginSchema,
+  userSchema,
+  UserSchema,
+} from "../../utils/types/schemas";
 import axios from "axios";
 
 const Account = () => {
@@ -32,7 +37,19 @@ const Account = () => {
         }
       );
 
-      setUser(data);
+      const userData: User = {
+        id: data.id,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        email: data.email,
+        password: data.password,
+        active: data.active,
+        posts: data.posts,
+        created_at: data.created_at,
+        updated_at: data.updated_at,
+      };
+
+      setUser(userData);
     } catch (error: unknown) {
       console.error(error);
     }
@@ -42,8 +59,8 @@ const Account = () => {
     fetchUser();
   }, []);
 
-  const form = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<UserSchema>({
+    resolver: zodResolver(userSchema),
     defaultValues: {
       email: user?.email,
       password: user?.password,
@@ -54,9 +71,9 @@ const Account = () => {
     console.log("Form Errors:", form.formState.errors);
   }, [form.formState]);
 
-  const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
+  const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
     try {
-      console.log("logibn data", data);
+      console.log("login data", data);
     } catch (error) {
       console.error(error);
     }

@@ -61,23 +61,14 @@ const createUser = async (user: UserSchema) => {
   }
 };
 
-// const { data } = await axios.post(
-//   `${import.meta.env.VITE_API_BASE_URL}/users/login`,
-//   {
-//     email: formData.email,
-//     password: formData.password,
-//   }
-// );
-
-// localStorage.setItem("authToken", data.authToken);
-
-const login = async (loginData: LoginSchema) => {
+const login = async (loginData) => {
   try {
     const res = await axios.post(`${baseUrl}/users/login`, loginData);
     const data = res.data;
     console.log("data in login", data);
     localStorage.setItem("authToken", data.authToken);
   } catch (error) {
+    console.log("error in login", error);
     console.error(error);
   }
 };
@@ -85,7 +76,7 @@ const login = async (loginData: LoginSchema) => {
 const getAuthedUser = async () => {
   const authToken = localStorage.getItem("authToken");
 
-  console.log(authToken);
+  // console.log(authToken);
 
   try {
     const res = await axios.get(`${baseUrl}/users/account`, {
@@ -110,23 +101,3 @@ export {
   login,
   getAuthedUser,
 };
-
-// try {
-//   const { data } = await axios.get(
-//     `${import.meta.env.VITE_API_BASE_URL}/users/profile`,
-//     {
-//       headers: {
-//         authorisation: `Bearer ${authToken}`,
-//       },
-//     }
-//   );
-
-//   setUserData(data);
-//   setIsLoading(false);
-// } catch (error) {
-//   if (error.status === 401) {
-//     setError("You must be logged in to view this page");
-//     setIsLoading(false);
-//   }
-// }
-// };

@@ -54,35 +54,22 @@ const LogIn = () => {
   }, [form.formState]);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
-    // const { data } = await axios.post(
-    //     `${import.meta.env.VITE_API_BASE_URL}/users/login`,
-    //     {
-    //       email: formData.email,
-    //       password: formData.password,
-    //     }
-    //   );
-
-    //   localStorage.setItem("authToken", data.authToken);
-
     try {
-      console.log("login data from login page", data);
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/login`,
-        data
-      );
+      // const res = await axios.post(
+      //   `${import.meta.env.VITE_API_URL}/users/login`,
+      //   data
+      // );
+
+      const loginData = await login(data);
       //   const data = res.data;
       console.log("data in login", data);
-      localStorage.setItem("authToken", res.data.authToken);
+      localStorage.setItem("authToken", loginData.data.authToken);
       //   const res = await login();
       //   return res;
     } catch (error) {
       console.error(error);
     }
   };
-
-  //   if (!user) {
-  //     return <div>Loading</div>;
-  //   }
 
   return (
     <div>
