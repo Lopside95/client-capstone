@@ -53,7 +53,7 @@ const LogIn = () => {
     console.log("Form Errors:", form.formState.errors);
   }, [form.formState]);
 
-  const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
+  const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
       // const res = await axios.post(
       //   `${import.meta.env.VITE_API_URL}/users/login`,
@@ -63,7 +63,8 @@ const LogIn = () => {
       const loginData = await login(data);
       //   const data = res.data;
       console.log("data in login", data);
-      localStorage.setItem("authToken", loginData.data.authToken);
+
+      // localStorage.setItem("authToken", loginData.data.authToken);
       //   const res = await login();
       //   return res;
     } catch (error) {

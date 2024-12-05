@@ -61,7 +61,7 @@ const createUser = async (user: UserSchema) => {
   }
 };
 
-const login = async (loginData) => {
+const login = async (loginData: LoginSchema) => {
   try {
     const res = await axios.post(`${baseUrl}/users/login`, loginData);
     const data = res.data;
