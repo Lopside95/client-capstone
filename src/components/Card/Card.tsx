@@ -1,11 +1,14 @@
 // import { Pill } from "evergreen-ui";
 import MyPill from "../ui/Pill/MyPill";
-import { Post } from "../../utils/types/posts";
+import { CardInterface, Post } from "../../utils/types/posts";
 import TagButton from "../ui/Tag/TagButton";
 import "./Card.scss";
 import StatusBadge from "../ui/StatusBadge/StatusBadge";
+import { useNavigate } from "react-router";
 
 const Card = (post: Post) => {
+  const navigate = useNavigate();
+
   const {
     title,
     status,
@@ -23,7 +26,7 @@ const Card = (post: Post) => {
   }: Post = post;
 
   return (
-    <section className="card">
+    <section className="card" onClick={() => navigate(`/posts/${id}`)}>
       <article className="card__heading">
         <h1 className="card__title">{title}</h1>
         <MyPill color="red">{urgency}</MyPill>

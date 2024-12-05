@@ -18,32 +18,16 @@ const Posts = () => {
   const fetchPost = async () => {
     try {
       const postsData = await getPostById(id!);
-      const commentsData = await getComments(id!);
 
       setPost(postsData);
-      // setComments(commentsData);
     } catch (error) {
       console.error(error);
     }
   };
-  // const fetchComments = async () => {
-  //   try {
-  //     const commentsData = await getComments(id!);
-
-  //     setComments(commentsData);
-  //     console.log("comment", comments);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   useEffect(() => {
     fetchPost();
   }, []);
-
-  // useEffect(() => {
-  //   fetchComments();
-  // }, [post]);
 
   if (!post) {
     return <div>Loading</div>;

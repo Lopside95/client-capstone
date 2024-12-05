@@ -9,6 +9,11 @@ export interface PostInterface {
   post?: Post;
 }
 
+export interface CardInterface {
+  post: Post;
+  onClick: Event;
+}
+
 export type Post = {
   id: string;
   title: string;

@@ -4,13 +4,14 @@ import Card from "../../components/Card/Card";
 import { Pill } from "evergreen-ui";
 import type { PillProps } from "evergreen-ui";
 import { User } from "../../utils/types/posts";
-import { getUserById, getUsers } from "../../utils/api";
+import { getAuthedUser, getUserById, getUsers } from "../../utils/api";
 import { useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { UserSchema, userSchema } from "../../utils/types/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
 import UserCard from "../../components/UserCard/UserCard";
+import { loginSchema, LoginSchema } from "../../utils/types/schemas";
+import axios from "axios";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
@@ -18,12 +19,21 @@ const Account = () => {
   const { id } = useParams();
   console.log(id);
 
+  const authToken = localStorage.getItem("authToken");
+
   const fetchUser = async () => {
     try {
-      const res = await getUserById(id);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/users/account`,
+        {
+          headers: {
+            authorisation: `Bearer ${authToken}`,
+          },
+        }
+      );
 
-      setUser(res);
-    } catch (error) {
+      setUser(data);
+    } catch (error: unknown) {
       console.error(error);
     }
   };
@@ -32,14 +42,11 @@ const Account = () => {
     fetchUser();
   }, []);
 
-  const form = useForm<UserSchema>({
-    resolver: zodResolver(userSchema),
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      firstName: user?.firstName,
-      lastName: user?.lastName,
       email: user?.email,
       password: user?.password,
-      active: user?.active || true,
     },
   });
 
@@ -47,14 +54,13 @@ const Account = () => {
     console.log("Form Errors:", form.formState.errors);
   }, [form.formState]);
 
-  const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
+  const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      console.log("datat", data);
+      console.log("logibn data", data);
     } catch (error) {
       console.error(error);
     }
   };
-  console.log(user);
 
   if (!user) {
     return <div>Loading</div>;
@@ -67,11 +73,9 @@ const Account = () => {
       </section>
       <FormProvider {...form}>
         <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
-          <Input label="First name" name="firstName" />
-          <Input label="Last name" name="lastName" />
           <Input label="Email" name="email" />
           <Input label="Password" name="password" />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Update</Button>
         </form>
       </FormProvider>
     </div>

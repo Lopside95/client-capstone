@@ -7,6 +7,7 @@ import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/Signup/SignUp";
 import Account from "./pages/Account/Account";
+import LogIn from "./pages/Login/Login";
 
 export const App = () => {
   const form = useForm();
@@ -20,9 +21,10 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/posts/:id" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/users" element={<Account />} />
-            <Route path="/users/:id" element={<Account />} />
+            <Route path="/users/signup" element={<SignUp />} />
+            <Route path="/users/login" element={<LogIn />} />
+            {/* <Route path="/users" element={<Account />} /> */}
+            <Route path="/users/account" element={<Account />} />
           </Routes>
         </BrowserRouter>
       </FormProvider>
