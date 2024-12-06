@@ -6,10 +6,11 @@ export const tag = z.object({
 });
 
 export const postSchema = z.object({
-  title: z.string(),
+  // title: z.string().min(5),
+  title: z.string().min(1, { message: "Title is required" }),
   img: z.string().optional(),
-  description: z.string(),
-  urgency: z.number(),
+  description: z.string().min(1, { message: "Description is required" }),
+  urgency: z.number().min(1),
   type: z.enum(["LOST", "FOUND", "SIGHTING"]),
   status: z.enum(["OPEN", "CLOSED"]),
   tags: z.array(tag),

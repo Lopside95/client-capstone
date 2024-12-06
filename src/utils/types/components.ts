@@ -26,6 +26,7 @@ export interface TextProps extends TextInputOwnProps {
   label?: string;
   className?: string;
   type?: string;
+  isRequired?: boolean;
 }
 // export interface TextProps extends TextInputFieldProps {
 //   name: string;
