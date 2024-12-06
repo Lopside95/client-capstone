@@ -46,7 +46,7 @@ export type UserComment = {
   id: string;
   content: string;
   postId: string;
-  userId: string | undefined;
+  userId: string;
   created_at: Date;
   updated_at: Date;
 };

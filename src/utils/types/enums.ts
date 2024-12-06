@@ -1,6 +1,7 @@
 export enum PostType {
-  "GENERAL",
-  "REPORT",
+  "LOST",
+  "FOUND",
+  "SIGHTING",
 }
 
 export enum PostStatus {
