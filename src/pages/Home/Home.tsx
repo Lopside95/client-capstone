@@ -4,26 +4,44 @@ import "./Home.scss";
 import MapComponent, { LocationType } from "../../components/Map/Map";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { Button } from "evergreen-ui";
+import { Button, SelectMenu } from "evergreen-ui";
 import { getPosts } from "../../utils/posts";
-import { Post } from "../../utils/types/posts";
+import { Post, Tag } from "../../utils/types/posts";
 import Card from "../../components/Card/Card";
+import Select from "react-select/base";
+import { TagSchema } from "../../utils/types/schemas";
+import { getTags } from "../../utils/api";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [posts, setPosts] = useState<Post[]>();
+  const [allTags, setAllTags] = useState<TagSchema[]>();
+  const [selectedTags, setSelectedTags] = useState<TagSchema>();
 
-  const fetchPosts = async () => {
+  const fetchData = async () => {
     const postsData = await getPosts();
+    const res = await getTags();
     setPosts(postsData);
+    setAllTags(res);
   };
 
-  console.log("postsonpage", posts);
   useEffect(() => {
-    fetchPosts();
+    fetchData();
   }, []);
+
+  const tagOptions = allTags?.map((tag) => ({
+    label: tag.name,
+    value: tag.id,
+  }));
+
+  // const form = useForm<TagSchema[]>({
+  //   resolver: zodResolver(tag),
+  //   defaultValues: {}
+  // })
 
   return (
     <div className="home">
@@ -62,6 +80,7 @@ const Home = () => {
           </PrimaryButton> */}
         </section>
         <section className="posts">
+          {allTags?.map((tag) => [])}
           {posts?.map((post) => (
             <Card key={post.id} {...post} />
           ))}

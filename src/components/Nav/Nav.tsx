@@ -9,7 +9,6 @@ const Nav = () => {
 
   // const { id } = useParams();
   const authToken = localStorage.getItem("authToken");
-  console.log(authToken);
   const [isShown, setIsShown] = useState<boolean>(false);
 
   const handleLogOut = () => {
@@ -47,7 +46,8 @@ const Nav = () => {
         </span> */}
         <span
           className="nav__item"
-          onClick={() => handleNavigate("/create-post")}
+          onClick={() => handleNavigate("/posts/create-post")}
+          // onClick={() => handleNavigate("/posts/create-post")}
         >
           New post
         </span>

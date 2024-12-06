@@ -7,6 +7,7 @@ import {
   TextInputOwnProps,
 } from "evergreen-ui";
 import { ButtonHTMLAttributes } from "react";
+import { PostType } from "./enums";
 
 // export type TextProps = {
 //   name: string;
@@ -48,6 +49,7 @@ export interface MyPillProps extends PillProps {
 
 export interface MyBadgeProps extends BadgeProps {
   title?: string;
+  postType: PostType;
 }
 
 export type MyImageProps = {

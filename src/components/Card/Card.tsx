@@ -7,6 +7,8 @@ import StatusBadge from "../ui/StatusBadge/StatusBadge";
 import { useLocation, useNavigate } from "react-router";
 import { secondary } from "../ui/Input/Input";
 import { Button } from "evergreen-ui";
+import { PostType } from "../../utils/types/enums";
+import { useEffect } from "react";
 
 const Card = (post: Post) => {
   const navigate = useNavigate();
@@ -39,8 +41,8 @@ const Card = (post: Post) => {
     >
       <article className="card__heading">
         <h1 className="card__title">{title}</h1>
-        <MyPill color="red">{urgency}</MyPill>
-        // <StatusBadge color="blue">{status}</StatusBadge>
+        <MyPill color="red">{type}</MyPill>
+        {/* <StatusBadge type={type}>{type}</StatusBadge> */}
         <MyPill>{status}</MyPill>
       </article>
       <article className="card__body">

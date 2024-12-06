@@ -25,7 +25,7 @@ const getPostById = async (postId: string) => {
 
 const createPost = async (post: PostSchema) => {
   try {
-    const res = await axios.post(`${baseUrl}/`, post);
+    const res = await axios.post(`${baseUrl}/posts/`, post);
     return res;
   } catch (error) {
     console.error(error);

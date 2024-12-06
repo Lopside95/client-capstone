@@ -8,7 +8,7 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
 
   return (
     <div className="input__container">
-      <Label>{label}</Label>
+      <Label htmlFor={name}>{label}</Label>
       <TextInput
         className={className}
         // className="no-border"
