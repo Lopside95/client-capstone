@@ -13,8 +13,6 @@ const Card = (post: Post) => {
 
   const location = useLocation();
 
-  console.log("loc", location);
-
   const {
     title,
     status,

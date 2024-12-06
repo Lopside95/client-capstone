@@ -26,40 +26,36 @@ const Nav = () => {
     <nav className="nav">
       <SideSheet
         isShown={isShown}
-        width={"50vw"}
+        width={"40vw"}
         position="right"
         containerProps={{
           display: "flex",
           flexDirection: "column",
+          padding: "1.5rem",
+          gap: "0.5rem",
+          alignItems: "end",
         }}
         onCloseComplete={() => setIsShown(false)}
       >
-        <p onClick={() => setIsShown(false)}>Hello</p>
-        {/* <Button onClick={() => navigate("/")}>Home</Button> */}
-        {/* <Button onClick={() => navigate("/posts")}>Posts</Button> */}
-        {/* <Button onClick={() => navigate("/create-post")}>
-          Create new post
-        </Button> */}
         <span onClick={() => handleNavigate("/posts")}>Posts</span>
         <span onClick={() => handleNavigate("/")}>Home</span>
-        <span onClick={() => handleNavigate("/create-post")}>
-          Create new post
-        </span>
+        <span onClick={() => handleNavigate("/create-post")}>New post</span>
         <span onClick={() => handleNavigate("/users/signup")}>Sign Up</span>
         <span onClick={() => handleNavigate("/users/login")}>Log In</span>
         <span onClick={() => handleNavigate("/users/account")}>Account</span>
-        {/* <Button onClick={() => navigate("/users/signup")}>Sign Up</Button>
-        <Button onClick={() => navigate("/users/login")}>Log In</Button>
-        <Button onClick={() => navigate(`/users/account`)}>Account</Button> */}
+
         <span onClick={handleLogOut}>Log out</span>
       </SideSheet>
 
       <MenuIcon
-        className=""
+        // width="100px"
+        className="menu-icon"
         onClick={() => {
-          console.log(isShown);
           setIsShown(true);
         }}
+        size={40}
+        marginTop={10}
+        marginRight={10}
       />
     </nav>
   );
