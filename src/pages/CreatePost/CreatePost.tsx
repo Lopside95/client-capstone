@@ -59,6 +59,10 @@ const CreatePost = () => {
     value: tag.id,
   }));
 
+  useEffect(() => {
+    console.log("Form Errors:", form.formState.errors);
+  }, [form.formState]);
+
   const { register } = form;
 
   // useEffect(() => {

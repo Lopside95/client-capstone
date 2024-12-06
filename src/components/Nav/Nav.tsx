@@ -15,7 +15,7 @@ const Nav = () => {
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
 
-    navigate(`/users/login`);
+    navigate(`/`);
   };
 
   const handleNavigate = async (path: string) => {
@@ -42,9 +42,9 @@ const Nav = () => {
           Home
         </span>
         {/* "/posts" will; be removed from nav, it relies on post id which comess from home */}
-        <span className="nav__item" onClick={() => handleNavigate("/posts/2")}>
+        {/* <span className="nav__item" onClick={() => handleNavigate("/posts/2")}>
           Posts
-        </span>
+        </span> */}
         <span
           className="nav__item"
           onClick={() => handleNavigate("/create-post")}

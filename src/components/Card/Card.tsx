@@ -39,9 +39,9 @@ const Card = (post: Post) => {
     >
       <article className="card__heading">
         <h1 className="card__title">{title}</h1>
-        {/* <MyPill color="red">{urgency}</MyPill>
-        <StatusBadge color="blue">{status}</StatusBadge> */}
-        {/* <MyPill>{status}</MyPill> */}
+        <MyPill color="red">{urgency}</MyPill>
+        // <StatusBadge color="blue">{status}</StatusBadge>
+        <MyPill>{status}</MyPill>
       </article>
       <article className="card__body">
         <div className="card__desc">
