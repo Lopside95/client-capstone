@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Link, Route, Routes, useNavigate } from "react-router";
 import "./App.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import CreatePost from "./pages/CreatePost/CreatePost";
@@ -18,9 +18,27 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
-          <Button position="absolute" outline="none" top={2} left={2}>
-            <HomeIcon />
-          </Button>
+          <Link
+            style={
+              {
+                // width: "100px",
+              }
+            }
+            // position="absolute"
+            to={"/"}
+            // onClick={() => navigate("/")}
+            // outline="none"
+            // top={2}
+            // left={2}
+          >
+            <HomeIcon
+              position="absolute"
+              // onClick={() => navigate("/")}
+              outline="none"
+              top={5}
+              left={5}
+            />
+          </Link>
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -5,7 +5,6 @@ import "./Input.scss";
 
 const Input = ({ name, label, placeholder, className, type }: TextProps) => {
   const { register } = useFormContext();
-  const secondary = "#efeded";
 
   return (
     <div className="input__container">
@@ -27,3 +26,5 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
 };
 
 export default Input;
+
+export const secondary = "#efeded";

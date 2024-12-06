@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <header className="header">HOME</header>
+      {/* <header className="header">HOME</header> */}
       <main className="home__main">
         <section className="landing">
           <h1 className="landing__text">

@@ -3,13 +3,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .home__main {
-  padding: $global-padding;
+  // padding: $global-padding;
   @include flex($direction: column, $justify: unset, $align: center);
 }
 
 .landing {
-  padding-bottom: 5rem;
-
+  padding: 2.5rem 1rem;
+  @include flex($direction: column, $justify: unset, $align: unset);
   &__text {
     width: 75%;
     font-size: 35px;
@@ -18,7 +18,9 @@
   }
 
   &__image {
-    margin-right: -200px;
+    align-self: flex-end;
+
+    // margin-right: -200px;
   }
 }
 

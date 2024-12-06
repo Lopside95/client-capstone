@@ -28,11 +28,10 @@ const Nav = () => {
         isShown={isShown}
         width={"50vw"}
         position="right"
-        containerProps={
-          {
-            // background: "#000000",
-          }
-        }
+        containerProps={{
+          display: "flex",
+          flexDirection: "column",
+        }}
         onCloseComplete={() => setIsShown(false)}
       >
         <p onClick={() => setIsShown(false)}>Hello</p>

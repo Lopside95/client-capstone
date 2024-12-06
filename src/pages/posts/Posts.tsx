@@ -34,7 +34,7 @@ const Posts = () => {
   }
 
   return (
-    <main className="main">
+    <main className="posts-main">
       <h1>Welcome to the page</h1>
 
       <Card {...post} />

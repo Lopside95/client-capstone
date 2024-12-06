@@ -2,7 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.main {
-  padding: $global-padding;
+.posts-main {
+  padding: 0;
+  // padding: $global-padding;
   @include flex($direction: column, $align: unset, $justify: unset);
 }
