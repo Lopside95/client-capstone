@@ -1,7 +1,7 @@
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .create {
-  padding: $global-padding;
-  margin-top: 2rem;
+  @include h-padding;
 }

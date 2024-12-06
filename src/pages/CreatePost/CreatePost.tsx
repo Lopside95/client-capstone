@@ -67,7 +67,7 @@ const CreatePost = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="create" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <TextInputField
           label="Title"
           {...form.register("title")}

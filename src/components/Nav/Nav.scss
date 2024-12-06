@@ -5,6 +5,14 @@
   height: 100%;
   top: 0;
 
+  &__item {
+    cursor: pointer;
+
+    &--hide {
+      display: none;
+    }
+  }
+
   // background-color: lightblue;
   // width: 80%;
 

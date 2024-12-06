@@ -8,7 +8,8 @@ const Nav = () => {
   const navigate = useNavigate();
 
   // const { id } = useParams();
-  // const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem("authToken");
+  console.log(authToken);
   const [isShown, setIsShown] = useState<boolean>(false);
 
   const handleLogOut = () => {
@@ -37,14 +38,63 @@ const Nav = () => {
         }}
         onCloseComplete={() => setIsShown(false)}
       >
-        <span onClick={() => handleNavigate("/posts")}>Posts</span>
-        <span onClick={() => handleNavigate("/")}>Home</span>
-        <span onClick={() => handleNavigate("/create-post")}>New post</span>
-        <span onClick={() => handleNavigate("/users/signup")}>Sign Up</span>
-        <span onClick={() => handleNavigate("/users/login")}>Log In</span>
-        <span onClick={() => handleNavigate("/users/account")}>Account</span>
+        <span className="nav__item" onClick={() => handleNavigate("/")}>
+          Home
+        </span>
+        {/* "/posts" will; be removed from nav, it relies on post id which comess from home */}
+        <span className="nav__item" onClick={() => handleNavigate("/posts/2")}>
+          Posts
+        </span>
+        <span
+          className="nav__item"
+          onClick={() => handleNavigate("/create-post")}
+        >
+          New post
+        </span>
+        <span
+          className={
+            authToken
+              ? `nav__item nav__item--hide `
+              : `nav__item nav__item--show `
+          }
+          // className="nav__item nav__item--no-auth"
+          onClick={() => handleNavigate("/users/signup")}
+        >
+          Sign Up
+        </span>
+        <span
+          className={
+            authToken
+              ? `nav__item nav__item--hide `
+              : `nav__item nav__item--show `
+          }
+          // className="nav__item nav__item--no-auth"
+          onClick={() => handleNavigate("/users/login")}
+        >
+          Log In
+        </span>
+        <span
+          className={
+            authToken
+              ? `nav__item nav__item--show `
+              : `nav__item nav__item--hide `
+          }
+          // className="nav__item nav__item--auth"
+          onClick={() => handleNavigate("/users/account")}
+        >
+          Account
+        </span>
 
-        <span onClick={handleLogOut}>Log out</span>
+        <span
+          className={
+            authToken
+              ? `nav__item nav__item--show `
+              : `nav__item nav__item--hide `
+          }
+          onClick={handleLogOut}
+        >
+          Log out
+        </span>
       </SideSheet>
 
       <MenuIcon
