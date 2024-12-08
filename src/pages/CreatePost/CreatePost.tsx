@@ -20,6 +20,7 @@ import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary, secondary } from "../Home/Home";
+import MapTwo from "../../components/Map3";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
@@ -109,7 +110,13 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
-        <FileUploader width={"90vw"} />
+        <div className="map-container-div">
+          {/* <MapboxExample /> */}
+          <MapTwo />
+          {/* <MapboxExampleTwo></MapboxExampleTwo> */}
+          {/* <MapboxExample></MapboxExample> */}
+          {/* <FileUploader width={"90vw"} /> */}
+        </div>
 
         <PrimaryButton
           type="submit"

@@ -46,6 +46,7 @@ export const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/posts/:id" element={<Posts />} />
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />
