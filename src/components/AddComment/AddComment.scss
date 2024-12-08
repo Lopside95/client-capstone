@@ -1,0 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
+.add-comment {
+  @include flex($direction: column, $justify: unset, $align: center);
+}

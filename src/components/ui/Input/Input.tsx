@@ -12,7 +12,14 @@ import "./Input.scss";
 import { useEffect, useState } from "react";
 import { secondary } from "../../../pages/Home/Home";
 
-const Input = ({ name, label, placeholder, className, type }: TextProps) => {
+const Input = ({
+  name,
+  label,
+  placeholder,
+  className,
+  type,
+  defaultValue,
+}: TextProps) => {
   const { register, getFieldState, formState } = useFormContext();
 
   const myState = getFieldState(name);
@@ -23,6 +30,7 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
         {myState.invalid ? `${label} is required` : label}
       </Label>
       <TextInput
+        defaultValue={defaultValue}
         width={"100%"}
         className={className || "input"}
         backgroundColor={secondary}

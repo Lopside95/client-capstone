@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+
+.account {
+  @include flex($direction: column, $justify: unset, $align: center);
+  height: 100vh;
+  gap: 1rem;
+  //   @include h-padding;
+
+  padding-bottom: 0;
+
+  &__cover {
+    position: absolute;
+    bottom: 0;
+    align-self: flex-start;
+    padding-bottom: 1.8rem;
+  }
+}

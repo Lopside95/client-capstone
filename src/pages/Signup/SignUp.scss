@@ -1,0 +1,7 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.signup {
+  @include flex($direction: column, $justify: unset, $align: center);
+}

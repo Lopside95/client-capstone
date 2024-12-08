@@ -20,9 +20,11 @@ export const postSchema = z.object({
 
 export const userSchema = z.object({
   firstName: z.string().min(1),
-  lastName: z.string(),
+  lastName: z.string().min(1),
   email: z.string().email(),
-  password: z.string(),
+  password: z
+    .string()
+    .min(5, { message: "Password must be at least 5 characters" }),
   active: z.boolean().optional(),
   // posts: z.array(postSchema),
 });

@@ -8,6 +8,9 @@ import Button from "../../components/ui/Button/Button";
 import { commentSchema, CommentSchema } from "../../utils/types/schemas";
 import axios from "axios";
 import { postComment } from "../../utils/comments";
+import "./AddComment.scss";
+import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
+import { primary } from "../../pages/Home/Home";
 
 const AddComment = () => {
   const [user, setUser] = useState<User>();
@@ -113,11 +116,18 @@ const AddComment = () => {
     //     <UserCard user={user} />
     //   </section>
     <FormProvider {...form}>
-      <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <Input label="Email" name="email" /> */}
         {!user ? <h4>Log in to comment</h4> : null}
         <Input label="Your comment" name="content" />
-        <Button type="submit">Add comment</Button>
+        <PrimaryButton
+          type="submit"
+          backColor={primary}
+          buttonWidth={"9.375rem"}
+          className="primary__button primary__button-account"
+        >
+          Comment
+        </PrimaryButton>
       </form>
     </FormProvider>
     // </div>

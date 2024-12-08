@@ -6,6 +6,9 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
 import { loginSchema, LoginSchema } from "../../utils/types/schemas";
+import "./LogIn.scss";
+import { primary } from "../Home/Home";
+import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -35,10 +38,19 @@ const LogIn = () => {
     <div>
       {/* <section className="section"><UserCard user={user} /></section> */}
       <FormProvider {...form}>
-        <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
           <Input label="Password" name="password" />
-          <Button type="submit">Log in</Button>
+          <PrimaryButton
+            type="submit"
+            backColor={primary}
+            buttonWidth={"9.375rem"}
+            className="primary__button primary__button-next"
+          >
+            Log in
+          </PrimaryButton>
+
+          {/* <Button type="submit">Log in</Button> */}
         </form>
       </FormProvider>
     </div>

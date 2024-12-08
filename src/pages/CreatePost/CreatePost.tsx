@@ -48,15 +48,6 @@ const CreatePost = () => {
       urgency: 3,
       longitude: 335607.8,
       latitude: 1842144,
-      // title: "Test Title",
-      // tags: [],
-      // status: "OPEN",
-      // type: "LOST",
-      // img: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*",
-      // urgency: 3,
-      // longitude: 335607.8,
-      // latitude: 1842144,
-      // description: "Dog here",
     },
   });
 
@@ -95,6 +86,7 @@ const CreatePost = () => {
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
+        <Input label="Description" name="description" />
         <Label
           className="create__tags-label"
           marginBottom="0.2rem"
@@ -120,13 +112,13 @@ const CreatePost = () => {
         <FileUploader width={"90vw"} />
 
         <PrimaryButton
+          type="submit"
           backColor={primary}
           buttonWidth={"9.375rem"}
           className="primary__button primary__button-next"
         >
           Done
         </PrimaryButton>
-        {/* <Button type="submit">Submit</Button> */}
       </form>
     </FormProvider>
   );

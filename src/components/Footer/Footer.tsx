@@ -19,16 +19,16 @@ const Footer = () => {
   return (
     <footer className="footer">
       <span className="footer__button" onClick={() => navigate("/")}>
-        <HomeIcon />
+        <HomeIcon size={20} />
       </span>
       <span className="footer__button" onClick={() => navigate("/create-post")}>
-        <EditIcon />
+        <EditIcon size={25} />
       </span>
       <span
         className="footer__button"
         onClick={() => navigate("/users/account")}
       >
-        <PersonIcon />
+        <PersonIcon size={20} />
       </span>
     </footer>
   );

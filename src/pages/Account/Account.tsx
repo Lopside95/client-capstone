@@ -16,6 +16,9 @@ import {
   UserSchema,
 } from "../../utils/types/schemas";
 import axios from "axios";
+import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
+import { primary } from "../Home/Home";
+import "./Account.scss";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
@@ -83,18 +86,37 @@ const Account = () => {
   }
 
   return (
-    <div>
-      <section className="section">
-        <UserCard user={user} />
-      </section>
-      <FormProvider {...form}>
-        <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
-          <Input label="Email" name="email" />
-          <Input label="Password" name="password" />
-          <Button type="submit">Update</Button>
-        </form>
-      </FormProvider>
-    </div>
+    <FormProvider {...form}>
+      <form className="account main" onSubmit={form.handleSubmit(onSubmit)}>
+        <Input
+          label="First name"
+          name="firstName"
+          defaultValue={user?.firstName}
+        />
+        <Input
+          label="Last name"
+          name="lastName"
+          defaultValue={user?.lastName}
+        />
+        <Input label="Email" name="email" defaultValue={user?.email} />
+        <Input
+          label="Password"
+          name="password"
+          // defaultValue={user?.password}
+          placeholder="Password"
+        />
+        <PrimaryButton
+          type="submit"
+          backColor={primary}
+          buttonWidth={"9.375rem"}
+          className="primary__button primary__button-account"
+        >
+          Update details
+        </PrimaryButton>
+        {/* <Button type="submit">Update</Button> */}
+        <img src="/dog-2.svg" className="account__cover" />
+      </form>
+    </FormProvider>
   );
 };
 

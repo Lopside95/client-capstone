@@ -6,6 +6,7 @@ import { TextInputField } from "evergreen-ui";
 import { createUser } from "../../utils/api";
 import Button from "../../components/ui/Button/Button";
 import { useEffect } from "react";
+import "./SignUp.scss";
 
 const SignUp = () => {
   const form = useForm<UserSchema>({
@@ -36,7 +37,7 @@ const SignUp = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="main" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="main signup" onSubmit={form.handleSubmit(onSubmit)}>
         <Input name="firstName" label="First name" placeholder="First name" />
         <Input name="lastName" label="Last name" placeholder="Last name" />
         <Input name="email" label="Email" placeholder="your@email.com" />
