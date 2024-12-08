@@ -37,7 +37,7 @@ export const App = () => {
               outline="none"
               top={5}
               left={5}
-              size={20}
+              size={30}
               color="black"
               marginTop={10}
               marginLeft={10}

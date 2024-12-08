@@ -13,8 +13,8 @@ const LogIn = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "james@email.com",
-      password: "123",
+      email: "j@m.com",
+      password: "1",
     },
   });
 
@@ -25,10 +25,7 @@ const LogIn = () => {
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
       const res = await login(data);
-
-      // if (!res) {
-      //   console.log("error with res");
-      // }
+      console.log("login res", res);
     } catch (error) {
       console.error(error);
     }

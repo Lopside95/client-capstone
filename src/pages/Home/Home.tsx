@@ -67,7 +67,7 @@ const Home = () => {
 
           <PrimaryButton
             className="subnav__button"
-            onClick={() => navigate("/create-post")}
+            onClick={() => navigate("/posts/create-post")}
           >
             Report
           </PrimaryButton>

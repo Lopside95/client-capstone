@@ -24,6 +24,7 @@ const Nav = () => {
 
   return (
     <nav className="nav">
+      {authToken && <div>Logged in</div>}
       <SideSheet
         isShown={isShown}
         width={"40vw"}

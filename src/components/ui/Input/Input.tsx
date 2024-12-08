@@ -18,26 +18,16 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
 
   return (
     <div className="input__container">
-      {/* <Label htmlFor={name}>{label}</Label> */}
-      <Label
-        // onError={() =>
-        //   console.log(form.setError("title", { message: "Error in title" }))
-        // }
-        htmlFor="title"
-      >
+      <Label color={!myState.invalid ? "" : "orange"} htmlFor="title">
         {myState.invalid ? `${label} is required` : label}
       </Label>
       <TextInput
-        className={className}
-        // className="no-border"
-        // className="only-input"
-
+        className={className || "input"}
         backgroundColor={secondary}
         border="none"
         type={type}
         placeholder={placeholder}
         {...register(name)}
-        // label={label}
       />
     </div>
   );

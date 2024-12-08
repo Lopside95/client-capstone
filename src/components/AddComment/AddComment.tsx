@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
 import { commentSchema, CommentSchema } from "../../utils/types/schemas";
 import axios from "axios";
+import { postComment } from "../../utils/comments";
 
 const AddComment = () => {
   const [user, setUser] = useState<User>();
@@ -27,7 +28,7 @@ const AddComment = () => {
         }
       );
 
-      console.log("dtadtatat", data);
+      console.log("Res data", data);
 
       const userData: User = {
         id: data.id,
@@ -55,7 +56,7 @@ const AddComment = () => {
     resolver: zodResolver(commentSchema),
     defaultValues: {
       post_id: id,
-      user_id: user?.id,
+      // user_id: id,
     },
   });
 
@@ -68,13 +69,37 @@ const AddComment = () => {
     data: CommentSchema
   ) => {
     try {
-      console.log("comment data: ", data);
+      console.log("dats", data);
 
-      console.log("user", user);
+      const res = await axios.post(
+        `${import.meta.env.BASE_URL}/posts/${id}`,
+        data,
+        {
+          headers: {
+            authorisation: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      return res;
     } catch (error) {
+      console.log("There was an error in get authed user", error);
       console.error(error);
     }
   };
+
+  //   try {
+  //     if (!id) {
+  //       console.log("no id in submit");
+  //     }
+
+  //     const res = await postComment(data);
+  //     return res;
+
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   if (!user) {
     return <div>You need to be logged in to add comments</div>;

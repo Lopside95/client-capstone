@@ -79,9 +79,11 @@ const getAuthedUser = async () => {
   try {
     const res = await axios.get(`${baseUrl}/users/account`, {
       headers: {
-        authorization: `Bearer ${authToken}`,
+        authorisation: `Bearer ${authToken}`,
       },
     });
+
+    console.log("isdhjbfhsduj", res.headers);
 
     return res.data;
   } catch (error) {

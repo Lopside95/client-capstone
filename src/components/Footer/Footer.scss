@@ -3,8 +3,9 @@
 @use "../../styles/partials/variables" as *;
 
 .footer {
-  @include flex($direction: row, $justify: space-around, $align: unset);
+  @include flex($direction: row, $justify: space-around, $align: center);
   position: sticky;
   bottom: 0;
   background: $primary;
+  height: 2.5rem;
 }

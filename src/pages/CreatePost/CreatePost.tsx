@@ -84,38 +84,15 @@ const CreatePost = () => {
 
   useEffect(() => {
     if (formState.errors) {
-      // console.log(formState.errors);
       setFormErrors(formState.errors);
     }
   }, [formState]);
 
-  console.log("form errors", formErrors);
-  const titleState = form.getFieldState("title");
-  // console.log(titleState);
-  // useEffect(() => {
-  //   console.log("Form Errors:", form.formState.errors);
-  // }, [form.formState]);
-
   return (
     <FormProvider {...form}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
-        {/* <TextInputField
-          label="Title"
-          {...register("title", { required: true })}
-          border="none"
-        /> */}
-        {/* <Label
-          // onError={() =>
-          //   console.log(form.setError("title", { message: "Error in title" }))
-          // }
-          htmlFor="title"
-        >
-          {form.formState.errors.title ? "Title is required" : "Title"}
-        </Label> */}
-        {/* <Input label="Title" name="title" error={form.formState.errors.title} /> */}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
-        {/* <TextInput name="description" /> */}
         <Select
           isMulti
           options={tagOptions}

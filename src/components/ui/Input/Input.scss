@@ -3,23 +3,13 @@
 @use "../../../styles/partials/variables" as *;
 
 .input {
-  // height: 30px;
-  // @include flex($direction: column, $justify: unset, $align: unset);
-  // border-radius: 6px;
   background-color: $secondary;
   border: none;
-  width: 90%;
+  width: 100%;
 
   &__container {
     @include flex($direction: column, $justify: unset, $align: unset);
+    padding: 0.5rem 0;
+    gap: 0.2rem;
   }
 }
-
-// .only-input {
-//   backgroundcolor: red;
-// }
-
-// .no-border {
-//   background: #000;
-//   border: none;
-// }
