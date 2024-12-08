@@ -36,7 +36,6 @@ const LogIn = () => {
 
   return (
     <div>
-      {/* <section className="section"><UserCard user={user} /></section> */}
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
@@ -49,8 +48,6 @@ const LogIn = () => {
           >
             Log in
           </PrimaryButton>
-
-          {/* <Button type="submit">Log in</Button> */}
         </form>
       </FormProvider>
     </div>

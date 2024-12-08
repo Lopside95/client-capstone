@@ -22,7 +22,6 @@ import axios from "axios";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
-  // const [errors, setErrors] = useState<FieldError | undefined>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
 

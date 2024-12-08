@@ -6,7 +6,6 @@ export const tag = z.object({
 });
 
 export const postSchema = z.object({
-  // title: z.string().min(5),
   title: z.string().min(1, { message: "Title is required" }),
   img: z.string().optional(),
   description: z.string().min(1, { message: "Description is required" }),
@@ -27,7 +26,6 @@ export const userSchema = z.object({
     .string()
     .min(5, { message: "Password must be at least 5 characters" }),
   active: z.boolean().optional(),
-  // posts: z.array(postSchema),
 });
 
 export const loginSchema = z.object({
@@ -37,11 +35,7 @@ export const loginSchema = z.object({
 
 export const commentSchema = z.object({
   content: z.string(),
-  // user_id: z.string(),
   post_id: z.string().optional(),
-  // user_id: z.string(),
-  // post: postSchema,
-  // user: userSchema,
 });
 
 export type PostSchema = z.infer<typeof postSchema>;

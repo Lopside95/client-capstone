@@ -10,6 +10,7 @@ import Account from "./pages/Account/Account";
 import LogIn from "./pages/Login/LogIn";
 import { Button, HomeIcon } from "evergreen-ui";
 import Footer from "./components/Footer/Footer";
+import Toaster from "./components/Toaster/Toaster";
 
 export const App = () => {
   const form = useForm();
@@ -18,35 +19,9 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
-          <Link
-            style={
-              {
-                // width: "100px",
-              }
-            }
-            // position="absolute"
-            to={"/"}
-            // onClick={() => navigate("/")}
-            // outline="none"
-            // top={2}
-            // left={2}
-          >
-            <HomeIcon
-              position="absolute"
-              // onClick={() => navigate("/")}
-              outline="none"
-              top={5}
-              left={5}
-              size={30}
-              color="black"
-              marginTop={10}
-              marginLeft={10}
-            />
-          </Link>
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-
             <Route path="/posts/:id" element={<Posts />} />
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />

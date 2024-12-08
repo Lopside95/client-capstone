@@ -24,7 +24,6 @@ const Nav = () => {
 
   return (
     <nav className="nav">
-      {authToken && <div>Logged in</div>}
       <SideSheet
         isShown={isShown}
         width={"40vw"}
@@ -41,14 +40,10 @@ const Nav = () => {
         <span className="nav__item" onClick={() => handleNavigate("/")}>
           Home
         </span>
-        {/* "/posts" will; be removed from nav, it relies on post id which comess from home */}
-        {/* <span className="nav__item" onClick={() => handleNavigate("/posts/2")}>
-          Posts
-        </span> */}
+
         <span
           className="nav__item"
           onClick={() => handleNavigate("/posts/create-post")}
-          // onClick={() => handleNavigate("/posts/create-post")}
         >
           New post
         </span>
@@ -58,7 +53,6 @@ const Nav = () => {
               ? `nav__item nav__item--hide `
               : `nav__item nav__item--show `
           }
-          // className="nav__item nav__item--no-auth"
           onClick={() => handleNavigate("/users/signup")}
         >
           Sign Up
@@ -69,7 +63,6 @@ const Nav = () => {
               ? `nav__item nav__item--hide `
               : `nav__item nav__item--show `
           }
-          // className="nav__item nav__item--no-auth"
           onClick={() => handleNavigate("/users/login")}
         >
           Log In

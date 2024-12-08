@@ -1,11 +1,10 @@
 // import { Pill } from "evergreen-ui";
 import MyPill from "../ui/Pill/MyPill";
-import { CardInterface, Post } from "../../utils/types/posts";
+import { CardInterface, Post, UserComment } from "../../utils/types/posts";
 import TagButton from "../ui/Tag/TagButton";
 import "./Card.scss";
 import StatusBadge from "../ui/StatusBadge/StatusBadge";
 import { useLocation, useNavigate } from "react-router";
-import { secondary } from "../ui/Input/Input";
 import { Button } from "evergreen-ui";
 import { PostType } from "../../utils/types/enums";
 import { useEffect } from "react";
@@ -32,7 +31,6 @@ const Card = (post: Post) => {
   }: Post = post;
 
   return (
-    // <section className={`${location.pathname.includes("/posts/")} card card-posts`} onClick={() => navigate(`/posts/${id}`)}>
     <section
       className={
         location.pathname.includes("/posts/") ? `card card-posts` : `card`
@@ -42,23 +40,12 @@ const Card = (post: Post) => {
       <article className="card__heading">
         <h1 className="card__title">{title}</h1>
         <MyPill color="red">{type}</MyPill>
-        {/* <StatusBadge type={type}>{type}</StatusBadge> */}
         <MyPill>{status}</MyPill>
       </article>
       <article className="card__body">
         <div className="card__desc">
           <h1 className="card__desc-label">Description</h1>
           <p className="card__desc-content">{description}</p>
-          {/* <p>{comments[0].content}</p> */}
-          {/* */}
-
-          {/* {tags?.map((tag) => (
-              <TagButton key={tag.id} title={tag.name} />
-
-              // <li key={tag.id} className="card__tag">
-              //   {tag.name}
-              // </li>
-            ))} */}
         </div>
         <img className="card__img" src={img} />
       </article>
@@ -78,6 +65,16 @@ const Card = (post: Post) => {
           </Button>
         ))}
       </div>
+      <article className="comments">
+        <h5 className="comments-header">Comments</h5>
+        {comments?.map((comment) => {
+          return (
+            <p key={comment.id} className="comment">
+              {comment.content}{" "}
+            </p>
+          );
+        })}
+      </article>
     </section>
   );
 };

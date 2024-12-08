@@ -17,6 +17,9 @@ const Posts = () => {
       const postsData = await getPostById(id!);
 
       setPost(postsData);
+
+      setComments(postsData.comments);
+      console.log(comments);
     } catch (error) {
       console.error(error);
     }
@@ -26,15 +29,26 @@ const Posts = () => {
     fetchPost();
   }, []);
 
+  const CommentsMap =
+    comments &&
+    comments.map((comment) => {
+      return (
+        <div className="comment">
+          <p>{comment.content}</p>
+          <p>{comment.created_at.toLocaleDateString("en-GB")}</p>
+        </div>
+      );
+    });
+
   if (!post) {
     return <div>Loading</div>;
   }
 
   return (
     <main className="main posts">
-      <h1>Welcome to the page</h1>
-
-      <Card {...post} />
+      <section className="post">
+        <Card {...post} />
+      </section>
       <AddComment />
     </main>
   );
