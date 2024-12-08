@@ -7,7 +7,6 @@ import { useState } from "react";
 const Nav = () => {
   const navigate = useNavigate();
 
-  // const { id } = useParams();
   const authToken = localStorage.getItem("authToken");
   const [isShown, setIsShown] = useState<boolean>(false);
 
@@ -106,12 +105,3 @@ const Nav = () => {
 };
 
 export default Nav;
-{
-  /* <Button onClick={() => navigate("/")}>Home</Button>
-      <Button onClick={() => navigate("/posts")}>Posts</Button>
-      <Button onClick={() => navigate("/create-post")}>Create new post</Button>
-      <Button onClick={() => navigate("/users/signup")}>Sign Up</Button>
-      <Button onClick={() => navigate("/users/login")}>Log In</Button>
-      <Button onClick={() => navigate(`/users/account`)}>Account</Button>
-      <Button onClick={handleLogOut}>Log out</Button> */
-}

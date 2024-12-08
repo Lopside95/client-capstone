@@ -59,7 +59,6 @@ const AddComment = () => {
     resolver: zodResolver(commentSchema),
     defaultValues: {
       post_id: id,
-      // user_id: id,
     },
   });
 

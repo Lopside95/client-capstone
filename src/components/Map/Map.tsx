@@ -37,10 +37,7 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
     // 51.564719, -0.142297
     mapRef.current = map;
 
-    const navControls = map.addControl(
-      new mapboxgl.NavigationControl(),
-      "top-right"
-    );
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
     map.addControl(
       new mapboxgl.GeolocateControl({
