@@ -10,6 +10,7 @@ import { TextProps } from "../../../utils/types/components";
 import { Label, TextInput, TextInputField } from "evergreen-ui";
 import "./Input.scss";
 import { useEffect, useState } from "react";
+import { secondary } from "../../../pages/Home/Home";
 
 const Input = ({ name, label, placeholder, className, type }: TextProps) => {
   const { register, getFieldState, formState } = useFormContext();
@@ -22,6 +23,7 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
         {myState.invalid ? `${label} is required` : label}
       </Label>
       <TextInput
+        width={"100%"}
         className={className || "input"}
         backgroundColor={secondary}
         border="none"
@@ -34,5 +36,3 @@ const Input = ({ name, label, placeholder, className, type }: TextProps) => {
 };
 
 export default Input;
-
-export const secondary = "#efeded";

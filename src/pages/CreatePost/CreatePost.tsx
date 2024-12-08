@@ -18,6 +18,8 @@ import "./CreatePost.scss";
 import { FileUploader, Label, TextInput, TextInputField } from "evergreen-ui";
 import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
+import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
+import { primary, secondary } from "../Home/Home";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
@@ -93,10 +95,17 @@ const CreatePost = () => {
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
+        <Label
+          className="create__tags-label"
+          marginBottom="0.2rem"
+          htmlFor="tags"
+        >
+          Tags
+        </Label>
         <Select
           isMulti
           options={tagOptions}
-          className="basic-multi-select"
+          className="create__tags-select"
           classNamePrefix="select"
           {...register("tags")}
           onChange={(selectedOptions) => {
@@ -108,9 +117,16 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
-        <FileUploader />
+        <FileUploader width={"90vw"} />
 
-        <Button type="submit">Submit</Button>
+        <PrimaryButton
+          backColor={primary}
+          buttonWidth={"9.375rem"}
+          className="primary__button primary__button-next"
+        >
+          Done
+        </PrimaryButton>
+        {/* <Button type="submit">Submit</Button> */}
       </form>
     </FormProvider>
   );

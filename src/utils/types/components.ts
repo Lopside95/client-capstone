@@ -35,9 +35,11 @@ export interface TextProps extends TextInputOwnProps {
 //   type?: string;
 // }
 
-export interface ButtonProps
+export interface MyButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title?: string;
+  backColor?: string;
+  buttonWidth?: string | number;
 }
 
 // export type MyPillProps = {

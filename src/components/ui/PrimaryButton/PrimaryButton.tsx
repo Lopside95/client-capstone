@@ -1,15 +1,17 @@
-import { ButtonProps } from "../../../utils/types/components";
 import { Button } from "evergreen-ui";
 import "./PrimaryButton.scss";
+import { MyButtonProps } from "../../../utils/types/components";
 
-const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
+const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
     <Button
       borderRadius={"11px"}
       className={props.className}
       onClick={props.onClick}
       appearance="primary"
-      backgroundColor="white"
+      width={props.buttonWidth || ""}
+      // backgroundColor="white"
+      backgroundColor={props.backColor || "white"}
       color="black"
       border="none"
       height="2.5rem"

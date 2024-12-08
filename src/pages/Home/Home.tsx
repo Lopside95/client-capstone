@@ -96,6 +96,9 @@ const Home = () => {
 
 export default Home;
 
+export const primary = "#76bd6b";
+export const secondary = "#efeded";
+
 // const [userLocation, setUserLocation] = useState<LocationType>({
 //   latitude: 0,
 //   longitude: 0,

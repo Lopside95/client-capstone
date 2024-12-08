@@ -3,5 +3,29 @@
 @use "../../styles/partials/mixins" as *;
 
 .create {
+  @include flex($direction: column, $justify: unset, $align: center);
   @include h-padding;
+
+  &__tags {
+    &-label {
+    }
+
+    &-select {
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+// .subnav__button {
+//   width: 10rem;
+//   border-radius: 11px;
+// }
+
+.primary__button-next {
+  // justify-content: center;
+}
+
+.next-button {
+  // background: $primary;
 }
