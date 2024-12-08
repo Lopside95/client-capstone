@@ -1,3 +1,4 @@
+import { SetStateAction } from "react";
 import { PostStatus, PostType } from "./enums";
 
 export type Tag = {
@@ -50,3 +51,13 @@ export type UserComment = {
   created_at: Date;
   updated_at: Date;
 };
+
+export type UserMarker = {
+  lng: number;
+  lat: number;
+};
+
+export interface MyMap {
+  userMarkers: UserMarker[] | null;
+  setUserMarkers: React.Dispatch<SetStateAction<UserMarker[]>>;
+}

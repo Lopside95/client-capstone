@@ -1,153 +1,111 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import Map, {
-  GeolocateControl,
-  MapRef,
-  Marker,
-  useMap,
-  NavigationControl,
-  LngLat,
-  MarkerDragEvent,
-  GeolocateResultEvent,
-} from "react-map-gl";
-import mapboxgl from "mapbox-gl";
-import "./Map.scss";
-export type LocationType = {
-  latitude: number;
-  longitude: number;
-};
+import React, { useEffect, useRef, useState } from "react";
+import mapboxgl, { Map, MapEvent, MapMouseEvent } from "mapbox-gl";
 
-export interface MyMapProps {
-  userLocation: LocationType;
-}
+import "mapbox-gl/dist/mapbox-gl.css";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import { MyMap, UserMarker } from "../../utils/types/posts";
+import { primary } from "../../pages/Home/Home";
+import { Spinner } from "evergreen-ui";
+import Button from "../ui/Button/Button";
 
-// Initialize the geolocate control.
+const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<Map | null>(null);
 
-const MapComponent = ({ userLocation }: MyMapProps) => {
-  const mapRef = useRef<MapRef | null>(null);
-  //   const initialPosition = () =>
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       return position.coords.latitude, position.coords.longitude;
-  //     });
-  const geolocate = new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true,
-    },
-    trackUserLocation: true,
-  });
+  const [longitude, setLongitude] = useState<number>(-0.142297);
+  const [latitude, setLatitude] = useState<number>(51.564719);
 
-  console.log("geloac", geolocate);
-
-  // // Add the control to the map.
-  // map.addControl(geolocate);
-  // map.on("load", () => {
-  //   geolocate.trigger();
-  // });
-
-  //   useEffect(() => {
-  //     initialPosition();
-  //   });
-
-  //   const [userLocation, setUserLocation] = useState<LocationType>({
-  //     latitude: null,
-  //     longitude: null,
-  //   });
-
-  const [marker, setMarker] = useState<LocationType>({
-    latitude: 0,
-    longitude: 0,
-  });
-
-  const handleDrag = () => {};
-
-  const [events, logEvents] = useState<Record<string, LngLat>>({});
-  // console.log(mapRef.bearing)
-
-  //   const onMarkerDragStart = useCallback((event: MarkerDragEvent) => {
-  //     logEvents((_events) => ({ ..._events, onDragStart: event.lngLat }));
-  //   }, []);
-
-  //   const onMarkerDrag = useCallback((event: MarkerDragEvent) => {
-  //     logEvents((_events) => ({ ..._events, onDrag: event.lngLat }));
-
-  //     setMarker({
-  //       longitude: event.lngLat.lng,
-  //       latitude: event.lngLat.lat,
-  //     });
-  //   }, []);
-
-  //   const onMarkerDragEnd = useCallback((event: MarkerDragEvent) => {
-  //     logEvents((_events) => ({ ..._events, onDragEnd: event.lngLat }));
-  //   }, []);
-
-  const mapControl = useMap();
-
-  console.log("map", mapControl);
+  const markersRef = useRef<mapboxgl.Marker[]>([]);
 
   useEffect(() => {
-    if (mapRef.current) {
-      const map = mapRef.current.getMap();
-      //   console.log("map", map);
-    }
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoibG9wc2lkZSIsImEiOiJjbTQ5cHU1YW0wY3E0MnFzZHFwdTZ5aWl2In0.COQXARWCccbTSMWIDGlwGg";
+
+    if (!mapContainerRef.current) return;
+
+    const geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      collapsed: true,
+    });
+
+    const map = (mapRef.current = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      center: [longitude, latitude],
+      zoom: 15,
+    }));
+    // 51.564719, -0.142297
+    mapRef.current = map;
+
+    const navControls = map.addControl(
+      new mapboxgl.NavigationControl(),
+      "top-right"
+    );
+
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+        showUserLocation: true,
+      }),
+      "bottom-right"
+    );
+
+    map.addControl(new mapboxgl.FullscreenControl(), "bottom-left");
+
+    const searchBar = map.addControl(geocoder, "top-left");
+
+    map.on("geolocate", (e) => {
+      setLatitude(e.coords.latitude);
+      setLongitude(e.coords.latitude);
+    });
+
+    const newMarker = map.on("click", (e: MapMouseEvent) => {
+      const { lng, lat } = e.lngLat;
+
+      console.log("newMarker", newMarker);
+
+      const addedMarker = new mapboxgl.Marker({
+        color: primary,
+      })
+        .setLngLat([lng, lat])
+        .addTo(map);
+      markersRef.current.push(addedMarker);
+
+      setUserMarkers((markers) => [...markers, { lng, lat }]);
+    });
+
+    return () => map.remove();
   }, []);
+
+  const handleReset = () => {
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+    setUserMarkers([]);
+    mapRef.current?.flyTo({
+      center: [longitude, latitude],
+      zoom: 15,
+    });
+  };
 
   return (
     <>
-      {/* <head>
-        <link
-          rel="stylesheet"
-          href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.1/mapbox-gl.css"
-          type="text/css"
-        />
-      </head> */}
-      <Map
-        ref={mapRef}
-        mapboxAccessToken={import.meta.env.VITE_MAPBOX_API_TOKEN}
-        initialViewState={{
-          longitude: -0.1420972,
-          latitude: 51.5646965,
-          // longitude: userLocation.longitude,
-          // latitude: userLocation.latitude,
-          zoom: 14,
+      <div
+        style={{ height: "450px", width: "100%" }}
+        ref={mapContainerRef}
+        className="map-container"
+      />
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+          handleReset();
         }}
-        style={{ width: "90vw", height: 400 }}
-        mapStyle="mapbox://styles/mapbox/streets-v12"
-
-        //  attributionControl={false}
-        //   logoPosition="bottom-left"
       >
-        <Marker
-          latitude={0}
-          longitude={0}
-          // latitude={userLocation.latitude}
-          // longitude={userLocation.longitude}
-          draggable
-        />
-        {/* <Marker latitude={-34.0656944} longitude={23.3747778} draggable /> */}
-        <GeolocateControl
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-          // onGeolocate={(e: GeolocateResultEvent) => {
-          //   const { coords } = e;
-          //   console.log(
-          //     `Longitude: ${coords.longitude}, Latitude: ${coords.latitude}`
-          //   );
-          //   console.log(e);
-          // }}
-          // onGeolocate={()=> console.log(lngLat)}
-          showUserLocation={true}
-          showUserHeading={true}
-          position="bottom-right"
-        />
-        <NavigationControl
-          showCompass
-          position="top-left"
-          style={{ background: "red" }}
-          //   style={{ height: 80 }}
-          showZoom
-        >
-          {}
-        </NavigationControl>
-      </Map>
+        Reset Map
+      </Button>
     </>
   );
 };

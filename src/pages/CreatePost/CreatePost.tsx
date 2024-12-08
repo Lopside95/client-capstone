@@ -20,11 +20,13 @@ import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary, secondary } from "../Home/Home";
-import MapTwo from "../../components/Map3";
+import { MyMap, UserMarker } from "../../utils/types/posts";
+import MapComponent from "../../components/Map/Map";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
   // const [errors, setErrors] = useState<FieldError | undefined>();
+  const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const fetchData = async () => {
     try {
       const res = await getTags();
@@ -111,11 +113,10 @@ const CreatePost = () => {
           }}
         />
         <div className="map-container-div">
-          <MapTwo />
-          {/* <MapboxExample /> */}
-          {/* <MapboxExampleTwo></MapboxExampleTwo> */}
-          {/* <MapboxExample></MapboxExample> */}
-          {/* <FileUploader width={"90vw"} /> */}
+          <MapComponent
+            userMarkers={userMarkers}
+            setUserMarkers={setUserMarkers}
+          />
         </div>
 
         <PrimaryButton

@@ -1,9 +1,14 @@
-import { ButtonProps } from "../../../utils/types/components";
+import { MyButtonProps } from "../../../utils/types/components";
 import { Button as EvButton } from "evergreen-ui";
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Button: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
-    <EvButton onClick={props.onClick} appearance="default">
+    <EvButton
+      border="none"
+      padding="0"
+      onClick={props.onClick}
+      appearance="default"
+    >
       {children}
     </EvButton>
   );
