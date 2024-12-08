@@ -111,8 +111,8 @@ const CreatePost = () => {
           }}
         />
         <div className="map-container-div">
-          {/* <MapboxExample /> */}
           <MapTwo />
+          {/* <MapboxExample /> */}
           {/* <MapboxExampleTwo></MapboxExampleTwo> */}
           {/* <MapboxExample></MapboxExample> */}
           {/* <FileUploader width={"90vw"} /> */}
