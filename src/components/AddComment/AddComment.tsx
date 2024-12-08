@@ -75,7 +75,7 @@ const AddComment = () => {
       console.log("dats", data);
 
       const res = await axios.post(
-        `${import.meta.env.BASE_URL}/posts/${id}`,
+        `${import.meta.env.VITE_API_URL}/posts/${id}`,
         data,
         {
           headers: {
@@ -91,19 +91,6 @@ const AddComment = () => {
     }
   };
 
-  //   try {
-  //     if (!id) {
-  //       console.log("no id in submit");
-  //     }
-
-  //     const res = await postComment(data);
-  //     return res;
-
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   if (!user) {
     return <div>You need to be logged in to add comments</div>;
   }
@@ -111,10 +98,6 @@ const AddComment = () => {
   console.log(user?.id);
 
   return (
-    // <div>
-    //   <section className="section">
-    //     <UserCard user={user} />
-    //   </section>
     <FormProvider {...form}>
       <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <Input label="Email" name="email" /> */}
