@@ -72,8 +72,6 @@ const AddComment = () => {
     data: CommentSchema
   ) => {
     try {
-      console.log("dats", data);
-
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/posts/${id}`,
         data,

@@ -1,5 +1,4 @@
 import {
-  FieldError,
   FormProvider,
   SubmitHandler,
   useForm,
@@ -7,26 +6,62 @@ import {
   FieldErrors,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/ui/Button/Button";
 import Input from "../../components/ui/Input/Input";
-import { z } from "zod";
-import TagButton from "../../components/ui/Tag/TagButton";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { FileUploader, Label, TextInput, TextInputField } from "evergreen-ui";
+import { Label } from "evergreen-ui";
 import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { primary, secondary } from "../Home/Home";
-import { MyMap, UserMarker } from "../../utils/types/posts";
+import { primary } from "../Home/Home";
+import { MyMap, User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
+import axios from "axios";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
   // const [errors, setErrors] = useState<FieldError | undefined>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
+  const [user, setUser] = useState<User>();
+
+  const authToken = localStorage.getItem("authToken");
+
+  const fetchUser = async () => {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/posts`,
+        {
+          headers: {
+            authorisation: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      const userData: User = {
+        id: data.id,
+        firstName: data.first_name,
+        lastName: data.last_name,
+        email: data.email,
+        password: data.password,
+        active: data.active,
+        posts: data.posts,
+        created_at: data.created_at,
+        updated_at: data.updated_at,
+      };
+      console.log(userData);
+
+      setUser(userData);
+    } catch (error: unknown) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const fetchData = async () => {
     try {
       const res = await getTags();
@@ -51,14 +86,39 @@ const CreatePost = () => {
       urgency: 3,
       longitude: 335607.8,
       latitude: 1842144,
+      userId: user?.id,
     },
   });
+
+  useEffect(() => {
+    if (userMarkers.length) {
+      form.setValue("latitude", userMarkers[0].lat);
+      form.setValue("longitude", userMarkers[0].lng);
+    }
+  }, [userMarkers]);
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
       console.log("datat", data);
-      const res = await createPost(data);
-      return res;
+
+      try {
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/posts`,
+          data,
+          {
+            headers: {
+              authorisation: `Bearer ${authToken}`,
+            },
+          }
+        );
+
+        return res;
+      } catch (error) {
+        console.log("There was an error in get authed user", error);
+        console.error(error);
+      }
+
+      // const res = await createPost(data);
     } catch (error) {
       console.error(error);
     }
@@ -69,13 +129,8 @@ const CreatePost = () => {
     value: tag.id,
   }));
 
-  useEffect(() => {
-    // console.log("Form Errors:", form.formState.errors);
-  }, [form.formState]);
-
   const { register, watch, formState } = form;
 
-  // const all = watch();
   const [formErrors, setFormErrors] = useState<FieldErrors<FieldValues>>();
 
   useEffect(() => {
@@ -88,7 +143,6 @@ const CreatePost = () => {
     <FormProvider {...form}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
-        <Input label="Description" name="description" />
         <Input label="Description" name="description" />
         <Label
           className="create__tags-label"

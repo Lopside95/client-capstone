@@ -16,6 +16,7 @@ export const postSchema = z.object({
   tags: z.array(tag),
   longitude: z.number().optional(),
   latitude: z.number().optional(),
+  userId: z.string().optional(),
 });
 
 export const userSchema = z.object({

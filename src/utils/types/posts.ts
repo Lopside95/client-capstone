@@ -53,8 +53,8 @@ export type UserComment = {
 };
 
 export type UserMarker = {
-  lng: number;
-  lat: number;
+  lng?: number;
+  lat?: number;
 };
 
 export interface MyMap {

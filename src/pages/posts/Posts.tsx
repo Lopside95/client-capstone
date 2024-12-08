@@ -35,7 +35,6 @@ const Posts = () => {
       <h1>Welcome to the page</h1>
 
       <Card {...post} />
-      {/* {comments ? <p>{comments[0].content}</p> : <p>Waiting</p>} */}
       <AddComment />
     </main>
   );

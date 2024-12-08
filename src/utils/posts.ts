@@ -6,7 +6,6 @@ export const baseUrl = import.meta.env.VITE_API_URL;
 const getPosts = async () => {
   try {
     const res = await axios.get(`${baseUrl}/posts`);
-    console.log("postssssss", res.data);
 
     return res.data;
   } catch (error) {

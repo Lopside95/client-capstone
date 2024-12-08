@@ -15,7 +15,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
 
   const [longitude, setLongitude] = useState<number>(-0.142297);
   const [latitude, setLatitude] = useState<number>(51.564719);
-
   const markersRef = useRef<mapboxgl.Marker[]>([]);
 
   useEffect(() => {
@@ -64,9 +63,12 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
     });
 
     const newMarker = map.on("click", (e: MapMouseEvent) => {
-      const { lng, lat } = e.lngLat;
+      if (markersRef.current.length) {
+        markersRef.current.forEach((mark) => mark.remove());
+        setUserMarkers([]);
+      }
 
-      console.log("newMarker", newMarker);
+      const { lng, lat } = e.lngLat;
 
       const addedMarker = new mapboxgl.Marker({
         color: primary,
@@ -90,6 +92,10 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
       zoom: 15,
     });
   };
+
+  useEffect(() => {
+    console.log("userMarklkkkk", userMarkers);
+  }, [mapRef.current]);
 
   return (
     <>
