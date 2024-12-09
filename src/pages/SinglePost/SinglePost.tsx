@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Post, UserComment } from "../../utils/types/posts";
-import "./Posts.scss";
+import "./SinglePost.scss";
 import Card from "../../components/Card/Card";
 import { getPostById } from "../../utils/posts";
 import { useParams } from "react-router";
 import AddComment from "../../components/AddComment/AddComment";
 
-const Posts = () => {
+const SinglePost = () => {
   const [post, setPost] = useState<Post>();
   const [comments, setComments] = useState<UserComment[] | null>(null);
 
@@ -29,16 +29,16 @@ const Posts = () => {
     fetchPost();
   }, []);
 
-  const CommentsMap =
-    comments &&
-    comments.map((comment) => {
-      return (
-        <div className="comment">
-          <p>{comment.content}</p>
-          <p>{comment.created_at.toLocaleDateString("en-GB")}</p>
-        </div>
-      );
-    });
+  // const CommentsMap =
+  //   comments &&
+  //   comments.map((comment) => {
+  //     return (
+  //       <div className="comment">
+  //         <p>{comment.content}</p>
+  //         <p>{comment.created_at.toLocaleDateString("en-GB")}</p>
+  //       </div>
+  //     );
+  //   });
 
   if (!post) {
     return <div>Loading</div>;
@@ -54,4 +54,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default SinglePost;
