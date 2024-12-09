@@ -21,7 +21,10 @@ const Footer = () => {
       <span className="footer__button" onClick={() => navigate("/")}>
         <HomeIcon size={20} />
       </span>
-      <span className="footer__button" onClick={() => navigate("/create-post")}>
+      <span
+        className="footer__button"
+        onClick={() => navigate("/posts/create-post")}
+      >
         <EditIcon size={25} />
       </span>
       <span

@@ -84,8 +84,8 @@ const CreatePost = () => {
       type: "LOST",
       img: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*",
       urgency: 3,
-      longitude: 335607.8,
-      latitude: 1842144,
+      longitude: 0,
+      latitude: 0,
       userId: user?.id,
     },
   });
@@ -142,6 +142,7 @@ const CreatePost = () => {
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
+        {/* <h2 className="create__header">New Post</h2> */}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
         <Label

@@ -1,8 +1,8 @@
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import "./Nav.scss";
 import Button from "../ui/Button/Button";
 import { MenuIcon, SideSheet } from "evergreen-ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -10,16 +10,46 @@ const Nav = () => {
   const authToken = localStorage.getItem("authToken");
   const [isShown, setIsShown] = useState<boolean>(false);
 
+  const [pageHeader, setPageHeader] = useState<string>("");
+
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
 
     navigate(`/`);
   };
 
+  const location = useLocation();
+
   const handleNavigate = async (path: string) => {
     navigate(path);
     setIsShown(false);
+
+    // if (path === "/posts/create-post") {
+    //   setPageHeader("New Post");
+    // } else if (path === "/users/signup") {
+    //   setPageHeader("Sign Up");
+    // } else if (path === "/users/login") {
+    //   setPageHeader("Log In");
+    // } else if (path === "/users/account") {
+    //   setPageHeader("Account");
+    // } else {
+    //   setPageHeader("");
+    // }
   };
+
+  useEffect(() => {
+    if (location.pathname === "/posts/create-post") {
+      setPageHeader("New Post");
+    } else if (location.pathname === "/users/signup") {
+      setPageHeader("Sign Up");
+    } else if (location.pathname === "/users/login") {
+      setPageHeader("Log In");
+    } else if (location.pathname === "/users/account") {
+      setPageHeader("Account");
+    } else {
+      setPageHeader("");
+    }
+  }, [location]);
 
   return (
     <nav className="nav">
@@ -89,16 +119,18 @@ const Nav = () => {
           Log out
         </span>
       </SideSheet>
-
-      <MenuIcon
-        className="menu-icon"
-        onClick={() => {
-          setIsShown(true);
-        }}
-        size={40}
-        marginTop={10}
-        marginRight={10}
-      />
+      <div className="nav__header">
+        <h2 className="nav__header-title">{pageHeader}</h2>
+        <MenuIcon
+          className="menu-icon"
+          onClick={() => {
+            setIsShown(true);
+          }}
+          size={40}
+          marginTop={10}
+          marginRight={10}
+        />
+      </div>
     </nav>
   );
 };
