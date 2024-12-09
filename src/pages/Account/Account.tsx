@@ -12,6 +12,8 @@ import UserCard from "../../components/UserCard/UserCard";
 import {
   loginSchema,
   LoginSchema,
+  updateUserSchema,
+  UpdateUserSchema,
   userSchema,
   UserSchema,
 } from "../../utils/types/schemas";
@@ -61,8 +63,8 @@ const Account = () => {
     fetchUser();
   }, []);
 
-  const form = useForm<UserSchema>({
-    resolver: zodResolver(userSchema),
+  const form = useForm<UpdateUserSchema>({
+    resolver: zodResolver(updateUserSchema),
     defaultValues: {
       email: user?.email,
       password: user?.password,
@@ -73,7 +75,9 @@ const Account = () => {
     console.log("Form Errors:", form.formState.errors);
   }, [form.formState]);
 
-  const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
+  const onSubmit: SubmitHandler<UpdateUserSchema> = async (
+    data: UpdateUserSchema
+  ) => {
     try {
       console.log("login data", data);
     } catch (error) {
@@ -102,7 +106,7 @@ const Account = () => {
         <Input
           label="Password"
           name="password"
-          // defaultValue={user?.password}
+          defaultValue={user?.password}
           placeholder="Password"
         />
         <PrimaryButton

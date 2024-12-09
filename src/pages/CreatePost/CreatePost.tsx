@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { Label } from "evergreen-ui";
+import { FileUploader, Label } from "evergreen-ui";
 import { getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
@@ -19,6 +19,7 @@ import { primary } from "../Home/Home";
 import { MyMap, User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
 import axios from "axios";
+import UploadImage from "../../components/UploadImage/UploadImage";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
@@ -139,7 +140,7 @@ const CreatePost = () => {
   }, [formState]);
 
   return (
-    <FormProvider {...form}>
+    <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
@@ -165,12 +166,15 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
-        <div className="map-container-div">
+        <section className="upload-image">
+          <FileUploader />
+        </section>
+        <section className="map-container-div">
           <MapComponent
             userMarkers={userMarkers}
             setUserMarkers={setUserMarkers}
           />
-        </div>
+        </section>
 
         <PrimaryButton
           type="submit"

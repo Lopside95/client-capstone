@@ -31,8 +31,6 @@ const AddComment = () => {
         }
       );
 
-      console.log("Res data", data);
-
       const userData: User = {
         id: data.id,
         firstName: data.first_name,

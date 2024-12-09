@@ -27,6 +27,13 @@ export const userSchema = z.object({
     .min(5, { message: "Password must be at least 5 characters" }),
   active: z.boolean().optional(),
 });
+export const updateUserSchema = z.object({
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
+  email: z.string().email(),
+  password: z.string().optional(),
+  active: z.boolean().optional(),
+});
 
 export const loginSchema = z.object({
   email: z.string().email(),
@@ -41,5 +48,6 @@ export const commentSchema = z.object({
 export type PostSchema = z.infer<typeof postSchema>;
 export type TagSchema = z.infer<typeof tag>;
 export type UserSchema = z.infer<typeof userSchema>;
+export type UpdateUserSchema = z.infer<typeof updateUserSchema>;
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type CommentSchema = z.infer<typeof commentSchema>;

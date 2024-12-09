@@ -3,7 +3,6 @@ import "./App.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Nav from "./components/Nav/Nav";
-import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/Signup/SignUp";
 import Account from "./pages/Account/Account";
@@ -11,6 +10,7 @@ import LogIn from "./pages/Login/LogIn";
 import { Button, HomeIcon } from "evergreen-ui";
 import Footer from "./components/Footer/Footer";
 import Toaster from "./components/Toaster/Toaster";
+import Posts from "./pages/Posts/Posts";
 
 export const App = () => {
   const form = useForm();

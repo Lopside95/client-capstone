@@ -1,12 +1,12 @@
-@use "../../styles/partials/globals" as *;
-@use "../../styles/partials/variables" as *;
+// @use "../../styles/partials/globals" as *;
+// @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .create {
   @include flex($direction: column, $justify: unset, $align: center);
-  @include h-padding;
+  // @include h-padding;
 
-  height: 100vh;
+  min-height: 100vh;
 
   &__tags {
     &-label {
