@@ -4,5 +4,6 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-  "exclude": ["src/components/Map/Map.tsx"]
+  "exclude": ["./src/components/Map/Map.tsx"]
+  // "exclude": ["src/components/Map/Map.tsx"]
 }
