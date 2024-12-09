@@ -1,7 +1,7 @@
 import { MyButtonProps } from "../../../utils/types/components";
 import { Button as EvButton } from "evergreen-ui";
 
-const Button: React.FC<MyButtonProps> = ({ children, ...props }) => {
+const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (
     <EvButton
       textDecoration="underline"
@@ -15,4 +15,4 @@ const Button: React.FC<MyButtonProps> = ({ children, ...props }) => {
   );
 };
 
-export default Button;
+export default MyButton;

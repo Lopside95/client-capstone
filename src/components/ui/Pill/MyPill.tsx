@@ -2,7 +2,7 @@ import { Pill } from "evergreen-ui";
 import { MyPillProps } from "../../../utils/types/components";
 import "./MyPill.scss";
 
-const UrgencyPill = ({ children, ...props }: MyPillProps) => {
+const MyPill = ({ children, ...props }: MyPillProps) => {
   return (
     <Pill className="pill" {...props}>
       {children}
@@ -10,7 +10,7 @@ const UrgencyPill = ({ children, ...props }: MyPillProps) => {
   );
 };
 
-export default UrgencyPill;
+export default MyPill;
 // const MyPill: MyPillProps = ({ children, ...props }) => {
 //   return <Pill>{children}</Pill>;
 // };

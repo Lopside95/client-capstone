@@ -39,3 +39,9 @@
     border-radius: 11px;
   }
 }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3125rem;
+}

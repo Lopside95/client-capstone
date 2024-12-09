@@ -91,7 +91,6 @@ const Nav = () => {
       </SideSheet>
 
       <MenuIcon
-        // width="100px"
         className="menu-icon"
         onClick={() => {
           setIsShown(true);
