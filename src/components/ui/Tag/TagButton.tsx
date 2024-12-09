@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { ButtonProps, TagProps } from "../../../utils/types/components";
+import { TagProps } from "../../../utils/types/components";
 import { Button as EvButton } from "evergreen-ui";
 
 const TagButton = ({ title, onClick }: TagProps) => {

@@ -2,7 +2,6 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { userSchema, UserSchema } from "../../utils/types/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
-import { TextInputField } from "evergreen-ui";
 import { createUser } from "../../utils/api";
 import Button from "../../components/ui/Button/Button";
 import { useEffect } from "react";

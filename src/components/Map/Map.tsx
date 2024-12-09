@@ -1,13 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
-import mapboxgl, { Map, MapEvent, MapMouseEvent } from "mapbox-gl";
+// import mapboxgl, { Map, MapEvent, MapMouseEvent } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { MyMap, UserMarker } from "../../utils/types/posts";
 import { primary } from "../../pages/Home/Home";
 import { Spinner } from "evergreen-ui";
 import Button from "../ui/Button/Button";
+import { Map, MapMouseEvent, IControl, ControlPosition } from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
+// import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+
+type GeolocateResult = {
+  coords: {
+    latitude: number;
+    longitude: number;
+    altitude?: number | null;
+    accuracy: number;
+    altitudeAccuracy?: number | null;
+    heading?: number | null;
+    speed?: number | null;
+  };
+  timestamp: number;
+};
 
 const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -25,7 +44,7 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl,
+      // mapboxgl: mapboxgl,
       collapsed: true,
     });
 
@@ -36,6 +55,8 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
     }));
     // 51.564719, -0.142297
     mapRef.current = map;
+
+    map.addControl(geocoder as unknown as IControl, "top-left");
 
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
@@ -52,12 +73,17 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
 
     map.addControl(new mapboxgl.FullscreenControl(), "bottom-left");
 
-    const searchBar = map.addControl(geocoder, "top-left");
+    // map.addControl(geocoder, "top-left");
 
-    map.on("geolocate", (e) => {
+    map.on("geolocate", (e: GeolocateResult) => {
       setLatitude(e.coords.latitude);
-      setLongitude(e.coords.latitude);
+      setLongitude(e.coords.longitude);
     });
+
+    // map.on("geolocate", (e) => {
+    //   setLatitude(e.coords.latitude);
+    //   setLongitude(e.coords.latitude);
+    // });
 
     const newMarker = map.on("click", (e: MapMouseEvent) => {
       if (markersRef.current.length) {
