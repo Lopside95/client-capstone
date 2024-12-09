@@ -54,7 +54,7 @@ export interface MyPillProps extends PillProps {
 
 export interface MyBadgeProps extends BadgeProps {
   title?: string;
-  postType: PostType;
+  postType?: PostType;
 }
 
 export type MyImageProps = {
