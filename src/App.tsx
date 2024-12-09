@@ -8,7 +8,7 @@ import SignUp from "./pages/Signup/SignUp";
 import Account from "./pages/Account/Account";
 import LogIn from "./pages/Login/LogIn";
 import Footer from "./components/Footer/Footer";
-import Posts from "./pages/Posts/Posts";
+import SinglePost from "./pages/SinglePost/SinglePost";
 
 export const App = () => {
   const form = useForm();
@@ -20,7 +20,7 @@ export const App = () => {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts/:id" element={<Posts />} />
+            <Route path="/posts/:id" element={<SinglePost />} />
             <Route path="/posts/create-post" element={<CreatePost />} />
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/login" element={<LogIn />} />
