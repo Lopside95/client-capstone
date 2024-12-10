@@ -21,6 +21,10 @@ const AddComment = () => {
   const authToken = localStorage.getItem("authToken");
 
   const fetchData = async () => {
+    if (!authToken) {
+      return;
+    }
+
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/users/account`,

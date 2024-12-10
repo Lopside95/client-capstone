@@ -67,7 +67,7 @@ const Account = () => {
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
       email: user?.email,
-      password: user?.password,
+      password: "password",
     },
   });
 
@@ -92,6 +92,7 @@ const Account = () => {
   return (
     <FormProvider {...form}>
       <form className="account main" onSubmit={form.handleSubmit(onSubmit)}>
+        <h2 className="page-title">Account</h2>
         <Input
           label="First name"
           name="firstName"
@@ -108,6 +109,7 @@ const Account = () => {
           name="password"
           defaultValue={user?.password}
           placeholder="Password"
+          type="password"
         />
         <PrimaryButton
           type="submit"

@@ -1,5 +1,5 @@
 @use "../../styles/partials/globals" as *;
-// @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .create {
@@ -8,9 +8,9 @@
 
   min-height: 100vh;
 
-  &__header {
-    margin: 0;
-  }
+  // &__header {
+  //   margin: 0;
+  // }
 
   &__tags {
     &-label {
@@ -30,4 +30,10 @@
   height: 500px;
   padding: 0 0.5rem;
   z-index: 0;
+}
+
+.login-message {
+  text-decoration: underline 2px;
+  text-decoration-color: $primary;
+  text-underline-offset: 0.3125rem;
 }

@@ -40,10 +40,12 @@ const Nav = () => {
   }, [location]);
 
   return (
+    // <nav className={isShown ? "nav" : "nav nav--hidden"}>
     <nav className="nav">
       <SideSheet
         isShown={isShown}
         width={"40vw"}
+        // width={isShown ? "40vw" : "1vw"}
         position="right"
         containerProps={{
           display: "flex",
@@ -106,8 +108,8 @@ const Nav = () => {
           Log out
         </span>
       </SideSheet>
-      {/* <div className="nav__header">
-        <h2 className="nav__header-title">{pageHeader}</h2> */}
+      {/* <div className="nav__header"> */}
+      {/* <h2 className="nav__header-title">{pageHeader}</h2> */}
       <MenuIcon
         className="menu-icon"
         onClick={() => {

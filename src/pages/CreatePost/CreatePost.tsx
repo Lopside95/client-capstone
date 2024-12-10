@@ -25,10 +25,16 @@ const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const authToken = localStorage.getItem("authToken");
 
   const fetchUser = async () => {
+    if (!authToken) {
+      // setIsLoggedIn(false);
+      return;
+    }
+
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/posts`,
@@ -53,6 +59,7 @@ const CreatePost = () => {
       console.log(userData);
 
       setUser(userData);
+      setIsLoggedIn(true);
     } catch (error: unknown) {
       console.error(error);
     }
@@ -99,23 +106,19 @@ const CreatePost = () => {
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
-      try {
-        const res = await axios.post(
-          `${import.meta.env.VITE_API_URL}/posts`,
-          data,
-          {
-            headers: {
-              authorisation: `Bearer ${authToken}`,
-            },
-          }
-        );
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/posts`,
+        data,
+        {
+          headers: {
+            authorisation: `Bearer ${authToken}`,
+          },
+        }
+      );
 
-        return res;
-      } catch (error) {
-        console.log("There was an error in get authed user", error);
-        console.error(error);
-      }
+      return res;
     } catch (error) {
+      console.log("There was an error in get authed user", error);
       console.error(error);
     }
   };
@@ -138,7 +141,16 @@ const CreatePost = () => {
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
-        {!user?.email && <h3>You need to be logged in to create posts</h3>}
+        {!isLoggedIn && (
+          <h3>
+            <span className="login-message">Log in </span>
+            to create posts
+          </h3>
+          // <h3>
+          //   You need to be <span className="login-message">logged in</span>
+          //   to create posts
+          // </h3>
+        )}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
         <Label
