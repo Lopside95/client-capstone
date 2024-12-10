@@ -12,7 +12,7 @@ import Select from "react-select";
 import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
 import "./CreatePost.scss";
 import { FileUploader, Label } from "evergreen-ui";
-import { getTags } from "../../utils/api";
+import { baseUrl, getTags } from "../../utils/api";
 import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
@@ -20,14 +20,18 @@ import { MyMap, User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
 import axios from "axios";
 import UploadImage from "../../components/UploadImage/UploadImage";
+import { useNavigate } from "react-router";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<TagSchema[]>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [newPostId, setnewPostId] = useState<number>();
 
   const authToken = localStorage.getItem("authToken");
+
+  const navigate = useNavigate();
 
   const fetchUser = async () => {
     if (!authToken) {
@@ -36,14 +40,11 @@ const CreatePost = () => {
     }
 
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/posts`,
-        {
-          headers: {
-            authorisation: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const { data } = await axios.get(`${baseUrl}/posts`, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
 
       const userData: User = {
         id: data.id,
@@ -116,7 +117,9 @@ const CreatePost = () => {
         }
       );
 
-      return res;
+      if (res.data.id) {
+        navigate(`/posts/${res.data.id}`);
+      }
     } catch (error) {
       console.log("There was an error in get authed user", error);
       console.error(error);
@@ -143,13 +146,14 @@ const CreatePost = () => {
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         {!isLoggedIn && (
           <h3>
-            <span className="login-message">Log in </span>
+            <span
+              onClick={() => navigate("/users/login")}
+              className="login-message"
+            >
+              Log in{" "}
+            </span>
             to create posts
           </h3>
-          // <h3>
-          //   You need to be <span className="login-message">logged in</span>
-          //   to create posts
-          // </h3>
         )}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
@@ -175,10 +179,9 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
-        <section className="upload-image">
-          {/* <input type="file" {...form.register("img")} /> */}
-          <FileUploader />
-        </section>
+        {/* <section className="upload-image">
+          <input type="file" {...form.register("img")} />
+        </section> */}
         <section className="map-container-div">
           <MapComponent
             userMarkers={userMarkers}
@@ -192,7 +195,7 @@ const CreatePost = () => {
           buttonWidth={"9.375rem"}
           className="primary__button primary__button-next"
         >
-          Done
+          Post
         </PrimaryButton>
       </form>
     </FormProvider>

@@ -65,7 +65,6 @@ const login = async (loginData: LoginSchema) => {
   try {
     const res = await axios.post(`${baseUrl}/users/login`, loginData);
     const data = res.data;
-    console.log("data in login", data);
     localStorage.setItem("authToken", data.authToken);
   } catch (error) {
     console.log("error in login", error);
@@ -82,8 +81,6 @@ const getAuthedUser = async () => {
         authorisation: `Bearer ${authToken}`,
       },
     });
-
-    console.log("isdhjbfhsduj", res.headers);
 
     return res.data;
   } catch (error) {

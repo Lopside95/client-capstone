@@ -7,7 +7,8 @@ import StatusBadge from "../ui/StatusBadge/StatusBadge";
 import { useLocation, useNavigate } from "react-router";
 import { Button } from "evergreen-ui";
 import { PostType } from "../../utils/types/enums";
-import { useEffect } from "react";
+import { createRef, useEffect } from "react";
+import { baseUrl } from "../../utils/posts";
 
 const Card = (post: Post) => {
   const navigate = useNavigate();
@@ -30,6 +31,14 @@ const Card = (post: Post) => {
     comments,
   }: Post = post;
 
+  const formatTime = () => {
+    const date = new Date(created_at);
+    const timestamp = date.toLocaleDateString("en-GB");
+    console.log(timestamp);
+  };
+
+  formatTime();
+
   return (
     <section
       className={
@@ -48,6 +57,7 @@ const Card = (post: Post) => {
           <p className="card__desc-content">{description}</p>
         </div>
         <img className="card__img" src={img} />
+        {/* <img className="card__img" src={`${baseUrl}/images/${img}`} /> */}
       </article>
       <div className="card__bottom">
         {tags?.map((tag) => (

@@ -21,25 +21,22 @@ import axios from "axios";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import "./Account.scss";
+import { baseUrl } from "../../utils/api";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
 
   const { id } = useParams();
-  console.log(id);
 
   const authToken = localStorage.getItem("authToken");
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/users/account`,
-        {
-          headers: {
-            authorisation: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const { data } = await axios.get(`${baseUrl}/users/account`, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
 
       const userData: User = {
         id: data.id,

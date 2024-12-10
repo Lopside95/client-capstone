@@ -105,7 +105,7 @@ const AddComment = () => {
       <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <Input label="Email" name="email" /> */}
         {!user ? <h4>Log in to comment</h4> : null}
-        <Input label="Your comment" name="content" />
+        <Input label="Add comment" name="content" />
         <PrimaryButton
           type="submit"
           backColor={primary}
