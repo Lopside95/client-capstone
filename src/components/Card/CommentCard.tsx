@@ -10,7 +10,7 @@ import { PostType } from "../../utils/types/enums";
 import { createRef, useEffect } from "react";
 import { baseUrl } from "../../utils/posts";
 
-const Card = (post: Post) => {
+const CommentCard = (post: Post) => {
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -28,14 +28,16 @@ const Card = (post: Post) => {
     latitude,
     longitude,
     id,
-    comments,
-  }: Post = post;
+  }: // comments,
+  Post = post;
 
   const formatTime = (createdAt: Date) => {
     const date = new Date(created_at);
     const timestamp = date.toLocaleDateString("en-GB");
     return timestamp;
   };
+
+  const comments = post.comments;
 
   // formatTime();
 
@@ -79,17 +81,30 @@ const Card = (post: Post) => {
       </div>
       <article className="comments">
         <h5 className="comments-header">Comments</h5>
-        {comments?.map((comment) => {
-          return (
-            <div key={comment.id} className="comment">
-              <p>{comment.content} </p>
-              <MyPill>{formatTime(comment.created_at)}</MyPill>
-            </div>
-          );
-        })}
+        {comments &&
+          comments?.map((comment) => {
+            return (
+              <div key={comment.id} className="comment">
+                <p>{comment.content} </p>
+                <MyPill>{formatTime(comment.created_at)}</MyPill>
+              </div>
+            );
+          })}
       </article>
+      {/* <article className="comments">
+        <h5 className="comments-header">Comments</h5>
+        {comments &&
+          comments?.map((comment) => {
+            return (
+              <div key={comment.id} className="comment">
+                <p>{comment.content} </p>
+                <MyPill>{formatTime(comment.created_at)}</MyPill>
+              </div>
+            );
+          })}
+      </article> */}
     </section>
   );
 };
 
-export default Card;
+export default CommentCard;

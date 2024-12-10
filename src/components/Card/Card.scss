@@ -9,8 +9,17 @@
   border: none;
   border-bottom: 1px solid black;
   &__heading {
-    @include flex($direction: row, $justify: unset, $align: center);
+    @include flex($direction: row, $justify: space-between, $align: center);
     gap: 0.25rem;
+
+    &-title {
+      font-weight: 500;
+    }
+
+    &-date {
+      font-size: small;
+      font-weight: 500;
+    }
   }
 
   &__body {

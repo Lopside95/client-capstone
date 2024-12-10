@@ -11,6 +11,7 @@ import { postComment } from "../../utils/comments";
 import "./AddComment.scss";
 import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
 import { primary } from "../../pages/Home/Home";
+import { toaster } from "evergreen-ui";
 
 const AddComment = () => {
   const [user, setUser] = useState<User>();
@@ -83,6 +84,8 @@ const AddComment = () => {
         }
       );
 
+      toaster.success("Comment added");
+
       return res;
     } catch (error) {
       console.log("There was an error in get authed user", error);
@@ -105,6 +108,11 @@ const AddComment = () => {
       <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <Input label="Email" name="email" /> */}
         {!user ? <h4>Log in to comment</h4> : null}
+        {/* <Button
+          onClick={() => toaster.success("Your source is now sending data")}
+        >
+          Success
+        </Button> */}
         <Input label="Add comment" name="content" />
         <PrimaryButton
           type="submit"

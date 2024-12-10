@@ -6,6 +6,7 @@
   @include flex($direction: row, $justify: space-around, $align: center);
   position: sticky;
   bottom: 0;
+  // background: $primary;
   background: $primary;
-  height: 2.5rem;
+  height: 3rem;
 }

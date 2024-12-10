@@ -1,8 +1,9 @@
 import { useLocation, useNavigate, useParams } from "react-router";
 import "./Nav.scss";
 import Button from "../ui/Button/Button";
-import { MenuIcon, SideSheet } from "evergreen-ui";
+import { MenuIcon, SideSheet, toaster } from "evergreen-ui";
 import { useEffect, useState } from "react";
+import Toaster from "evergreen-ui/types/toaster/src/Toaster";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -12,10 +13,11 @@ const Nav = () => {
 
   const [pageHeader, setPageHeader] = useState<string>("");
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     localStorage.removeItem("authToken");
-
-    navigate(`/`);
+    await navigate(`/`);
+    setIsShown(false);
+    toaster.notify("Logged out");
   };
 
   const location = useLocation();

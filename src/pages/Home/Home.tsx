@@ -108,3 +108,4 @@ export default Home;
 
 export const primary = "#76bd6b";
 export const secondary = "#efeded";
+export const tertiary = "#ffa500";

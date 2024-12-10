@@ -82,6 +82,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo({ top: 0 });
   }, []);
 
   const form = useForm<PostSchema>({

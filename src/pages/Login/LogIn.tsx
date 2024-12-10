@@ -9,6 +9,7 @@ import { loginSchema, LoginSchema } from "../../utils/types/schemas";
 import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
+import { toaster } from "evergreen-ui";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -28,7 +29,8 @@ const LogIn = () => {
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
       const res = await login(data);
-      console.log("login res", res);
+
+      toaster.success("Success!");
     } catch (error) {
       console.error(error);
     }
