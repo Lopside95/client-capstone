@@ -99,8 +99,6 @@ const CreatePost = () => {
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
-      console.log("datat", data);
-
       try {
         const res = await axios.post(
           `${import.meta.env.VITE_API_URL}/posts`,
@@ -117,8 +115,6 @@ const CreatePost = () => {
         console.log("There was an error in get authed user", error);
         console.error(error);
       }
-
-      // const res = await createPost(data);
     } catch (error) {
       console.error(error);
     }
@@ -142,7 +138,7 @@ const CreatePost = () => {
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
-        {/* <h2 className="create__header">New Post</h2> */}
+        {!user?.email && <h3>You need to be logged in to create posts</h3>}
         <Input label="Title" name="title" />
         <Input label="Description" name="description" />
         <Label
@@ -168,6 +164,7 @@ const CreatePost = () => {
           }}
         />
         <section className="upload-image">
+          {/* <input type="file" {...form.register("img")} /> */}
           <FileUploader />
         </section>
         <section className="map-container-div">

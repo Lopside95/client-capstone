@@ -6,9 +6,16 @@
 //   height: 100px;
 // }
 
+.subnav__button {
+  &:hover {
+    background-color: orange;
+  }
+}
+
 .primary__button {
-  // width: 100px;
-  // 9.375rem
   border-radius: 11px;
-  // margin: 0 auto;
+
+  &:hover {
+    background-color: orange;
+  }
 }

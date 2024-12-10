@@ -23,18 +23,6 @@ const Nav = () => {
   const handleNavigate = async (path: string) => {
     navigate(path);
     setIsShown(false);
-
-    // if (path === "/posts/create-post") {
-    //   setPageHeader("New Post");
-    // } else if (path === "/users/signup") {
-    //   setPageHeader("Sign Up");
-    // } else if (path === "/users/login") {
-    //   setPageHeader("Log In");
-    // } else if (path === "/users/account") {
-    //   setPageHeader("Account");
-    // } else {
-    //   setPageHeader("");
-    // }
   };
 
   useEffect(() => {
@@ -102,7 +90,6 @@ const Nav = () => {
               ? `nav__item nav__item--show `
               : `nav__item nav__item--hide `
           }
-          // className="nav__item nav__item--auth"
           onClick={() => handleNavigate("/users/account")}
         >
           Account
@@ -119,18 +106,18 @@ const Nav = () => {
           Log out
         </span>
       </SideSheet>
-      <div className="nav__header">
-        <h2 className="nav__header-title">{pageHeader}</h2>
-        <MenuIcon
-          className="menu-icon"
-          onClick={() => {
-            setIsShown(true);
-          }}
-          size={40}
-          marginTop={10}
-          marginRight={10}
-        />
-      </div>
+      {/* <div className="nav__header">
+        <h2 className="nav__header-title">{pageHeader}</h2> */}
+      <MenuIcon
+        className="menu-icon"
+        onClick={() => {
+          setIsShown(true);
+        }}
+        size={40}
+        marginTop={10}
+        marginRight={10}
+      />
+      {/* </div> */}
     </nav>
   );
 };

@@ -52,6 +52,7 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
       container: mapContainerRef.current,
       center: [longitude, latitude],
       zoom: 15,
+      maxZoom: 18,
     }));
     // 51.564719, -0.142297
     mapRef.current = map;

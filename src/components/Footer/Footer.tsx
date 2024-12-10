@@ -8,7 +8,7 @@ const Footer = () => {
   const navigate = useNavigate();
 
   // const { id } = useParams();
-  // const authToken = localStorage.getItem("authToken");
+  const authToken = localStorage.getItem("authToken");
 
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
@@ -29,7 +29,10 @@ const Footer = () => {
       </span>
       <span
         className="footer__button"
-        onClick={() => navigate("/users/account")}
+        // onClick={() => navigate("/users/account")}
+        onClick={() =>
+          authToken ? navigate("/users/account") : navigate("/users/login")
+        }
       >
         <PersonIcon size={20} />
       </span>

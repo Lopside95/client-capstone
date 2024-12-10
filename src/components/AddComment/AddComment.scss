@@ -2,4 +2,10 @@
 
 .add-comment {
   @include flex($direction: column, $justify: unset, $align: center);
+  padding-top: 0;
+}
+
+.primary__button-comment {
+  align-self: flex-end;
+  margin-right: 0.8rem;
 }

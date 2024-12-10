@@ -86,11 +86,15 @@ const AddComment = () => {
     }
   };
 
-  if (!user) {
-    return <div>You need to be logged in to add comments</div>;
-  }
-
   console.log(user?.id);
+
+  if (!user) {
+    return (
+      <div style={{ margin: "0 auto" }}>
+        <h3>Log in to add comments</h3>
+      </div>
+    );
+  }
 
   return (
     <FormProvider {...form}>
@@ -102,7 +106,7 @@ const AddComment = () => {
           type="submit"
           backColor={primary}
           buttonWidth={"9.375rem"}
-          className="primary__button primary__button-account"
+          className="primary__button primary__button-comment"
         >
           Comment
         </PrimaryButton>
