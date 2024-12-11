@@ -126,11 +126,6 @@ const AddComment = () => {
             to comment
           </h4>
         ) : null}
-        {/* <Button
-          onClick={() => toaster.success("Your source is now sending data")}
-        >
-          Success
-        </Button> */}
         <Input label="Add comment" name="content" />
         <PrimaryButton
           type="submit"

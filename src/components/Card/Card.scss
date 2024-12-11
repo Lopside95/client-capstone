@@ -20,6 +20,11 @@
       font-size: small;
       font-weight: 500;
     }
+
+    &-right {
+      @include flex($direction: row, $justify: unset, $align: center);
+      gap: 0.5rem;
+    }
   }
 
   &__body {

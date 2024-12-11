@@ -89,7 +89,7 @@ const Account = () => {
   return (
     <FormProvider {...form}>
       <form className="account main" onSubmit={form.handleSubmit(onSubmit)}>
-        <h2 className="page-title">Account</h2>
+        {/* <h2 className="page-title">Account</h2> */}
         <Input
           label="First name"
           name="firstName"

@@ -47,13 +47,12 @@ const Nav = () => {
       <SideSheet
         isShown={isShown}
         width={"40vw"}
-        // width={isShown ? "40vw" : "1vw"}
         position="right"
         containerProps={{
           display: "flex",
           flexDirection: "column",
           padding: "1.5rem",
-          gap: "0.5rem",
+          gap: "0.8rem",
           alignItems: "end",
         }}
         onCloseComplete={() => setIsShown(false)}
@@ -74,9 +73,9 @@ const Nav = () => {
               ? `nav__item nav__item--hide `
               : `nav__item nav__item--show `
           }
-          onClick={() => handleNavigate("/users/signup")}
+          onClick={() => handleNavigate("/users/login")}
         >
-          Sign Up
+          Log In
         </span>
         <span
           className={
@@ -84,9 +83,9 @@ const Nav = () => {
               ? `nav__item nav__item--hide `
               : `nav__item nav__item--show `
           }
-          onClick={() => handleNavigate("/users/login")}
+          onClick={() => handleNavigate("/users/signup")}
         >
-          Log In
+          Sign Up
         </span>
         <span
           className={

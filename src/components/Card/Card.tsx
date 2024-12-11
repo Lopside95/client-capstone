@@ -4,11 +4,12 @@ import { CardInterface, Post, UserComment } from "../../utils/types/posts";
 import TagButton from "../ui/Tag/TagButton";
 import "./Card.scss";
 import StatusBadge from "../ui/StatusBadge/StatusBadge";
-import { useLocation, useNavigate } from "react-router";
-import { Button } from "evergreen-ui";
+import { Link, useLocation, useNavigate } from "react-router";
+import { Button, LocateIcon, MapMarkerIcon } from "evergreen-ui";
 import { PostType } from "../../utils/types/enums";
 import { createRef, useEffect } from "react";
 import { baseUrl } from "../../utils/posts";
+import { primary } from "../../pages/Home/Home";
 
 const Card = (post: Post) => {
   const navigate = useNavigate();
@@ -37,6 +38,8 @@ const Card = (post: Post) => {
     return timestamp;
   };
 
+  const googleMaps = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
   // formatTime();
 
   return (
@@ -46,14 +49,27 @@ const Card = (post: Post) => {
       }
       onClick={() => navigate(`/posts/${id}`)}
     >
-      <article className="card__heading">
+      <article
+        className="card__heading"
+        // onClick={() => navigate(`/posts/${id}`)}
+      >
         <h1 className="card__heading-title">{title}</h1>
         {/* <MyPill color="red">{type}</MyPill> */}
-        <MyPill className="card__heading-date">{formatTime(created_at)}</MyPill>
+        <div className="card__heading-right">
+          <Link target="_blank" to={googleMaps}>
+            <MapMarkerIcon color={primary} />
+          </Link>
+          <MyPill className="card__heading-date">
+            {formatTime(created_at)}
+          </MyPill>
+        </div>
         {/* <MyPill>{status}</MyPill> */}
         {/* <MyPill>{status}</MyPill> */}
       </article>
-      <article className="card__body">
+      <article
+        className="card__body"
+        // onClick={() => navigate(`/posts/${id}`)}
+      >
         <div className="card__desc">
           <h1 className="card__desc-label">Description</h1>
           <p className="card__desc-content">{description}</p>

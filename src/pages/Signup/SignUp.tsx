@@ -15,8 +15,8 @@ const SignUp = () => {
     defaultValues: {
       firstName: "James",
       lastName: "Wallington",
-      email: "james@email.com",
-      password: "Mynewpass1234",
+      email: "",
+      password: "",
     },
   });
 

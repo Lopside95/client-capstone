@@ -1,7 +1,13 @@
 import { useLocation, useNavigate, useParams } from "react-router";
 import "./Footer.scss";
 import Button from "../ui/Button/Button";
-import { EditIcon, HomeIcon, PersonIcon, SideSheet } from "evergreen-ui";
+import {
+  EditIcon,
+  HomeIcon,
+  InsertIcon,
+  PersonIcon,
+  SideSheet,
+} from "evergreen-ui";
 import { useState } from "react";
 import { primary, tertiary } from "../../pages/Home/Home";
 
@@ -24,7 +30,7 @@ const Footer = () => {
       <span className="footer__button" onClick={() => navigate("/")}>
         <HomeIcon
           color={location.pathname === "/" ? tertiary : ""}
-          size={20}
+          size={25}
 
           // outline="#000000"
         />
@@ -33,11 +39,21 @@ const Footer = () => {
         className="footer__button"
         onClick={() => navigate("/posts/create-post")}
       >
+        <InsertIcon
+          color={location.pathname === "/posts/create-post" ? tertiary : ""}
+          size={25}
+          strokeWidth={4}
+        />
+      </span>
+      {/* <span
+        className="footer__button"
+        onClick={() => navigate("/posts/create-post")}
+      >
         <EditIcon
           color={location.pathname === "/posts/create-post" ? tertiary : ""}
           size={25}
         />
-      </span>
+      </span> */}
       <span
         className="footer__button"
         // onClick={() => navigate("/users/account")}
@@ -47,7 +63,7 @@ const Footer = () => {
       >
         <PersonIcon
           color={location.pathname === "/users/account" ? tertiary : ""}
-          size={20}
+          size={25}
         />
       </span>
     </footer>
