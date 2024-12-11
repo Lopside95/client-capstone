@@ -41,7 +41,7 @@ const LogIn = () => {
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
-          <Input label="Password" name="password" />
+          <Input label="Password" name="password" type="password" />
           <PrimaryButton
             type="submit"
             backColor={primary}

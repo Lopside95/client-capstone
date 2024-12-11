@@ -147,8 +147,15 @@ const CreatePost = () => {
               onClick={() => navigate("/users/login")}
               className="login-message"
             >
-              Log in or sign up
-            </span>
+              Log in
+            </span>{" "}
+            or{" "}
+            <span
+              onClick={() => navigate("/users/signup")}
+              className="login-message"
+            >
+              sign up
+            </span>{" "}
             to create posts
           </h3>
         )}

@@ -43,7 +43,7 @@ const Home = () => {
       <main className="home__main">
         <section className="landing">
           <h1 className="landing__text">
-            We help people find lost dogs and help stray dogs find homes
+            We help people find lost dogs, and help stray dogs find homes
           </h1>
           <img src="/cover_2.svg" className="landing__image" />
         </section>
@@ -52,7 +52,7 @@ const Home = () => {
             className="subnav__button"
             onClick={() => navigate("/posts/create-post")}
           >
-            Report
+            Create a new post
           </PrimaryButton>
           {/* <PrimaryButton className="subnav__button">Find</PrimaryButton> */}
         </section>

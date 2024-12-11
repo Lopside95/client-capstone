@@ -6,6 +6,8 @@ import { createUser } from "../../utils/api";
 import Button from "../../components/ui/Button/Button";
 import { useEffect } from "react";
 import "./SignUp.scss";
+import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
+import { primary } from "../Home/Home";
 
 const SignUp = () => {
   const form = useForm<UserSchema>({
@@ -46,7 +48,13 @@ const SignUp = () => {
           label="Password"
           placeholder="Password"
         />
-        <Button type="submit">Submit</Button>
+        <PrimaryButton
+          backColor={primary}
+          className="signup__button"
+          type="submit"
+        >
+          Sign up
+        </PrimaryButton>
       </form>
     </FormProvider>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "../../components/ui/Input/Input";
 import { User } from "../../utils/types/posts";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../components/ui/Button/Button";
@@ -12,12 +12,14 @@ import "./AddComment.scss";
 import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
 import { primary } from "../../pages/Home/Home";
 import { toaster } from "evergreen-ui";
+import { baseUrl } from "../../utils/api";
 
 const AddComment = () => {
   const [user, setUser] = useState<User>();
 
   const { id } = useParams();
-  console.log(id);
+
+  const navigate = useNavigate();
 
   const authToken = localStorage.getItem("authToken");
 
@@ -74,15 +76,11 @@ const AddComment = () => {
     data: CommentSchema
   ) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/posts/${id}`,
-        data,
-        {
-          headers: {
-            authorisation: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const res = await axios.post(`${baseUrl}/posts/${id}`, data, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
 
       toaster.success("Comment added");
 
@@ -98,7 +96,16 @@ const AddComment = () => {
   if (!user) {
     return (
       <div style={{ margin: "0 auto" }}>
-        <h3>Log in to add comments</h3>
+        <h4>
+          {" "}
+          <span
+            onClick={() => navigate("/users/login")}
+            className="login-message"
+          >
+            Log in
+          </span>{" "}
+          to comment
+        </h4>
       </div>
     );
   }
@@ -107,7 +114,18 @@ const AddComment = () => {
     <FormProvider {...form}>
       <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {/* <Input label="Email" name="email" /> */}
-        {!user ? <h4>Log in to comment</h4> : null}
+        {!user ? (
+          <h4>
+            {" "}
+            <span
+              onClick={() => navigate("/users/login")}
+              className="login-message"
+            >
+              Log in
+            </span>{" "}
+            to comment
+          </h4>
+        ) : null}
         {/* <Button
           onClick={() => toaster.success("Your source is now sending data")}
         >
