@@ -25,7 +25,6 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
-          {/* <BackButton /> */}
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />

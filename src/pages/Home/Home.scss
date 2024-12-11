@@ -3,7 +3,6 @@
 @use "../../styles/partials/mixins" as *;
 
 .home__main {
-  // padding: $global-padding;
   @include flex($direction: column, $justify: unset, $align: center);
 }
 
@@ -14,15 +13,10 @@
   &__text {
     width: 75%;
     font-size: 35px;
-
-    // font-weight: 300;
-    // margin-right: 100px;
   }
 
   &__image {
     align-self: flex-end;
-
-    // margin-right: -200px;
   }
 }
 
@@ -30,7 +24,6 @@
   @include flex($direction: column, $justify: center, $align: center);
 
   height: 25rem;
-  // height: 31.25rem;
   width: 100%;
   background: $primary;
   gap: 5rem;

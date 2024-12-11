@@ -3,12 +3,6 @@ import { MyBadgeProps } from "../../../utils/types/components";
 import { PostType } from "../../../utils/types/enums";
 
 const StatusBadge = ({ children, ...props }: MyBadgeProps) => {
-  // const badgeColor = PostType.FOUND
-  //   ? "green"
-  //   : PostType.LOST
-  //   ? "orange"
-  //   : "red";
-
   const badgeColor = () => {
     if (PostType["FOUND"]) {
       return "green";

@@ -29,17 +29,6 @@ const SinglePost = () => {
     fetchPost();
   }, []);
 
-  // const CommentsMap =
-  //   comments &&
-  //   comments.map((comment) => {
-  //     return (
-  //       <div className="comment">
-  //         <p>{comment.content}</p>
-  //         <p>{comment.created_at.toLocaleDateString("en-GB")}</p>
-  //       </div>
-  //     );
-  //   });
-
   if (!post) {
     return <div>Loading</div>;
   }

@@ -30,12 +30,6 @@ export interface TextProps extends TextInputOwnProps {
   textWith?: string;
   defaultValue?: string;
 }
-// export interface TextProps extends TextInputFieldProps {
-//   name: string;
-//   label?: string;
-//   className?: string;
-//   type?: string;
-// }
 
 export interface MyButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -43,10 +37,6 @@ export interface MyButtonProps
   backColor?: string;
   buttonWidth?: string | number;
 }
-
-// export type MyPillProps = {
-//   title: string | number;
-// };
 
 export interface MyPillProps extends PillProps {
   title?: string;
@@ -62,15 +52,3 @@ export type MyImageProps = {
   height?: string | number;
   className?: string;
 };
-
-// export type ButtonProps = {
-//   name?: string;
-//   label?: string;
-//   onClick?: () => void;
-//   // onClick?: React.MouseEventHandler;
-//   children?: React.ReactNode;
-//   // type: HTMLButtonElement;
-//   // type: ButtonHTMLAttributes<"reset" | "submit" | "button" | "undefined">;
-//   // type?: "reset" | "submit" | "button" | undefined;
-//   // type?: "reset" | "submit" | "button";
-// };

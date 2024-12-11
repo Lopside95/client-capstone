@@ -2,9 +2,7 @@
 
 .account {
   @include flex($direction: column, $justify: unset, $align: center);
-  // min-height: 100vh;
   gap: 1rem;
-  //   @include h-padding;
 
   padding-bottom: 0;
 

@@ -4,13 +4,8 @@
 
 .create {
   @include flex($direction: column, $justify: unset, $align: center);
-  // @include h-padding;
 
   min-height: 100vh;
-
-  // &__header {
-  //   margin: 0;
-  // }
 
   &__tags {
     &-label {

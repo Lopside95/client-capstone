@@ -35,7 +35,6 @@ const CreatePost = () => {
 
   const fetchUser = async () => {
     if (!authToken) {
-      // setIsLoggedIn(false);
       return;
     }
 
@@ -183,9 +182,7 @@ const CreatePost = () => {
             form.setValue("tags", selectedTags);
           }}
         />
-        {/* <section className="upload-image">
-          <input type="file" {...form.register("img")} />
-        </section> */}
+
         <section className="map-container-div">
           <MapComponent
             userMarkers={userMarkers}

@@ -42,7 +42,6 @@ const Nav = () => {
   }, [location]);
 
   return (
-    // <nav className={isShown ? "nav" : "nav nav--hidden"}>
     <nav className="nav">
       <SideSheet
         isShown={isShown}
@@ -109,8 +108,7 @@ const Nav = () => {
           Log out
         </span>
       </SideSheet>
-      {/* <div className="nav__header"> */}
-      {/* <h2 className="nav__header-title">{pageHeader}</h2> */}
+
       <MenuIcon
         className="menu-icon"
         onClick={() => {
@@ -120,7 +118,6 @@ const Nav = () => {
         marginTop={10}
         marginRight={10}
       />
-      {/* </div> */}
     </nav>
   );
 };

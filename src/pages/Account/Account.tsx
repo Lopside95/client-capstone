@@ -116,7 +116,6 @@ const Account = () => {
         >
           Update details
         </PrimaryButton>
-        {/* <Button type="submit">Update</Button> */}
         <img src="/dog-2.svg" className="account__cover" />
       </form>
     </FormProvider>

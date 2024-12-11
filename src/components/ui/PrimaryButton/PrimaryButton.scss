@@ -1,11 +1,5 @@
 @use "../../../styles/partials/variables" as *;
 
-// .subnav__button {
-//   background: $primary;
-//   border: none;
-//   height: 100px;
-// }
-
 .subnav__button {
   &:hover {
     background-color: orange;

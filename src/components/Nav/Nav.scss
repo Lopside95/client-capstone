@@ -1,16 +1,12 @@
 @use "../../styles/partials/mixins" as *;
 .nav {
-  // width: 100%;
   position: absolute;
   right: 0;
   height: 100%;
   top: 0;
-  // width: 100%;
 
   &__header {
     @include flex($direction: row, $justify: space-between, $align: unset);
-    // width: 100vw;
-    // height: 5rem;
 
     &-title {
     }
@@ -24,17 +20,7 @@
       display: none;
     }
   }
-
-  // background-color: lightblue;
-  // width: 80%;
-
-  // &__icon {
-  //   position: absolute;
-  //   top: 10;
-  // }
 }
 
 .menu-icon {
-  // height: 500px;
-  // width: 500px;
 }

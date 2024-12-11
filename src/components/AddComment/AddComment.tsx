@@ -113,7 +113,6 @@ const AddComment = () => {
   return (
     <FormProvider {...form}>
       <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
-        {/* <Input label="Email" name="email" /> */}
         {!user ? (
           <h4>
             {" "}
@@ -137,7 +136,6 @@ const AddComment = () => {
         </PrimaryButton>
       </form>
     </FormProvider>
-    // </div>
   );
 };
 

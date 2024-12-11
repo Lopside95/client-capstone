@@ -14,7 +14,6 @@ import { primary, tertiary } from "../../pages/Home/Home";
 const Footer = () => {
   const navigate = useNavigate();
 
-  // const { id } = useParams();
   const authToken = localStorage.getItem("authToken");
 
   const location = useLocation();
@@ -28,12 +27,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <span className="footer__button" onClick={() => navigate("/")}>
-        <HomeIcon
-          color={location.pathname === "/" ? tertiary : ""}
-          size={25}
-
-          // outline="#000000"
-        />
+        <HomeIcon color={location.pathname === "/" ? tertiary : ""} size={25} />
       </span>
       <span
         className="footer__button"
@@ -45,18 +39,9 @@ const Footer = () => {
           strokeWidth={4}
         />
       </span>
-      {/* <span
-        className="footer__button"
-        onClick={() => navigate("/posts/create-post")}
-      >
-        <EditIcon
-          color={location.pathname === "/posts/create-post" ? tertiary : ""}
-          size={25}
-        />
-      </span> */}
+
       <span
         className="footer__button"
-        // onClick={() => navigate("/users/account")}
         onClick={() =>
           authToken ? navigate("/users/account") : navigate("/users/login")
         }

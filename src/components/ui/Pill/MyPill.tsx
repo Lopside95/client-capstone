@@ -11,8 +11,3 @@ const MyPill = ({ children, ...props }: MyPillProps) => {
 };
 
 export default MyPill;
-// const MyPill: MyPillProps = ({ children, ...props }) => {
-//   return <Pill>{children}</Pill>;
-// };
-
-// export default MyPill;

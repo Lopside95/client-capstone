@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-// import mapboxgl, { Map, MapEvent, MapMouseEvent } from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
@@ -9,11 +8,8 @@ import { Spinner } from "evergreen-ui";
 import Button from "../ui/Button/Button";
 import { Map, MapMouseEvent, IControl, ControlPosition } from "mapbox-gl";
 import mapboxgl from "mapbox-gl";
-// import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 type GeolocateResult = {
   coords: {
@@ -80,11 +76,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
       setLatitude(e.coords.latitude);
       setLongitude(e.coords.longitude);
     });
-
-    // map.on("geolocate", (e) => {
-    //   setLatitude(e.coords.latitude);
-    //   setLongitude(e.coords.latitude);
-    // });
 
     const newMarker = map.on("click", (e: MapMouseEvent) => {
       if (markersRef.current.length) {
