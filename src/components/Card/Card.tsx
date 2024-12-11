@@ -78,7 +78,7 @@ const Card = (post: Post) => {
         ))}
       </div>
       <article className="comments">
-        <h5 className="comments-header">Comments</h5>
+        <p className="comments-header">Comments</p>
         {comments?.map((comment) => {
           return (
             <div key={comment.id} className="comment">

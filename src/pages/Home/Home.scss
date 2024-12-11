@@ -29,7 +29,8 @@
 .subnav {
   @include flex($direction: column, $justify: center, $align: center);
 
-  height: 31.25rem;
+  height: 25rem;
+  // height: 31.25rem;
   width: 100%;
   background: $primary;
   gap: 5rem;

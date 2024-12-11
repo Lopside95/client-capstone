@@ -3,23 +3,12 @@ import { useNavigate } from "react-router";
 import "./Home.scss";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { Button, Label, Pill, SelectMenu } from "evergreen-ui";
 import { getPosts } from "../../utils/posts";
-import { Post, Tag, UserComment } from "../../utils/types/posts";
+import { Post, UserComment } from "../../utils/types/posts";
 import Card from "../../components/Card/Card";
 import Select from "react-select";
-import {
-  postSchema,
-  PostSchema,
-  tag,
-  TagSchema,
-} from "../../utils/types/schemas";
+import { TagSchema } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { getComments } from "../../utils/comments";
-import MyButton from "../../components/ui/Button/Button";
-import MyPill from "../../components/ui/Pill/MyPill";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
@@ -65,7 +54,7 @@ const Home = () => {
           >
             Report
           </PrimaryButton>
-          <PrimaryButton className="subnav__button">Find</PrimaryButton>
+          {/* <PrimaryButton className="subnav__button">Find</PrimaryButton> */}
         </section>
         {/* <Label
         className="create__tags-label"

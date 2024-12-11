@@ -108,15 +108,11 @@ const CreatePost = () => {
 
   const onSubmit: SubmitHandler<PostSchema> = async (data: PostSchema) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/posts`,
-        data,
-        {
-          headers: {
-            authorisation: `Bearer ${authToken}`,
-          },
-        }
-      );
+      const res = await axios.post(`${baseUrl}/posts`, data, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
 
       if (res.data.id) {
         navigate(`/posts/${res.data.id}`);
@@ -151,7 +147,7 @@ const CreatePost = () => {
               onClick={() => navigate("/users/login")}
               className="login-message"
             >
-              Log in{" "}
+              Log in or sign up
             </span>
             to create posts
           </h3>
