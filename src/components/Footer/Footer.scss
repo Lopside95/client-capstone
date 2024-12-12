@@ -8,4 +8,8 @@
   bottom: 0;
   background: $primary;
   height: 3rem;
+
+  @include desktop {
+    display: none;
+  }
 }

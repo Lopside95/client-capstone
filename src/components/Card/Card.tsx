@@ -38,7 +38,7 @@ const Card = (post: Post) => {
     return timestamp;
   };
 
-  const googleMaps = `https://www.google.com/maps?q=${latitude},${longitude}`;
+  const googleMapsLocation = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
   // formatTime();
 
@@ -56,7 +56,7 @@ const Card = (post: Post) => {
         <h1 className="card__heading-title">{title}</h1>
         {/* <MyPill color="red">{type}</MyPill> */}
         <div className="card__heading-right">
-          <Link target="_blank" to={googleMaps}>
+          <Link target="_blank" to={googleMapsLocation}>
             <MapMarkerIcon color={primary} />
           </Link>
           <MyPill className="card__heading-date">

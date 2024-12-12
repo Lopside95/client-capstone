@@ -5,6 +5,18 @@
   height: 100%;
   top: 0;
 
+  @include desktop {
+    display: none;
+
+    &--desktop {
+      display: block;
+      position: absolute;
+      right: 0;
+      height: 100%;
+      top: 0;
+    }
+  }
+
   &__header {
     @include flex($direction: row, $justify: space-between, $align: unset);
 
@@ -20,7 +32,10 @@
       display: none;
     }
   }
-}
 
-.menu-icon {
+  &__side-sheet {
+    @include desktop {
+      @include flex($direction: row, $justify: unset, $align: unset);
+    }
+  }
 }

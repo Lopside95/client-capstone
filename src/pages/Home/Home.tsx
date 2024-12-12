@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { getPosts } from "../../utils/posts";
 import { Post, UserComment } from "../../utils/types/posts";
-import Card from "../../components/Card/Card";
 import Select from "react-select";
 import { TagSchema } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
+import HomeCard from "../../components/HomeCard/HomeCard";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
@@ -64,29 +64,36 @@ const Home = () => {
         Tags
       </Label> */}
 
-        <Select
-          isMulti
-          options={tagOptions}
-          className="create__tags-select"
-          classNamePrefix="select"
-          onChange={(selectedOptions) => {
-            const filterTags = selectedOptions.map((option) => ({
-              name: option.label,
-              id: option.value,
-            }));
-            console.log(filterTags);
-            setSelectedTags(filterTags);
-          }}
-        />
-        {/* <article className="filters">
+        <section className="home-posts">
+          <Select
+            isMulti
+            options={tagOptions}
+            className="home-posts__tags-select"
+            classNamePrefix="select"
+            onChange={(selectedOptions) => {
+              const filterTags = selectedOptions.map((option) => ({
+                name: option.label,
+                id: option.value,
+              }));
+              console.log(filterTags);
+              setSelectedTags(filterTags);
+            }}
+          />
+          {/* <article className="filters">
           <MyButton onClick={() => setFilterIsShown(!filterIsShown)}>
-            Show Filters
+          Show Filters
           </MyButton>
-        </article> */}
-        <section className="posts">
-          {posts?.map((post) => (
-            <Card key={post.id} {...post} />
-          ))}
+          </article> */}
+          <article className="home-posts__content">
+            {posts?.map((post) => {
+              return <HomeCard key={post.id} {...post} />;
+            })}
+          </article>
+          {/* <article className="home-posts__content">
+            {posts?.map((post) => (
+              <Card key={post.id} {...post} />
+            ))}
+          </article> */}
         </section>
       </main>
     </div>

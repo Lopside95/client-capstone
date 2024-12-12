@@ -4,6 +4,10 @@
 
 .home__main {
   @include flex($direction: column, $justify: unset, $align: center);
+
+  @include tablet {
+    margin-bottom: 4rem;
+  }
 }
 
 .landing {
@@ -34,8 +38,37 @@
   }
 }
 
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3125rem;
+// .filters {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 0.3125rem;
+// }
+
+.home-posts {
+  @include tablet {
+    @include flex(
+      $direction: row-reverse,
+      $justify: space-around,
+      $align: unset
+    );
+    padding: 2rem;
+    &__content {
+      // max-width: 28.125rem;
+      max-width: 50%;
+    }
+
+    &__tags {
+      &-select {
+        width: 40%;
+        max-width: 28.125rem;
+        height: fit-content;
+      }
+    }
+  }
+
+  // @include tablet {
+  //   @include flex($direction: row, $justify: unset, $align: unset);
+  // }
+  // &__content {
+  // }
 }

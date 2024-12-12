@@ -42,83 +42,164 @@ const Nav = () => {
   }, [location]);
 
   return (
-    <nav className="nav">
-      <SideSheet
-        isShown={isShown}
-        width={"40vw"}
-        position="right"
-        containerProps={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "1.5rem",
-          gap: "0.8rem",
-          alignItems: "end",
-        }}
-        onCloseComplete={() => setIsShown(false)}
-      >
-        <span className="nav__item" onClick={() => handleNavigate("/")}>
-          Home
-        </span>
+    <>
+      <nav className="nav">
+        <SideSheet
+          isShown={isShown}
+          width={"40vw"}
+          position="right"
+          containerProps={{
+            className: "nav__side-sheet",
+            display: "flex",
+            flexDirection: "column",
+            padding: "1.5rem",
+            gap: "0.8rem",
+            alignItems: "end",
+          }}
+          onCloseComplete={() => setIsShown(false)}
+        >
+          <span className="nav__item" onClick={() => handleNavigate("/")}>
+            Home
+          </span>
 
-        <span
-          className="nav__item"
-          onClick={() => handleNavigate("/posts/create-post")}
-        >
-          New post
-        </span>
-        <span
-          className={
-            authToken
-              ? `nav__item nav__item--hide `
-              : `nav__item nav__item--show `
-          }
-          onClick={() => handleNavigate("/users/login")}
-        >
-          Log In
-        </span>
-        <span
-          className={
-            authToken
-              ? `nav__item nav__item--hide `
-              : `nav__item nav__item--show `
-          }
-          onClick={() => handleNavigate("/users/signup")}
-        >
-          Sign Up
-        </span>
-        <span
-          className={
-            authToken
-              ? `nav__item nav__item--show `
-              : `nav__item nav__item--hide `
-          }
-          onClick={() => handleNavigate("/users/account")}
-        >
-          Account
-        </span>
+          <span
+            className="nav__item"
+            onClick={() => handleNavigate("/posts/create-post")}
+          >
+            New post
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--hide `
+                : `nav__item nav__item--show `
+            }
+            onClick={() => handleNavigate("/users/login")}
+          >
+            Log In
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--hide `
+                : `nav__item nav__item--show `
+            }
+            onClick={() => handleNavigate("/users/signup")}
+          >
+            Sign Up
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--show `
+                : `nav__item nav__item--hide `
+            }
+            onClick={() => handleNavigate("/users/account")}
+          >
+            Account
+          </span>
 
-        <span
-          className={
-            authToken
-              ? `nav__item nav__item--show `
-              : `nav__item nav__item--hide `
-          }
-          onClick={handleLogOut}
-        >
-          Log out
-        </span>
-      </SideSheet>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--show `
+                : `nav__item nav__item--hide `
+            }
+            onClick={handleLogOut}
+          >
+            Log out
+          </span>
+        </SideSheet>
 
-      <MenuIcon
-        className="menu-icon"
-        onClick={() => {
-          setIsShown(true);
-        }}
-        size={40}
-        marginTop={10}
-        marginRight={10}
-      />
-    </nav>
+        <MenuIcon
+          className="menu-icon"
+          onClick={() => {
+            setIsShown(true);
+          }}
+          size={40}
+          marginTop={10}
+          marginRight={10}
+        />
+      </nav>
+      <nav className="nav--desktop">
+        <SideSheet
+          isShown={isShown}
+          width={"40vw"}
+          position="right"
+          containerProps={{
+            className: "nav__side-sheet",
+            display: "flex",
+            flexDirection: "row",
+            padding: "1.5rem",
+            gap: "2rem",
+            // alignItems: "end",
+          }}
+          onCloseComplete={() => setIsShown(false)}
+        >
+          <span className="nav__item" onClick={() => handleNavigate("/")}>
+            Home
+          </span>
+
+          <span
+            className="nav__item"
+            onClick={() => handleNavigate("/posts/create-post")}
+          >
+            New post
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--hide `
+                : `nav__item nav__item--show `
+            }
+            onClick={() => handleNavigate("/users/login")}
+          >
+            Log In
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--hide `
+                : `nav__item nav__item--show `
+            }
+            onClick={() => handleNavigate("/users/signup")}
+          >
+            Sign Up
+          </span>
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--show `
+                : `nav__item nav__item--hide `
+            }
+            onClick={() => handleNavigate("/users/account")}
+          >
+            Account
+          </span>
+
+          <span
+            className={
+              authToken
+                ? `nav__item nav__item--show `
+                : `nav__item nav__item--hide `
+            }
+            onClick={handleLogOut}
+          >
+            Log out
+          </span>
+        </SideSheet>
+
+        <MenuIcon
+          className="menu-icon"
+          onClick={() => {
+            setIsShown(true);
+          }}
+          size={40}
+          marginTop={10}
+          marginRight={10}
+        />
+      </nav>
+    </>
   );
 };
 
