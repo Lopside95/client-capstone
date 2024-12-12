@@ -10,6 +10,7 @@ const Nav = () => {
 
   const authToken = localStorage.getItem("authToken");
   const [isShown, setIsShown] = useState<boolean>(false);
+  const [desktopIsShown, setDesktopIsShown] = useState<boolean>(false);
 
   const [pageHeader, setPageHeader] = useState<string>("");
 
@@ -17,6 +18,7 @@ const Nav = () => {
     localStorage.removeItem("authToken");
     await navigate(`/`);
     setIsShown(false);
+    setDesktopIsShown(false);
     toaster.notify("Logged out");
   };
 
@@ -25,6 +27,7 @@ const Nav = () => {
   const handleNavigate = async (path: string) => {
     navigate(path);
     setIsShown(false);
+    setDesktopIsShown(false);
   };
 
   useEffect(() => {
@@ -121,27 +124,30 @@ const Nav = () => {
           marginRight={10}
         />
       </nav>
-      <nav className="nav--desktop">
+      <nav className="nav-desktop">
         <SideSheet
-          isShown={isShown}
+          isShown={desktopIsShown}
           width={"40vw"}
           position="right"
           containerProps={{
-            className: "nav__side-sheet",
+            className: "nav-desktop__side-sheet",
             display: "flex",
             flexDirection: "row",
             padding: "1.5rem",
             gap: "2rem",
             // alignItems: "end",
           }}
-          onCloseComplete={() => setIsShown(false)}
+          onCloseComplete={() => setDesktopIsShown(false)}
         >
-          <span className="nav__item" onClick={() => handleNavigate("/")}>
+          <span
+            className="nav__item nav-desktop__item"
+            onClick={() => handleNavigate("/")}
+          >
             Home
           </span>
 
           <span
-            className="nav__item"
+            className="nav__item nav-desktop__item"
             onClick={() => handleNavigate("/posts/create-post")}
           >
             New post
@@ -192,7 +198,7 @@ const Nav = () => {
         <MenuIcon
           className="menu-icon"
           onClick={() => {
-            setIsShown(true);
+            setDesktopIsShown(true);
           }}
           size={40}
           marginTop={10}
