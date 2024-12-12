@@ -47,6 +47,7 @@ const LogIn = () => {
             backColor={primary}
             buttonWidth={"9.375rem"}
             className="primary__button primary__button-next"
+            marginTop={"1.25rem"}
           >
             Log in
           </PrimaryButton>

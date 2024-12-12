@@ -69,6 +69,11 @@
   &-posts {
     border: none;
   }
+
+  @include desktop {
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 
 .comments-header {

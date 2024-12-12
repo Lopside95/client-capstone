@@ -2,4 +2,19 @@
 
 .login {
   @include flex($direction: column, $justify: unset, $align: center);
+
+  @include desktop {
+    max-width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-top: 10rem;
+  }
+
+  &__header {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
+  }
 }

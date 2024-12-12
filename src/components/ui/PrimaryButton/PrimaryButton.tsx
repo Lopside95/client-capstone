@@ -15,6 +15,7 @@ const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
       border="none"
       height="2.5rem"
       fontSize="1.25rem"
+      marginTop={props.marginTop || ""}
     >
       {children}
     </Button>

@@ -5,6 +5,13 @@
 .signup {
   @include flex($direction: column, $justify: unset, $align: center);
 
+  @include desktop {
+    max-width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-top: 10rem;
+  }
+
   &__button {
     width: 10rem;
     border-radius: 11px;

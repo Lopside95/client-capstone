@@ -5,12 +5,21 @@
 .create {
   @include flex($direction: column, $justify: unset, $align: center);
 
+  @include tablet {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
   min-height: 100vh;
 
   &__tags {
     &-label {
       align-self: flex-start;
       padding-left: 0.6rem;
+
+      @include desktop {
+        padding-left: 1.5rem;
+      }
     }
 
     &-select {
@@ -25,6 +34,10 @@
   height: 500px;
   padding: 0 0.5rem;
   z-index: 0;
+
+  @include desktop {
+    width: 95%;
+  }
 }
 
 .login-message {

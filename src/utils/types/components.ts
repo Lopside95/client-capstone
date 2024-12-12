@@ -36,6 +36,7 @@ export interface MyButtonProps
   title?: string;
   backColor?: string;
   buttonWidth?: string | number;
+  marginTop?: string | number;
 }
 
 export interface MyPillProps extends PillProps {

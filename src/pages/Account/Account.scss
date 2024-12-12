@@ -12,6 +12,13 @@
     align-self: flex-start;
     padding-bottom: 1.8rem;
   }
+
+  @include desktop {
+    max-width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+    padding-top: 10rem;
+  }
 }
 
 .page-title {
