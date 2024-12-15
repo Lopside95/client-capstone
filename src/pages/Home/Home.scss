@@ -45,6 +45,8 @@
 // }
 
 .home-posts {
+  width: 100%;
+
   @include tablet {
     @include flex(
       $direction: row-reverse,
@@ -59,8 +61,8 @@
 
     &__tags {
       &-select {
-        width: 40%;
-        max-width: 28.125rem;
+        width: 6.25rem;
+        // max-width: 28.125rem;
         height: fit-content;
       }
     }
@@ -71,4 +73,14 @@
   // }
   // &__content {
   // }
+}
+
+.spinner {
+  height: 12.5rem;
+}
+
+.css-13cymwt-control {
+  width: 95%;
+  align-self: center;
+  margin: 1rem auto;
 }

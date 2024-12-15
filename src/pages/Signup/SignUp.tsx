@@ -32,9 +32,9 @@ const SignUp = () => {
 
   const formErrors = form.formState.errors;
 
-  useEffect(() => {
-    console.log("Form Errors signup:", formErrors);
-  }, [form.formState]);
+  // useEffect(() => {
+  //   console.log("Form Errors signup:", formErrors);
+  // }, [form.formState]);
 
   return (
     <FormProvider {...form}>

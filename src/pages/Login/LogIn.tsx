@@ -17,8 +17,8 @@ const LogIn = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "james@email.com",
+      password: "mypass",
     },
   });
 
@@ -28,10 +28,9 @@ const LogIn = () => {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      const res = await login(data);
-
-      toaster.success("Success!");
+      await login(data);
     } catch (error) {
+      console.log("login page error", error);
       console.error(error);
     }
   };
@@ -41,7 +40,7 @@ const LogIn = () => {
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
-          <Input label="Password" name="password" type="password" />
+          <Input label="Password" name="password" type="password" required />
           <PrimaryButton
             type="submit"
             backColor={primary}

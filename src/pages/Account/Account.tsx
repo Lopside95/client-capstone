@@ -1,27 +1,15 @@
 import { useEffect, useState } from "react";
 import Input from "../../components/ui/Input/Input";
-import Card from "../../components/Card/Card";
-import { Pill } from "evergreen-ui";
-import type { PillProps } from "evergreen-ui";
 import { User } from "../../utils/types/posts";
 import { useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/ui/Button/Button";
-import UserCard from "../../components/UserCard/UserCard";
-import {
-  loginSchema,
-  LoginSchema,
-  updateUserSchema,
-  UpdateUserSchema,
-  userSchema,
-  UserSchema,
-} from "../../utils/types/schemas";
+import { updateUserSchema, UpdateUserSchema } from "../../utils/types/schemas";
 import axios from "axios";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import "./Account.scss";
-import { baseUrl } from "../../utils/api";
+import { baseUrl, updateUser } from "../../utils/api";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
@@ -63,6 +51,8 @@ const Account = () => {
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
+      firstName: user?.firstName,
+      lastName: user?.lastName,
       email: user?.email,
       password: "password",
     },
@@ -76,6 +66,10 @@ const Account = () => {
     data: UpdateUserSchema
   ) => {
     try {
+      const res = await updateUser(data);
+
+      console.log("rtes", res);
+
       console.log("login data", data);
     } catch (error) {
       console.error(error);

@@ -1,5 +1,10 @@
 import axios from "axios";
-import { LoginSchema, PostSchema, UserSchema } from "./types/schemas";
+import {
+  LoginSchema,
+  PostSchema,
+  UpdateUserSchema,
+  UserSchema,
+} from "./types/schemas";
 import { User } from "./types/posts";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
@@ -65,10 +70,10 @@ const login = async (loginData: LoginSchema) => {
   try {
     const res = await axios.post(`${baseUrl}/users/login`, loginData);
     const data = res.data;
+
     localStorage.setItem("authToken", data.authToken);
   } catch (error) {
     console.log("error in login", error);
-    console.error(error);
   }
 };
 
@@ -89,6 +94,12 @@ const getAuthedUser = async () => {
   }
 };
 
+const updateUser = async (updateData: UpdateUserSchema) => {
+  const res = await axios.put(`${baseUrl}/users/account`, updateData);
+
+  console.log(res);
+};
+
 export {
   getTags,
   getHome,
@@ -97,4 +108,5 @@ export {
   getUsers,
   login,
   getAuthedUser,
+  updateUser,
 };

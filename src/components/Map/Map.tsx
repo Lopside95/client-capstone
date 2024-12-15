@@ -40,7 +40,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      // mapboxgl: mapboxgl,
       collapsed: true,
     });
 
@@ -50,7 +49,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
       zoom: 15,
       maxZoom: 18,
     }));
-    // 51.564719, -0.142297
     mapRef.current = map;
 
     map.addControl(geocoder as unknown as IControl, "top-left");
@@ -69,8 +67,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
     );
 
     map.addControl(new mapboxgl.FullscreenControl(), "bottom-left");
-
-    // map.addControl(geocoder, "top-left");
 
     map.on("geolocate", (e: GeolocateResult) => {
       setLatitude(e.coords.latitude);
@@ -107,10 +103,6 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
       zoom: 15,
     });
   };
-
-  useEffect(() => {
-    console.log("userMarklkkkk", userMarkers);
-  }, [mapRef.current]);
 
   return (
     <>

@@ -9,18 +9,19 @@ import Select from "react-select";
 import { TagSchema } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
+import { Spinner } from "evergreen-ui";
 // import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [posts, setPosts] = useState<Post[]>();
-  const [allTags, setAllTags] = useState<TagSchema[]>();
+  const [allTags, setAllTags] = useState<TagSchema[] | null>(null);
   const [selectedTags, setSelectedTags] = useState<TagSchema[]>();
-  const [tagNames, setTagNames] = useState<string[]>();
-  const [comments, setComments] = useState<UserComment[]>();
-  // const [selectedTags, setSelectedTags] = useState<string[] | undefined>();
-  const [filterIsShown, setFilterIsShown] = useState<boolean>(false);
+  // const [tagNames, setTagNames] = useState<string[]>();
+  // const [comments, setComments] = useState<UserComment[]>();
+  // // const [selectedTags, setSelectedTags] = useState<string[] | undefined>();
+  // const [filterIsShown, setFilterIsShown] = useState<boolean>(false);
 
   const fetchData = async () => {
     const postsData = await getPosts();
@@ -37,6 +38,14 @@ const Home = () => {
     label: tag.name,
     value: tag.id,
   }));
+
+  // if (!posts) {
+  //   return (
+  //     <div className="spinner">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="home">
@@ -69,7 +78,7 @@ const Home = () => {
             isMulti
             options={tagOptions}
             className="home-posts__tags-select"
-            classNamePrefix="select"
+            // classNamePrefix="select"
             onChange={(selectedOptions) => {
               const filterTags = selectedOptions.map((option) => ({
                 name: option.label,
@@ -84,11 +93,25 @@ const Home = () => {
           Show Filters
           </MyButton>
           </article> */}
-          <article className="home-posts__content">
+
+          {!posts ? (
+            <div className="spinner">
+              <Spinner />
+            </div>
+          ) : posts.length === 0 ? (
+            <div>There are no posts</div>
+          ) : (
+            <article className="home-posts__content">
+              {posts.map((post) => {
+                return <HomeCard key={post.id} {...post} />;
+              })}
+            </article>
+          )}
+          {/* <article className="home-posts__content">
             {posts?.map((post) => {
               return <HomeCard key={post.id} {...post} />;
             })}
-          </article>
+          </article> */}
           {/* <article className="home-posts__content">
             {posts?.map((post) => (
               <Card key={post.id} {...post} />
