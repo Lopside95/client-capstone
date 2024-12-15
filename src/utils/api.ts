@@ -6,6 +6,7 @@ import {
   UserSchema,
 } from "./types/schemas";
 import { User } from "./types/posts";
+import { toaster } from "evergreen-ui";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -60,6 +61,11 @@ const getUserById = async (userId?: string) => {
 const createUser = async (user: UserSchema) => {
   try {
     const res = await axios.post(`${baseUrl}/users/signup`, user);
+
+    if (res.status === 201) {
+      toaster.success("Sign up successful!");
+    }
+
     return res;
   } catch (error) {
     console.error(error);
@@ -72,8 +78,11 @@ const login = async (loginData: LoginSchema) => {
     const data = res.data;
 
     localStorage.setItem("authToken", data.authToken);
+    if (res.status === 200) {
+      toaster.success("Logged in!");
+    }
   } catch (error) {
-    console.log("error in login", error);
+    console.error("error in login", error);
   }
 };
 

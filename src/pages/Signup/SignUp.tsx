@@ -22,7 +22,6 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
     try {
-      console.log(data);
       const res = await createUser(data);
       return res;
     } catch (error) {

@@ -18,7 +18,7 @@ const LogIn = () => {
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "james@email.com",
-      password: "mypass",
+      password: "pass123",
     },
   });
 
@@ -28,7 +28,7 @@ const LogIn = () => {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      await login(data);
+      const res = await login(data);
     } catch (error) {
       console.log("login page error", error);
       console.error(error);
@@ -40,7 +40,7 @@ const LogIn = () => {
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
-          <Input label="Password" name="password" type="password" required />
+          <Input label="Password" name="password" type="password" />
           <PrimaryButton
             type="submit"
             backColor={primary}
