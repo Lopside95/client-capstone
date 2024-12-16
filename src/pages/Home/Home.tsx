@@ -1,51 +1,51 @@
 import { useNavigate } from "react-router";
-// import Button from "../../components/ui/Button/Button";
 import "./Home.scss";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { getPosts } from "../../utils/posts";
 import { Post, UserComment } from "../../utils/types/posts";
 import Select from "react-select";
-import { TagSchema } from "../../utils/types/schemas";
+import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
 import { Spinner } from "evergreen-ui";
-// import "../../components/ui/PrimaryButton/PrimaryButton.scss";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [posts, setPosts] = useState<Post[]>();
-  const [allTags, setAllTags] = useState<TagSchema[] | null>(null);
-  const [selectedTags, setSelectedTags] = useState<TagSchema[]>();
-  // const [tagNames, setTagNames] = useState<string[]>();
-  // const [comments, setComments] = useState<UserComment[]>();
-  // // const [selectedTags, setSelectedTags] = useState<string[] | undefined>();
-  // const [filterIsShown, setFilterIsShown] = useState<boolean>(false);
+  const [tags, setTags] = useState<Tag[] | null>(null);
+  const [selectedTags, setSelectedTags] = useState<Tag[] | null>(null);
+  const [filteredPosts, setFilteredPosts] = useState<Post[] | null>(null);
 
   const fetchData = async () => {
     const postsData = await getPosts();
     const res = await getTags();
     setPosts(postsData);
-    setAllTags(res);
+    setTags(res);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const tagOptions = allTags?.map((tag) => ({
+  const tagOptions = tags?.map((tag) => ({
     label: tag.name,
     value: tag.id,
   }));
 
-  // if (!posts) {
-  //   return (
-  //     <div className="spinner">
-  //       <Spinner />
-  //     </div>
-  //   );
-  // }
+  useEffect(() => {
+    if (selectedTags && selectedTags.length > 0) {
+      const filtered = posts?.filter((post) =>
+        selectedTags.every((selectedTag) =>
+          post.tags.some((postTag) => postTag.id === selectedTag.id)
+        )
+      );
+      setFilteredPosts(filtered || []);
+    } else {
+      setFilteredPosts(posts || []);
+    }
+  }, [posts, selectedTags]);
 
   return (
     <div className="home">
@@ -63,60 +63,36 @@ const Home = () => {
           >
             Create a new post
           </PrimaryButton>
-          {/* <PrimaryButton className="subnav__button">Find</PrimaryButton> */}
         </section>
-        {/* <Label
-        className="create__tags-label"
-        marginBottom="0.2rem"
-        htmlFor="tags"
-      >
-        Tags
-      </Label> */}
 
         <section className="home-posts">
           <Select
             isMulti
             options={tagOptions}
             className="home-posts__tags-select"
-            // classNamePrefix="select"
             onChange={(selectedOptions) => {
-              const filterTags = selectedOptions.map((option) => ({
-                name: option.label,
-                id: option.value,
-              }));
-              console.log(filterTags);
-              setSelectedTags(filterTags);
+              setSelectedTags(
+                selectedOptions.map((option) => ({
+                  name: option.label,
+                  id: option.value,
+                }))
+              );
             }}
           />
-          {/* <article className="filters">
-          <MyButton onClick={() => setFilterIsShown(!filterIsShown)}>
-          Show Filters
-          </MyButton>
-          </article> */}
 
-          {!posts ? (
+          {!filteredPosts ? (
             <div className="spinner">
               <Spinner />
             </div>
-          ) : posts.length === 0 ? (
+          ) : filteredPosts.length === 0 ? (
             <div>There are no posts</div>
           ) : (
             <article className="home-posts__content">
-              {posts.map((post) => {
+              {filteredPosts.map((post) => {
                 return <HomeCard key={post.id} {...post} />;
               })}
             </article>
           )}
-          {/* <article className="home-posts__content">
-            {posts?.map((post) => {
-              return <HomeCard key={post.id} {...post} />;
-            })}
-          </article> */}
-          {/* <article className="home-posts__content">
-            {posts?.map((post) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </article> */}
         </section>
       </main>
     </div>

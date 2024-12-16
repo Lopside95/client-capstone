@@ -45,9 +45,12 @@ export const commentSchema = z.object({
   post_id: z.string().optional(),
 });
 
+export const tagSchema = z.object({ name: z.string() });
+
 export type PostSchema = z.infer<typeof postSchema>;
-export type TagSchema = z.infer<typeof tag>;
+export type Tag = z.infer<typeof tag>;
 export type UserSchema = z.infer<typeof userSchema>;
 export type UpdateUserSchema = z.infer<typeof updateUserSchema>;
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type CommentSchema = z.infer<typeof commentSchema>;
+export type TagSchema = z.infer<typeof tagSchema>;
