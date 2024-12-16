@@ -38,7 +38,7 @@ const Home = () => {
     if (selectedTags && selectedTags.length > 0) {
       const filtered = posts?.filter((post) =>
         selectedTags.every((selectedTag) =>
-          post.tags.some((postTag) => postTag.id === selectedTag.id)
+          post.tags.some((postTag) => postTag.id === selectedTag.id.toString())
         )
       );
       setFilteredPosts(filtered || []);
