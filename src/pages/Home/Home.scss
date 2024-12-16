@@ -47,7 +47,9 @@
 .home-posts {
   width: 100%;
 
-  @include tablet {
+  padding: 1rem 0;
+
+  @include desktop {
     @include flex(
       $direction: row-reverse,
       $justify: space-around,
@@ -61,8 +63,9 @@
 
     &__tags {
       &-select {
-        width: 6.25rem;
-        // max-width: 28.125rem;
+        // width: 6.25rem;
+        width: 100%;
+        max-width: 28.125rem;
         height: fit-content;
       }
     }
@@ -79,8 +82,22 @@
   height: 12.5rem;
 }
 
-.css-13cymwt-control {
-  width: 95%;
-  align-self: center;
-  margin: 1rem auto;
+.select {
+  &__control {
+    &.css-13cymwt-control {
+      width: 95%;
+    }
+  }
 }
+
+// .select {
+//   &.css-13cymwt-control {
+//     // border-radius: 11px;
+//     width: 95%;
+//   }
+// }
+// .css-13cymwt-control {
+//   width: 95%;
+//   // align-self: center;
+//   // margin: 1rem auto;
+// }

@@ -38,7 +38,7 @@ const Home = () => {
     if (selectedTags && selectedTags.length > 0) {
       const filtered = posts?.filter((post) =>
         selectedTags.every((selectedTag) =>
-          post.tags.some((postTag) => postTag.id === selectedTag.id.toString())
+          post.tags.some((postTag) => Number(postTag.id) == selectedTag.id)
         )
       );
       setFilteredPosts(filtered || []);
@@ -70,6 +70,7 @@ const Home = () => {
             isMulti
             options={tagOptions}
             className="home-posts__tags-select"
+            classNamePrefix="select"
             onChange={(selectedOptions) => {
               setSelectedTags(
                 selectedOptions.map((option) => ({
@@ -78,14 +79,16 @@ const Home = () => {
                 }))
               );
             }}
+            placeholder="Select tags"
           />
 
           {!filteredPosts ? (
-            <div className="spinner">
-              <Spinner />
-            </div>
-          ) : filteredPosts.length === 0 ? (
-            <div>There are no posts</div>
+            <h2 className="home-posts__none">No posts to show</h2>
+          ) : selectedTags && filteredPosts.length === 0 ? (
+            <h2 className="home-posts__no-match">
+              No posts match{" "}
+              {selectedTags.length > 1 ? "those tags" : "that tag"}
+            </h2>
           ) : (
             <article className="home-posts__content">
               {filteredPosts.map((post) => {

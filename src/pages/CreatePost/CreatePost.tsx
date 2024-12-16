@@ -9,21 +9,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { PostSchema, postSchema, TagSchema } from "../../utils/types/schemas";
+import { PostSchema, postSchema, Tag } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { FileUploader, Label } from "evergreen-ui";
+import { Label } from "evergreen-ui";
 import { baseUrl, getTags } from "../../utils/api";
-import { createPost } from "../../utils/posts";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
-import { MyMap, User, UserMarker } from "../../utils/types/posts";
+import { User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
 import axios from "axios";
-import UploadImage from "../../components/UploadImage/UploadImage";
 import { useNavigate } from "react-router";
 
 const CreatePost = () => {
-  const [allTags, setAllTags] = useState<TagSchema[]>();
+  const [allTags, setAllTags] = useState<Tag[]>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -56,7 +54,6 @@ const CreatePost = () => {
         created_at: data.created_at,
         updated_at: data.updated_at,
       };
-      console.log(userData);
 
       setUser(userData);
       setIsLoggedIn(true);
@@ -117,7 +114,6 @@ const CreatePost = () => {
         navigate(`/posts/${res.data.id}`);
       }
     } catch (error) {
-      console.log("There was an error in get authed user", error);
       console.error(error);
     }
   };
@@ -162,8 +158,9 @@ const CreatePost = () => {
         <Input label="Description" name="description" />
         <Label
           className="create__tags-label"
-          marginBottom="0.2rem"
           htmlFor="tags"
+          fontSize={16}
+          fontWeight={400}
         >
           Tags
         </Label>
@@ -178,9 +175,9 @@ const CreatePost = () => {
               name: option.label,
               id: option.value,
             }));
-            console.log(selectedTags);
             form.setValue("tags", selectedTags);
           }}
+          placeholder="Select tags"
         />
 
         <section className="map-container-div">

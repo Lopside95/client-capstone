@@ -6,6 +6,8 @@
   background-color: $secondary;
   border: none;
   width: 100%;
+  caret-color: $primary;
+  color: $tertiary;
 
   &__container {
     @include flex($direction: column, $justify: unset, $align: unset);
