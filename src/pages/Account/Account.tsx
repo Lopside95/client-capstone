@@ -14,8 +14,6 @@ import { baseUrl, updateUser } from "../../utils/api";
 const Account = () => {
   const [user, setUser] = useState<User>();
 
-  const { id } = useParams();
-
   const authToken = localStorage.getItem("authToken");
 
   const fetchUser = async () => {
@@ -77,13 +75,12 @@ const Account = () => {
   };
 
   if (!user) {
-    return <div>Loading</div>;
+    return <div>404 Page Not Found</div>;
   }
 
   return (
     <FormProvider {...form}>
       <form className="account main" onSubmit={form.handleSubmit(onSubmit)}>
-        {/* <h2 className="page-title">Account</h2> */}
         <Input
           label="First name"
           name="firstName"

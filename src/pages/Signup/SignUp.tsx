@@ -8,8 +8,11 @@ import { useEffect } from "react";
 import "./SignUp.scss";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const form = useForm<UserSchema>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -23,6 +26,7 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<UserSchema> = async (data: UserSchema) => {
     try {
       const res = await createUser(data);
+      navigate("/users/login");
       return res;
     } catch (error) {
       console.error(error);
@@ -30,10 +34,6 @@ const SignUp = () => {
   };
 
   const formErrors = form.formState.errors;
-
-  // useEffect(() => {
-  //   console.log("Form Errors signup:", formErrors);
-  // }, [form.formState]);
 
   return (
     <FormProvider {...form}>

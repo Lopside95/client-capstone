@@ -7,6 +7,7 @@ import {
 } from "./types/schemas";
 import { User } from "./types/posts";
 import { toaster } from "evergreen-ui";
+import { useNavigate } from "react-router";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 

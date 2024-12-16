@@ -27,7 +27,6 @@ const Input = ({
   return (
     <div className="input__container">
       <Label
-        // className="input__label"
         fontSize={16}
         fontWeight={400}
         color={!myState.invalid ? "" : "orange"}
