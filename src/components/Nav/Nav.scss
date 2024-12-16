@@ -32,6 +32,11 @@
     cursor: pointer;
     font-size: larger;
 
+    &--active {
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+
     &--hide {
       display: none;
     }

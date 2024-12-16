@@ -61,12 +61,23 @@ const Nav = () => {
           }}
           onCloseComplete={() => setIsShown(false)}
         >
-          <span className="nav__item" onClick={() => handleNavigate("/")}>
+          <span
+            className={
+              location.pathname === "/"
+                ? "nav__item nav__item--active"
+                : "nav__item"
+            }
+            onClick={() => handleNavigate("/")}
+          >
             Home
           </span>
 
           <span
-            className="nav__item"
+            className={
+              location.pathname === "/posts/create-post"
+                ? "nav__item nav__item--active"
+                : "nav__item"
+            }
             onClick={() => handleNavigate("/posts/create-post")}
           >
             New post
@@ -75,7 +86,9 @@ const Nav = () => {
             className={
               authToken
                 ? `nav__item nav__item--hide `
-                : `nav__item nav__item--show `
+                : `nav__item nav__item--show  ${
+                    location.pathname === "/users/login" && "nav__item--active"
+                  }`
             }
             onClick={() => handleNavigate("/users/login")}
           >
@@ -85,7 +98,9 @@ const Nav = () => {
             className={
               authToken
                 ? `nav__item nav__item--hide `
-                : `nav__item nav__item--show `
+                : `nav__item nav__item--show ${
+                    location.pathname === "/users/signup" && "nav__item--active"
+                  }`
             }
             onClick={() => handleNavigate("/users/signup")}
           >
@@ -94,8 +109,12 @@ const Nav = () => {
           <span
             className={
               authToken
-                ? `nav__item nav__item--show `
-                : `nav__item nav__item--hide `
+                ? `nav__item nav__item--show ${
+                    location.pathname === "/users/signup" && "nav__item--active"
+                  } `
+                : `nav__item nav__item--hide 
+                
+                `
             }
             onClick={() => handleNavigate("/users/account")}
           >
@@ -134,20 +153,30 @@ const Nav = () => {
             display: "flex",
             flexDirection: "row",
             padding: "1.5rem",
-            gap: "2rem",
+            gap: "1rem",
             // alignItems: "end",
           }}
           onCloseComplete={() => setDesktopIsShown(false)}
         >
           <span
-            className="nav__item nav-desktop__item"
+            className={
+              location.pathname === "/"
+                ? "nav__item nav-desktop__item nav__item--active"
+                : "nav__item"
+            }
+            // className="nav__item nav-desktop__item"
             onClick={() => handleNavigate("/")}
           >
             Home
           </span>
 
           <span
-            className="nav__item nav-desktop__item"
+            className={
+              location.pathname === "/posts/create-post"
+                ? "nav__item nav-desktop__item nav__item--active"
+                : "nav__item"
+            }
+            // className="nav__item nav-desktop__item"
             onClick={() => handleNavigate("/posts/create-post")}
           >
             New post
@@ -156,7 +185,9 @@ const Nav = () => {
             className={
               authToken
                 ? `nav__item nav__item--hide `
-                : `nav__item nav__item--show `
+                : `nav__item nav__item--show ${
+                    location.pathname === "/users/login" && "nav__item--active"
+                  }`
             }
             onClick={() => handleNavigate("/users/login")}
           >
@@ -166,7 +197,9 @@ const Nav = () => {
             className={
               authToken
                 ? `nav__item nav__item--hide `
-                : `nav__item nav__item--show `
+                : `nav__item nav__item--show ${
+                    location.pathname === "/users/signup" && "nav__item--active"
+                  } `
             }
             onClick={() => handleNavigate("/users/signup")}
           >
@@ -175,7 +208,10 @@ const Nav = () => {
           <span
             className={
               authToken
-                ? `nav__item nav__item--show `
+                ? `nav__item nav__item--show  ${
+                    location.pathname === "/users/account" &&
+                    "nav__item--active"
+                  }`
                 : `nav__item nav__item--hide `
             }
             onClick={() => handleNavigate("/users/account")}

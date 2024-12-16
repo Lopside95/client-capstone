@@ -3,6 +3,12 @@
 .add-comment {
   @include flex($direction: column, $justify: unset, $align: center);
   padding-top: 0;
+
+  @include desktop {
+    width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+  }
 }
 
 .primary__button-comment {
