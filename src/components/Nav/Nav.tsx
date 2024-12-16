@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router";
 import "./Nav.scss";
-import Button from "../ui/Button/Button";
 import { MenuIcon, SideSheet, toaster } from "evergreen-ui";
 import { useEffect, useState } from "react";
 import Toaster from "evergreen-ui/types/toaster/src/Toaster";

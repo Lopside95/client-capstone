@@ -19,7 +19,6 @@ const SinglePost = () => {
       setPost(postsData);
 
       setComments(postsData.comments);
-      console.log(comments);
     } catch (error) {
       console.error(error);
     }

@@ -1,15 +1,7 @@
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./Footer.scss";
-import Button from "../ui/Button/Button";
-import {
-  EditIcon,
-  HomeIcon,
-  InsertIcon,
-  PersonIcon,
-  SideSheet,
-} from "evergreen-ui";
-import { useState } from "react";
-import { primary, tertiary } from "../../pages/Home/Home";
+import { HomeIcon, InsertIcon, PersonIcon } from "evergreen-ui";
+import { tertiary } from "../../pages/Home/Home";
 
 const Footer = () => {
   const navigate = useNavigate();

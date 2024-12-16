@@ -1,14 +1,9 @@
 // import { Pill } from "evergreen-ui";
 import MyPill from "../ui/Pill/MyPill";
-import { CardInterface, Post, UserComment } from "../../utils/types/posts";
-import TagButton from "../ui/Tag/TagButton";
+import { Post } from "../../utils/types/posts";
 import "./Card.scss";
-import StatusBadge from "../ui/StatusBadge/StatusBadge";
 import { useLocation, useNavigate } from "react-router";
 import { Button } from "evergreen-ui";
-import { PostType } from "../../utils/types/enums";
-import { createRef, useEffect } from "react";
-import { baseUrl } from "../../utils/posts";
 
 const CommentCard = (post: Post) => {
   const navigate = useNavigate();

@@ -2,7 +2,6 @@ import MyPill from "../ui/Pill/MyPill";
 import { Post } from "../../utils/types/posts";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Button, MapMarkerIcon } from "evergreen-ui";
-import { useEffect } from "react";
 import { primary } from "../../pages/Home/Home";
 import "./HomeCard.scss";
 const HomeCard = (post: Post) => {

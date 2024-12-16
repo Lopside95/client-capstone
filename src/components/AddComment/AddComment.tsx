@@ -4,10 +4,8 @@ import { User } from "../../utils/types/posts";
 import { useNavigate, useParams } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/ui/Button/Button";
 import { commentSchema, CommentSchema } from "../../utils/types/schemas";
 import axios from "axios";
-import { postComment } from "../../utils/comments";
 import "./AddComment.scss";
 import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
 import { primary } from "../../pages/Home/Home";
@@ -69,7 +67,6 @@ const AddComment = () => {
 
   useEffect(() => {
     console.log("Form Errors:", form.formState.errors);
-    console.log(form.getValues());
   }, [form.formState]);
 
   const onSubmit: SubmitHandler<CommentSchema> = async (
@@ -90,8 +87,6 @@ const AddComment = () => {
       console.error(error);
     }
   };
-
-  console.log(user?.id);
 
   if (!user) {
     return (

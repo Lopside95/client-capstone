@@ -1,14 +1,9 @@
-// import { Pill } from "evergreen-ui";
-import MyPill from "../ui/Pill/MyPill";
-import { Post, User } from "../../utils/types/posts";
-import TagButton from "../ui/Tag/TagButton";
+import { User } from "../../utils/types/posts";
 import "./UserCard.scss";
 import StatusBadge from "../ui/StatusBadge/StatusBadge";
 
 const UserCard = ({ user }: { user: User }) => {
   const { firstName, lastName, email, password, active }: User = user;
-
-  console.log("first namer", firstName);
 
   return (
     <section className="card">

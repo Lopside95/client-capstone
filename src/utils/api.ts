@@ -106,8 +106,6 @@ const getAuthedUser = async () => {
 
 const updateUser = async (updateData: UpdateUserSchema) => {
   const res = await axios.put(`${baseUrl}/users/account`, updateData);
-
-  console.log(res);
 };
 
 export {

@@ -10,15 +10,18 @@ import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { toaster } from "evergreen-ui";
+import { useNavigate } from "react-router";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
 
+  const navigate = useNavigate();
+
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "james@email.com",
-      password: "pass123",
+      email: user?.email || "",
+      password: "",
     },
   });
 
@@ -28,7 +31,8 @@ const LogIn = () => {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      const res = await login(data);
+      await login(data);
+      navigate("/");
     } catch (error) {
       console.log("login page error", error);
       console.error(error);

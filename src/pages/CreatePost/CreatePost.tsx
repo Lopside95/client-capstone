@@ -25,7 +25,6 @@ const CreatePost = () => {
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [newPostId, setnewPostId] = useState<number>();
 
   const authToken = localStorage.getItem("authToken");
 

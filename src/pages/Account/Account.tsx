@@ -65,10 +65,6 @@ const Account = () => {
   ) => {
     try {
       const res = await updateUser(data);
-
-      console.log("rtes", res);
-
-      console.log("login data", data);
     } catch (error) {
       console.error(error);
     }
