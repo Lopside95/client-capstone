@@ -33,8 +33,7 @@ const MapComponent = ({ userMarkers, setUserMarkers }: MyMap) => {
   const markersRef = useRef<mapboxgl.Marker[]>([]);
 
   useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoibG9wc2lkZSIsImEiOiJjbTQ5cHU1YW0wY3E0MnFzZHFwdTZ5aWl2In0.COQXARWCccbTSMWIDGlwGg";
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_TOKEN;
 
     if (!mapContainerRef.current) return;
 
