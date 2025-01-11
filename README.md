@@ -1,9 +1,9 @@
 ## Client repo of Find My Dog 
-### Server repo: https://github.com/Lopside95/server-ts-pnpm
+### Server: https://github.com/Lopside95/server-capstone
 
-### Made with TypeScript, React, Express, Sass, React-Hook-Form, Zod
+### Made with TypeScript, React, Sass, React-Hook-Form, Zod
 
-### The live site is available here: https://findmydog.vercel.app/
+### The live site is available here: https://findmydog.vercel.app
 
 ## To run locally: 
 #### 1: Clone repository.
