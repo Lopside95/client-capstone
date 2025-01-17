@@ -16,10 +16,10 @@ const SignUp = () => {
   const form = useForm<UserSchema>({
     resolver: zodResolver(userSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: "James",
+      lastName: "Wallington",
+      email: "james@email.com",
+      password: "pass123",
     },
   });
 

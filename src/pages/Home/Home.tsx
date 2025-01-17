@@ -81,7 +81,6 @@ const Home = () => {
             }}
             placeholder="Select tags"
           />
-
           {!filteredPosts ? (
             <h2 className="home-posts__none">No posts to show</h2>
           ) : selectedTags && filteredPosts.length === 0 ? (
