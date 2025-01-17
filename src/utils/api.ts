@@ -108,6 +108,23 @@ const updateUser = async (updateData: UpdateUserSchema) => {
   const res = await axios.put(`${baseUrl}/users/account`, updateData);
 };
 
+const deleteUser = async (email: string) => {
+  try {
+    const res = await axios.delete(`${baseUrl}/users/account`, {
+      data: { email },
+    });
+    localStorage.removeItem("authToken");
+
+    if (res.status === 200) {
+      toaster.success("User deleted!");
+    }
+
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   getTags,
   getHome,
@@ -117,4 +134,5 @@ export {
   login,
   getAuthedUser,
   updateUser,
+  deleteUser,
 };

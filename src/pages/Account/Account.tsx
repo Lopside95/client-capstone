@@ -9,7 +9,7 @@ import axios from "axios";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import "./Account.scss";
-import { baseUrl, updateUser } from "../../utils/api";
+import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
@@ -70,6 +70,22 @@ const Account = () => {
     }
   };
 
+  const userEmail = form.watch("email");
+
+  const handleDelete = async () => {
+    try {
+      if (!user) {
+        console.log("noEmail", user);
+        return;
+      }
+
+      const res = await deleteUser(userEmail);
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!user) {
     return <div>404 Page Not Found</div>;
   }
@@ -102,6 +118,15 @@ const Account = () => {
           className="primary__button primary__button-account"
         >
           Update details
+        </PrimaryButton>
+        <PrimaryButton
+          onClick={handleDelete}
+          // onClick={() => handleDelete(user?.email)}
+          backColor={primary}
+          buttonWidth={"9.375rem"}
+          className="primary__button primary__button-account"
+        >
+          Delete account
         </PrimaryButton>
         <img src="/dog-2.svg" className="account__cover" />
       </form>
