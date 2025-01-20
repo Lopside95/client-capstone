@@ -1,8 +1,7 @@
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./Nav.scss";
 import { MenuIcon, SideSheet, toaster } from "evergreen-ui";
 import { useEffect, useState } from "react";
-import Toaster from "evergreen-ui/types/toaster/src/Toaster";
 
 const Nav = () => {
   const navigate = useNavigate();

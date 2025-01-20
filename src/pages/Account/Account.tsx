@@ -164,7 +164,7 @@ const Account = () => {
                     handleDelete();
                   }}
                   height={"2rem"}
-                  backColor={isLoading ? "#ffffff" : tertiary}
+                  backColor={tertiary}
                   buttonWidth={"9.375rem"}
                   className={`primary__button primary__button-destructive ${
                     isLoading && "hidden-button"

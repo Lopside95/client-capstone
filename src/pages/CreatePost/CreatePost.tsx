@@ -124,13 +124,13 @@ const CreatePost = () => {
 
   const { register, watch, formState } = form;
 
-  const [formErrors, setFormErrors] = useState<FieldErrors<FieldValues>>();
+  // const [formErrors, setFormErrors] = useState<FieldErrors<FieldValues>>();
 
-  useEffect(() => {
-    if (formState.errors) {
-      setFormErrors(formState.errors);
-    }
-  }, [formState]);
+  // useEffect(() => {
+  //   if (formState.errors) {
+  //     setFormErrors(formState.errors);
+  //   }
+  // }, [formState]);
 
   return (
     <FormProvider {...form} control={form.control}>

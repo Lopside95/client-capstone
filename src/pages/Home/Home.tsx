@@ -3,12 +3,11 @@ import "./Home.scss";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { getPosts } from "../../utils/posts";
-import { Post, UserComment } from "../../utils/types/posts";
+import { Post } from "../../utils/types/posts";
 import Select from "react-select";
 import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
-import { Spinner } from "evergreen-ui";
 
 const Home = () => {
   const navigate = useNavigate();

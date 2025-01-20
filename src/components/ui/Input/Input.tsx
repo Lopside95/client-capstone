@@ -1,16 +1,8 @@
-import {
-  useFormContext,
-  UseFormGetFieldState,
-  FieldValues,
-  FormState,
-  FieldError,
-  FieldErrors,
-} from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { TextProps } from "../../../utils/types/components";
-import { Label, TextInput, TextInputField } from "evergreen-ui";
+import { Label, TextInput } from "evergreen-ui";
 import "./Input.scss";
-import { useEffect, useState } from "react";
-import { primary, secondary } from "../../../pages/Home/Home";
+import { secondary } from "../../../pages/Home/Home";
 
 const Input = ({
   name,

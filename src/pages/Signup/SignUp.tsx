@@ -3,8 +3,6 @@ import { userSchema, UserSchema } from "../../utils/types/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
 import { createUser } from "../../utils/api";
-import Button from "../../components/ui/Button/Button";
-import { useEffect } from "react";
 import "./SignUp.scss";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
@@ -32,8 +30,6 @@ const SignUp = () => {
       console.error(error);
     }
   };
-
-  const formErrors = form.formState.errors;
 
   return (
     <FormProvider {...form}>

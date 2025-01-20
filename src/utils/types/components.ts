@@ -1,20 +1,5 @@
-import {
-  BadgeProps,
-  BoxComponent,
-  PillOwnProps,
-  PillProps,
-  TextInputFieldProps,
-  TextInputOwnProps,
-} from "evergreen-ui";
-import { ButtonHTMLAttributes } from "react";
+import { BadgeProps, PillProps, TextInputOwnProps } from "evergreen-ui";
 import { PostType } from "./enums";
-
-// export type TextProps = {
-//   name: string;
-//   label?: string;
-//   placeholder?: string;
-//   className?: string;
-// };
 
 export type TagProps = {
   onClick?: () => void;

@@ -1,8 +1,7 @@
 import MyPill from "../ui/Pill/MyPill";
 import { Post } from "../../utils/types/posts";
 import { Link, useLocation, useNavigate } from "react-router";
-import { Button, MapMarkerIcon } from "evergreen-ui";
-import { primary } from "../../pages/Home/Home";
+import { Button } from "evergreen-ui";
 import "./HomeCard.scss";
 const HomeCard = (post: Post) => {
   const navigate = useNavigate();
@@ -44,9 +43,6 @@ const HomeCard = (post: Post) => {
       <article className="homecard__heading">
         <h1 className="homecard__heading-title">{title}</h1>
         <div className="homecard__heading-right">
-          {/* <Link target="_blank" to={googleMapsLocation}>
-            <MapMarkerIcon color={primary} />
-          </Link> */}
           <Link target="_blank" to={googleMapsLocation}>
             <img src="/src/assets/images/maps-thumb.png" width={40} />
           </Link>

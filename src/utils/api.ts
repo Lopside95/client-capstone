@@ -1,10 +1,5 @@
 import axios from "axios";
-import {
-  LoginSchema,
-  PostSchema,
-  UpdateUserSchema,
-  UserSchema,
-} from "./types/schemas";
+import { LoginSchema, UpdateUserSchema, UserSchema } from "./types/schemas";
 import { User } from "./types/posts";
 import { toaster } from "evergreen-ui";
 

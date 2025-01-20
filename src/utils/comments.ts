@@ -1,6 +1,5 @@
 import axios from "axios";
-import { CommentSchema, PostSchema, UserSchema } from "./types/schemas";
-import { User, UserComment } from "./types/posts";
+import { CommentSchema } from "./types/schemas";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 

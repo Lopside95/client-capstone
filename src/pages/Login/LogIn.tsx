@@ -4,12 +4,10 @@ import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/ui/Button/Button";
 import { loginSchema, LoginSchema } from "../../utils/types/schemas";
 import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { toaster } from "evergreen-ui";
 import { useNavigate } from "react-router";
 
 const LogIn = () => {
