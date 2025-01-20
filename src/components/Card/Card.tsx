@@ -56,8 +56,11 @@ const Card = (post: Post) => {
         <h1 className="card__heading-title">{title}</h1>
         {/* <MyPill color="red">{type}</MyPill> */}
         <div className="card__heading-right">
-          <Link target="_blank" to={googleMapsLocation}>
+          {/* <Link target="_blank" to={googleMapsLocation}>
             <MapMarkerIcon color={primary} />
+          </Link> */}
+          <Link target="_blank" to={googleMapsLocation}>
+            <img src="/src/assets/images/maps-thumb.png" width={40} />
           </Link>
           <MyPill className="card__heading-date">
             {formatTime(created_at)}

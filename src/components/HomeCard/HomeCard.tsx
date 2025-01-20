@@ -44,8 +44,11 @@ const HomeCard = (post: Post) => {
       <article className="homecard__heading">
         <h1 className="homecard__heading-title">{title}</h1>
         <div className="homecard__heading-right">
-          <Link target="_blank" to={googleMapsLocation}>
+          {/* <Link target="_blank" to={googleMapsLocation}>
             <MapMarkerIcon color={primary} />
+          </Link> */}
+          <Link target="_blank" to={googleMapsLocation}>
+            <img src="/src/assets/images/maps-thumb.png" width={40} />
           </Link>
           <MyPill className="homecard__heading-date">
             {formatTime(created_at)}
@@ -81,6 +84,7 @@ const HomeCard = (post: Post) => {
           return (
             <div key={comment.id} className="homecard__comment">
               <p>{comment.content} </p>
+              <p>{comment.userId}</p>
               <MyPill>{formatTime(comment.created_at)}</MyPill>
             </div>
           );
