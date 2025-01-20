@@ -76,6 +76,7 @@ const login = async (loginData: LoginSchema) => {
     if (res.status === 200) {
       toaster.success("Logged in!");
     }
+    return res;
   } catch (error) {
     console.error("error in login", error);
   }
@@ -117,7 +118,7 @@ const deleteUser = async (email: string) => {
     });
 
     if (res.status === 200) {
-      toaster.success("User deleted!");
+      toaster.success("Account deleted!");
     }
 
     return res;

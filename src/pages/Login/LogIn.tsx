@@ -9,6 +9,7 @@ import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
+import { toaster } from "evergreen-ui";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -23,16 +24,19 @@ const LogIn = () => {
     },
   });
 
-  useEffect(() => {
-    console.log("Form Errors:", form.formState.errors);
-  }, [form.formState]);
+  // useEffect(() => {
+  //   console.log("Form Errors:", form.formState.errors);
+  // }, [form.formState]);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      await login(data);
-      navigate("/");
+      const res = await login(data);
+      if (res?.status !== 200) {
+        toaster.warning("Login failed. Please check your details.");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
-      console.log("login page error", error);
       console.error(error);
     }
   };
@@ -51,6 +55,21 @@ const LogIn = () => {
             marginTop={"1.25rem"}
           >
             Log in
+          </PrimaryButton>
+
+          <h3>or</h3>
+
+          <PrimaryButton
+            type="submit"
+            backColor={primary}
+            buttonWidth={"9.375rem"}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/users/signup");
+            }}
+            className="primary__button primary__button-next"
+          >
+            Sign up
           </PrimaryButton>
         </form>
       </FormProvider>
