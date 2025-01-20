@@ -31,13 +31,4 @@ const createPost = async (post: PostSchema) => {
   }
 };
 
-const deletePost = async () => {
-  try {
-    // const res = await axios.delete(`${baseUrl}/posts/${postId}`);
-    // return res;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 export { getPosts, createPost, getPostById };

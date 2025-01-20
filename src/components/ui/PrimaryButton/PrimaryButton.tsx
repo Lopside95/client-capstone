@@ -13,8 +13,8 @@ const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
       backgroundColor={props.backColor || "white"}
       color="black"
       border="none"
-      height="2.5rem"
-      fontSize="1.25rem"
+      height={props.height || "2.5rem"}
+      fontSize={props.fontSize || "1.25rem"}
       marginTop={props.marginTop || ""}
     >
       {children}

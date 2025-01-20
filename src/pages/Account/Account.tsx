@@ -7,12 +7,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUserSchema, UpdateUserSchema } from "../../utils/types/schemas";
 import axios from "axios";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { primary } from "../Home/Home";
+import { primary, secondary, tertiary } from "../Home/Home";
 import "./Account.scss";
 import { baseUrl, deleteUser, updateUser } from "../../utils/api";
+import MyButton from "../../components/ui/Button/Button";
+import { Button, Dialog } from "evergreen-ui";
+import SecondaryButton from "../../components/DefaultButton/SecondaryButton";
 
 const Account = () => {
   const [user, setUser] = useState<User>();
+  const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
 
   const authToken = localStorage.getItem("authToken");
 
@@ -54,7 +58,7 @@ const Account = () => {
       firstName: user?.firstName,
       lastName: user?.lastName,
       email: user?.email,
-      password: "password",
+      password: "",
     },
   });
 
@@ -123,14 +127,61 @@ const Account = () => {
         >
           Update details
         </PrimaryButton>
-        <PrimaryButton
-          onClick={handleDelete}
+        <Dialog
+          hasClose={false}
+          shouldAutoFocus={false}
+          overlayProps={{
+            style: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+          }}
+          containerProps={{
+            className: "dialog",
+            style: { padding: 0 },
+          }}
+          contentContainerProps={{
+            className: "dialog__content ",
+            style: { padding: 0 },
+          }}
+          title="Are you sure?"
+          isShown={dialogIsShown}
+          // children={false}
+          hasFooter={false}
+          // hasClose={false}
+          onCloseComplete={() => setDialogIsShown(false)}
+
+          // hasFooter={false}
+        >
+          <div className="dialog__content">
+            <Button onClick={() => setDialogIsShown(false)} borderRadius={10}>
+              Cancel
+            </Button>
+            {/* <MyButton
+              onClick={() => setDialogIsShown(false)}
+              backColor={primary}
+              buttonWidth={"9.375rem"}
+            >
+              Cancel
+            </MyButton> */}
+            <PrimaryButton
+              fontSize={2}
+              onClick={handleDelete}
+              height={"2rem"}
+              backColor={tertiary}
+              // hoverColor={secondary}
+              buttonWidth={"9.375rem"}
+              className="primary__button primary__button-destructive"
+            >
+              Delete Account
+            </PrimaryButton>
+          </div>
+        </Dialog>
+        <MyButton
+          onClick={() => setDialogIsShown(true)}
           backColor={primary}
           buttonWidth={"9.375rem"}
-          className="primary__button primary__button-account"
+          className=""
         >
-          Delete account
-        </PrimaryButton>
+          Delete Account
+        </MyButton>
         <img src="/dog-2.svg" className="account__cover" />
       </form>
     </FormProvider>

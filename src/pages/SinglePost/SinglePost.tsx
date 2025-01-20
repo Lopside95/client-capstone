@@ -70,15 +70,9 @@ const SinglePost = () => {
     fetchPost();
   }, []);
 
-  // const form = useForm<DeletePostSchema>({
-  //   resolver: zodResolver(deletePostShchema),
-  //   defaultValues: {},
-  // });
-
   const handleDelete = async () => {
     try {
       const res = await axios.delete(`${baseUrl}/posts/${id}`, {
-        // data: id,
         headers: {
           authorisation: `Bearer ${authToken}`,
         },
@@ -95,16 +89,11 @@ const SinglePost = () => {
     }
   };
 
-  console.log("user", user);
-
-  console.log("post", post);
-
   if (!post) {
     return <div>Loading</div>;
   }
 
   return (
-    // <FormProvider {...form}>
     <main className="main posts">
       <section className="post">
         <Card {...post} />
@@ -121,7 +110,6 @@ const SinglePost = () => {
       )}
       <AddComment />
     </main>
-    // </FormProvider>
   );
 };
 

@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
 import "./App.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import CreatePost from "./pages/CreatePost/CreatePost";
@@ -15,7 +9,6 @@ import Account from "./pages/Account/Account";
 import LogIn from "./pages/Login/LogIn";
 import Footer from "./components/Footer/Footer";
 import SinglePost from "./pages/SinglePost/SinglePost";
-import { ArrowLeftIcon } from "evergreen-ui";
 import BackButton from "./components/ui/BackButton/BackButton";
 
 export const App = () => {
@@ -25,6 +18,7 @@ export const App = () => {
     <>
       <FormProvider {...form}>
         <BrowserRouter>
+          <BackButton />
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />

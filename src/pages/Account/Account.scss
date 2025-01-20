@@ -24,3 +24,26 @@
 .page-title {
   padding-left: 1rem;
 }
+
+.dialog {
+  &__content {
+    padding: 0;
+    @include flex($direction: row, $justify: space-around, $align: unset);
+
+    @include tablet {
+      justify-content: space-between;
+      padding: 0 2rem;
+      // @include flex($direction: row, $justify: space-between, $align: unset);
+    }
+    // width: 100%;
+    // padding-top: 0;
+    // padding-left: 0;
+    // margin: 0;
+  }
+
+  // &__title {
+  //   &--bold {
+  //     font-weight: bold;
+  //   }
+  // }
+}
