@@ -147,22 +147,33 @@ const Account = () => {
           onCloseComplete={() => setDialogIsShown(false)}
         >
           <div className="dialog__content">
-            <Button onClick={() => setDialogIsShown(false)} borderRadius={10}>
-              Cancel
-            </Button>
-            <PrimaryButton
-              onClick={(e) => {
-                e.preventDefault();
-                setIsLoading(true);
-                handleDelete();
-              }}
-              height={"2rem"}
-              backColor={tertiary}
-              buttonWidth={"9.375rem"}
-              className="primary__button primary__button-destructive"
-            >
-              {isLoading ? <Spinner /> : "Delete Account"}
-            </PrimaryButton>
+            {isLoading ? (
+              <Spinner size={30} />
+            ) : (
+              <>
+                <Button
+                  onClick={() => setDialogIsShown(false)}
+                  borderRadius={10}
+                >
+                  Cancel
+                </Button>
+                <PrimaryButton
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsLoading(true);
+                    handleDelete();
+                  }}
+                  height={"2rem"}
+                  backColor={isLoading ? "#ffffff" : tertiary}
+                  buttonWidth={"9.375rem"}
+                  className={`primary__button primary__button-destructive ${
+                    isLoading && "hidden-button"
+                  }`}
+                >
+                  Delete Account
+                </PrimaryButton>
+              </>
+            )}
           </div>
         </Dialog>
         <MyButton
