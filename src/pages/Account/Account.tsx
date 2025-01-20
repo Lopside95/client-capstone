@@ -11,12 +11,12 @@ import { primary, secondary, tertiary } from "../Home/Home";
 import "./Account.scss";
 import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 import MyButton from "../../components/ui/Button/Button";
-import { Button, Dialog } from "evergreen-ui";
-import SecondaryButton from "../../components/DefaultButton/SecondaryButton";
+import { Button, Dialog, Spinner } from "evergreen-ui";
 
 const Account = () => {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>(null);
   const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const authToken = localStorage.getItem("authToken");
 
@@ -58,7 +58,7 @@ const Account = () => {
       firstName: user?.firstName,
       lastName: user?.lastName,
       email: user?.email,
-      password: "",
+      password: user?.password || "pass123",
     },
   });
 
@@ -143,42 +143,35 @@ const Account = () => {
           }}
           title="Are you sure?"
           isShown={dialogIsShown}
-          // children={false}
           hasFooter={false}
-          // hasClose={false}
           onCloseComplete={() => setDialogIsShown(false)}
-
-          // hasFooter={false}
         >
           <div className="dialog__content">
             <Button onClick={() => setDialogIsShown(false)} borderRadius={10}>
               Cancel
             </Button>
-            {/* <MyButton
-              onClick={() => setDialogIsShown(false)}
-              backColor={primary}
-              buttonWidth={"9.375rem"}
-            >
-              Cancel
-            </MyButton> */}
             <PrimaryButton
-              fontSize={2}
-              onClick={handleDelete}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsLoading(true);
+                handleDelete();
+              }}
               height={"2rem"}
               backColor={tertiary}
-              // hoverColor={secondary}
               buttonWidth={"9.375rem"}
               className="primary__button primary__button-destructive"
             >
-              Delete Account
+              {isLoading ? <Spinner /> : "Delete Account"}
             </PrimaryButton>
           </div>
         </Dialog>
         <MyButton
-          onClick={() => setDialogIsShown(true)}
+          onClick={(e) => {
+            e.preventDefault();
+            setDialogIsShown(true);
+          }}
           backColor={primary}
           buttonWidth={"9.375rem"}
-          className=""
         >
           Delete Account
         </MyButton>
