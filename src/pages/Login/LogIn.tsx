@@ -10,6 +10,8 @@ import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
 import { toaster } from "evergreen-ui";
+import MyButton from "../../components/ui/Button/Button";
+import SecondaryButton from "../../components/DefaultButton/SecondaryButton";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -19,8 +21,8 @@ const LogIn = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: user?.email || "james@email.com",
-      password: "pass123",
+      email: user?.email || "",
+      password: "",
     },
   });
 
@@ -50,19 +52,16 @@ const LogIn = () => {
           <PrimaryButton
             type="submit"
             backColor={primary}
-            buttonWidth={"9.375rem"}
             className="primary__button primary__button-next"
             marginTop={"1.25rem"}
           >
             Log in
           </PrimaryButton>
 
-          <h3>or</h3>
+          <h3 className="button-separator">or</h3>
 
-          <PrimaryButton
-            type="submit"
-            backColor={primary}
-            buttonWidth={"9.375rem"}
+          <MyButton
+            fontSize="2rem"
             onClick={(e) => {
               e.preventDefault();
               navigate("/users/signup");
@@ -70,7 +69,7 @@ const LogIn = () => {
             className="primary__button primary__button-next"
           >
             Sign up
-          </PrimaryButton>
+          </MyButton>
         </form>
       </FormProvider>
     </div>

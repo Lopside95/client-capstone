@@ -16,14 +16,25 @@
       font-weight: 500;
     }
 
+    &-right {
+      @include flex($direction: row, $justify: unset, $align: center);
+      gap: 0.5rem;
+    }
+
     &-date {
       font-size: small;
       font-weight: 500;
     }
 
-    &-right {
-      @include flex($direction: row, $justify: unset, $align: center);
-      gap: 0.5rem;
+    &-map {
+      margin: 0;
+      padding: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+
+      &-image {
+        width: 1.5rem;
+      }
     }
   }
 
@@ -63,6 +74,7 @@
 
     &-label {
       margin-bottom: 0;
+      font-weight: 500;
     }
 
     &-content {

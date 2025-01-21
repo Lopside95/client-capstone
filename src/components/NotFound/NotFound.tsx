@@ -11,11 +11,7 @@ const NotFound = ({ content }: NotFoundProps) => {
       <img className="not-found__image" src="/src/assets/images/dog-404.png" />
       <h2 className="not-found__subheading">
         {content ? content : "Something is missing"}
-        {/* {content ? content + "is missing" : "Something is missing"}{" "} */}
       </h2>
-      {/* <h2 className="not-found__subheading">{`${
-        content || "Something"
-      } is missing`}</h2> */}
     </div>
   );
 };

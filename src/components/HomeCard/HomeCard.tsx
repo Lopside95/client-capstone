@@ -43,8 +43,16 @@ const HomeCard = (post: Post) => {
       <article className="homecard__heading">
         <h1 className="homecard__heading-title">{title}</h1>
         <div className="homecard__heading-right">
-          <Link target="_blank" to={googleMapsLocation}>
-            <img src="/src/assets/images/maps-thumb.png" width={40} />
+          <Link
+            className="homecard__heading-map"
+            target="_blank"
+            to={googleMapsLocation}
+          >
+            <img
+              src="/src/assets/images/maps-thumb.png"
+              alt="Map icon and link"
+              className="homecard__heading-map-image"
+            />
           </Link>
           <MyPill className="homecard__heading-date">
             {formatTime(created_at)}

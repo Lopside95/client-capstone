@@ -9,7 +9,7 @@ const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
       className={props.className}
       onClick={props.onClick}
       appearance="primary"
-      width={props.buttonWidth || ""}
+      width={props.buttonWidth || "9.375rem"}
       backgroundColor={props.backColor || "white"}
       color="black"
       border="none"

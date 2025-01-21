@@ -8,6 +8,7 @@ import Select from "react-select";
 import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -63,7 +64,6 @@ const Home = () => {
             Create a new post
           </PrimaryButton>
         </section>
-
         <section className="home-posts">
           <Select
             isMulti
@@ -83,10 +83,7 @@ const Home = () => {
           {!filteredPosts ? (
             <h2 className="home-posts__none">No posts to show</h2>
           ) : selectedTags && filteredPosts.length === 0 ? (
-            <h2 className="home-posts__no-match">
-              No posts match{" "}
-              {selectedTags.length > 1 ? "those tags" : "that tag"}
-            </h2>
+            <NotFound content="No posts have that tag" />
           ) : (
             <article className="home-posts__content">
               {filteredPosts.map((post) => {

@@ -65,9 +65,9 @@ const AddComment = () => {
     },
   });
 
-  useEffect(() => {
-    console.log("Form Errors:", form.formState.errors);
-  }, [form.formState]);
+  // useEffect(() => {
+  //   console.log("Form Errors:", form.formState.errors);
+  // }, [form.formState]);
 
   const onSubmit: SubmitHandler<CommentSchema> = async (
     data: CommentSchema

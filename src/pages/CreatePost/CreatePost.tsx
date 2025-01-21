@@ -178,14 +178,15 @@ const CreatePost = () => {
           }}
           placeholder="Select tags"
         />
-
+        <Label fontSize={16} fontWeight={400} className="map-label">
+          Location
+        </Label>
         <section className="map-container-div">
           <MapComponent
             userMarkers={userMarkers}
             setUserMarkers={setUserMarkers}
           />
         </section>
-
         <PrimaryButton
           type="submit"
           backColor={primary}

@@ -88,7 +88,7 @@ const SinglePost = () => {
   };
 
   if (!post) {
-    return <NotFound content="Couldn't find that post." />;
+    return <NotFound content="Couldn't find that post" />;
   }
 
   return (

@@ -31,7 +31,6 @@ const Input = ({
         defaultValue={defaultValue}
         width={"100%"}
         className={className || "input"}
-        backgroundColor={secondary}
         border="none"
         type={type}
         placeholder={placeholder}
