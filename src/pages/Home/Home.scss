@@ -27,10 +27,14 @@
 .subnav {
   @include flex($direction: column, $justify: center, $align: center);
 
-  height: 25rem;
+  height: 20rem;
   width: 100%;
   background: $primary;
   gap: 5rem;
+
+  @include desktop {
+    height: 25rem;
+  }
 
   &__button {
     width: 10rem;

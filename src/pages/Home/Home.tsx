@@ -3,12 +3,12 @@ import "./Home.scss";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { getPosts } from "../../utils/posts";
-import { Post, UserComment } from "../../utils/types/posts";
+import { Post } from "../../utils/types/posts";
 import Select from "react-select";
 import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
-import { Spinner } from "evergreen-ui";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -61,10 +61,9 @@ const Home = () => {
             className="subnav__button"
             onClick={() => navigate("/posts/create-post")}
           >
-            Create a new post
+            New Post
           </PrimaryButton>
         </section>
-
         <section className="home-posts">
           <Select
             isMulti
@@ -79,16 +78,12 @@ const Home = () => {
                 }))
               );
             }}
-            placeholder="Select tags"
+            placeholder="Select Tags"
           />
-
           {!filteredPosts ? (
-            <h2 className="home-posts__none">No posts to show</h2>
+            <h2 className="home-posts__none">No Posts</h2>
           ) : selectedTags && filteredPosts.length === 0 ? (
-            <h2 className="home-posts__no-match">
-              No posts match{" "}
-              {selectedTags.length > 1 ? "those tags" : "that tag"}
-            </h2>
+            <NotFound content="No posts have that tag" />
           ) : (
             <article className="home-posts__content">
               {filteredPosts.map((post) => {

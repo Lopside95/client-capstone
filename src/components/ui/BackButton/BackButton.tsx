@@ -7,7 +7,7 @@ const BackButton = () => {
   return (
     <ArrowLeftIcon
       position="absolute"
-      size={30}
+      size={28}
       top={15}
       left={15}
       cursor="pointer"

@@ -24,3 +24,15 @@
 .page-title {
   padding-left: 1rem;
 }
+
+.dialog {
+  &__content {
+    padding: 0;
+    @include flex($direction: row, $justify: space-around, $align: unset);
+
+    @include tablet {
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+  }
+}

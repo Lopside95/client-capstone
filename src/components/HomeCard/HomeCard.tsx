@@ -1,8 +1,7 @@
 import MyPill from "../ui/Pill/MyPill";
 import { Post } from "../../utils/types/posts";
 import { Link, useLocation, useNavigate } from "react-router";
-import { Button, MapMarkerIcon } from "evergreen-ui";
-import { primary } from "../../pages/Home/Home";
+import { Button } from "evergreen-ui";
 import "./HomeCard.scss";
 const HomeCard = (post: Post) => {
   const navigate = useNavigate();
@@ -44,8 +43,16 @@ const HomeCard = (post: Post) => {
       <article className="homecard__heading">
         <h1 className="homecard__heading-title">{title}</h1>
         <div className="homecard__heading-right">
-          <Link target="_blank" to={googleMapsLocation}>
-            <MapMarkerIcon color={primary} />
+          <Link
+            className="homecard__heading-map"
+            target="_blank"
+            to={googleMapsLocation}
+          >
+            <img
+              src="/src/assets/images/maps-thumb.png"
+              alt="Map icon and link"
+              className="homecard__heading-map-image"
+            />
           </Link>
           <MyPill className="homecard__heading-date">
             {formatTime(created_at)}
@@ -81,6 +88,7 @@ const HomeCard = (post: Post) => {
           return (
             <div key={comment.id} className="homecard__comment">
               <p>{comment.content} </p>
+              <p>{comment.userId}</p>
               <MyPill>{formatTime(comment.created_at)}</MyPill>
             </div>
           );

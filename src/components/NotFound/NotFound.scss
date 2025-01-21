@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+
+.not-found {
+  @include flex($direction: column, $justify: unset, $align: center);
+  padding-top: 1rem;
+  height: 100%;
+  width: 100%;
+
+  @include tablet {
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  &__image {
+    width: 90%;
+  }
+}

@@ -1,13 +1,7 @@
 import axios from "axios";
-import {
-  LoginSchema,
-  PostSchema,
-  UpdateUserSchema,
-  UserSchema,
-} from "./types/schemas";
+import { LoginSchema, UpdateUserSchema, UserSchema } from "./types/schemas";
 import { User } from "./types/posts";
 import { toaster } from "evergreen-ui";
-import { useNavigate } from "react-router";
 
 export const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -82,6 +76,7 @@ const login = async (loginData: LoginSchema) => {
     if (res.status === 200) {
       toaster.success("Logged in!");
     }
+    return res;
   } catch (error) {
     console.error("error in login", error);
   }
@@ -105,7 +100,31 @@ const getAuthedUser = async () => {
 };
 
 const updateUser = async (updateData: UpdateUserSchema) => {
-  const res = await axios.put(`${baseUrl}/users/account`, updateData);
+  try {
+    const res = await axios.put(`${baseUrl}/users/account`, updateData);
+
+    if (res.status === 200) {
+      toaster.success("Details updated successfully!");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteUser = async (email: string) => {
+  try {
+    const res = await axios.delete(`${baseUrl}/users/account`, {
+      data: { email },
+    });
+
+    if (res.status === 200) {
+      toaster.success("Account deleted!");
+    }
+
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export {
@@ -117,4 +136,5 @@ export {
   login,
   getAuthedUser,
   updateUser,
+  deleteUser,
 };

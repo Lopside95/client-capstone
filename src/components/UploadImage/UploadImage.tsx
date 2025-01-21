@@ -1,4 +1,4 @@
-import { FileUploader, FileUploaderProps } from "evergreen-ui";
+import { FileUploader } from "evergreen-ui";
 import React from "react";
 import { useController } from "react-hook-form";
 

@@ -15,7 +15,7 @@
   &__tags {
     &-label {
       align-self: flex-start;
-      padding-left: 1rem;
+      padding-left: 0.9rem;
       font-weight: 300;
 
       @include desktop {
@@ -41,6 +41,11 @@
   @include desktop {
     width: 95%;
   }
+}
+
+.map-label {
+  padding: 1rem 0.7rem 0.5rem;
+  align-self: start;
 }
 
 .login-message {

@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Input from "../../components/ui/Input/Input";
 import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/ui/Button/Button";
 import { loginSchema, LoginSchema } from "../../utils/types/schemas";
 import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { toaster } from "evergreen-ui";
 import { useNavigate } from "react-router";
+import { toaster } from "evergreen-ui";
+import MyButton from "../../components/ui/Button/Button";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -25,16 +25,19 @@ const LogIn = () => {
     },
   });
 
-  useEffect(() => {
-    console.log("Form Errors:", form.formState.errors);
-  }, [form.formState]);
+  // useEffect(() => {
+  //   console.log("Form Errors:", form.formState.errors);
+  // }, [form.formState]);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
-      await login(data);
-      navigate("/");
+      const res = await login(data);
+      if (res?.status !== 200) {
+        toaster.warning("Login failed. Please check your details.");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
-      console.log("login page error", error);
       console.error(error);
     }
   };
@@ -48,12 +51,22 @@ const LogIn = () => {
           <PrimaryButton
             type="submit"
             backColor={primary}
-            buttonWidth={"9.375rem"}
             className="primary__button primary__button-next"
             marginTop={"1.25rem"}
           >
-            Log in
+            Log In
           </PrimaryButton>
+          <h3 className="button-separator">or</h3>
+          <MyButton
+            fontSize="2rem"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/users/signup");
+            }}
+            className="primary__button primary__button-next"
+          >
+            Sign Up
+          </MyButton>
         </form>
       </FormProvider>
     </div>

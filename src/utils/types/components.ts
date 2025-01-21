@@ -1,20 +1,5 @@
-import {
-  BadgeProps,
-  BoxComponent,
-  PillOwnProps,
-  PillProps,
-  TextInputFieldProps,
-  TextInputOwnProps,
-} from "evergreen-ui";
-import { ButtonHTMLAttributes } from "react";
+import { BadgeProps, PillProps, TextInputOwnProps } from "evergreen-ui";
 import { PostType } from "./enums";
-
-// export type TextProps = {
-//   name: string;
-//   label?: string;
-//   placeholder?: string;
-//   className?: string;
-// };
 
 export type TagProps = {
   onClick?: () => void;
@@ -24,6 +9,7 @@ export type TagProps = {
 export interface TextProps extends TextInputOwnProps {
   name: string;
   label?: string;
+  labelName?: string;
   className?: string;
   type?: string;
   isRequired?: boolean;
@@ -37,6 +23,8 @@ export interface MyButtonProps
   backColor?: string;
   buttonWidth?: string | number;
   marginTop?: string | number;
+  fontSize?: string | number;
+  height?: string | number;
 }
 
 export interface MyPillProps extends PillProps {

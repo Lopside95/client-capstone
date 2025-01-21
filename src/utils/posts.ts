@@ -1,6 +1,5 @@
 import axios from "axios";
-import { PostSchema, UserSchema } from "./types/schemas";
-import { User } from "./types/posts";
+import { PostSchema } from "./types/schemas";
 export const baseUrl = import.meta.env.VITE_API_URL;
 
 const getPosts = async () => {
