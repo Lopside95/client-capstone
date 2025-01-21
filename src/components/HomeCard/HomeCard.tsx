@@ -3,6 +3,8 @@ import { Post } from "../../utils/types/posts";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Button } from "evergreen-ui";
 import "./HomeCard.scss";
+import mapsThumb from "../../assets/images/maps-thumb.png";
+
 const HomeCard = (post: Post) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,7 +51,7 @@ const HomeCard = (post: Post) => {
             to={googleMapsLocation}
           >
             <img
-              src="/src/assets/images/maps-thumb.png"
+              src={mapsThumb}
               alt="Map icon and link"
               className="homecard__heading-map-image"
             />
