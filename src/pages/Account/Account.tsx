@@ -12,6 +12,7 @@ import "./Account.scss";
 import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 import MyButton from "../../components/ui/Button/Button";
 import { Button, Dialog, Spinner } from "evergreen-ui";
+import NotFound from "../../components/NotFound/NotFound";
 
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -95,7 +96,7 @@ const Account = () => {
   };
 
   if (!user) {
-    return <div>404 Page Not Found</div>;
+    return <NotFound />;
   }
 
   return (

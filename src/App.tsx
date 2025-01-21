@@ -10,6 +10,7 @@ import LogIn from "./pages/Login/LogIn";
 import Footer from "./components/Footer/Footer";
 import SinglePost from "./pages/SinglePost/SinglePost";
 import BackButton from "./components/ui/BackButton/BackButton";
+import NotFound from "./components/NotFound/NotFound";
 
 export const App = () => {
   const form = useForm();
@@ -27,6 +28,7 @@ export const App = () => {
             <Route path="/users/signup" element={<SignUp />} />
             <Route path="/users/login" element={<LogIn />} />
             <Route path="/users/account" element={<Account />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </BrowserRouter>

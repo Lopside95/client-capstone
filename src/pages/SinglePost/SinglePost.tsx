@@ -10,6 +10,7 @@ import { baseUrl } from "../../utils/api";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { toaster } from "evergreen-ui";
+import NotFound from "../../components/NotFound/NotFound";
 
 const SinglePost = () => {
   const [post, setPost] = useState<Post>();
@@ -87,7 +88,7 @@ const SinglePost = () => {
   };
 
   if (!post) {
-    return <div>Loading</div>;
+    return <NotFound content="Couldn't find that post." />;
   }
 
   return (
