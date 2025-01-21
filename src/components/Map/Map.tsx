@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import { MyMap, UserMarker } from "../../utils/types/posts";
+import { MyMap } from "../../utils/types/posts";
 import { primary } from "../../pages/Home/Home";
-import { Spinner } from "evergreen-ui";
 import Button from "../ui/Button/Button";
-import { Map, MapMouseEvent, IControl, ControlPosition } from "mapbox-gl";
+import { Map, MapMouseEvent, IControl } from "mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";

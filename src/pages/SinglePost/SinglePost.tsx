@@ -7,7 +7,6 @@ import { useNavigate, useParams } from "react-router";
 import AddComment from "../../components/AddComment/AddComment";
 import axios from "axios";
 import { baseUrl } from "../../utils/api";
-import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { toaster } from "evergreen-ui";
 import NotFound from "../../components/NotFound/NotFound";
@@ -120,14 +119,6 @@ const SinglePost = () => {
             Delete Post
           </MyButton>
         </>
-        // <PrimaryButton
-        //   backColor={primary}
-        //   buttonWidth={"9.375rem"}
-        //   className="primary__button primary__button-next"
-        //   onClick={handleDelete}
-        // >
-        //   Delete post
-        // </PrimaryButton>
       )}
       <AddComment />
     </main>

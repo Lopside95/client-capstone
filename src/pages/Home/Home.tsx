@@ -61,7 +61,7 @@ const Home = () => {
             className="subnav__button"
             onClick={() => navigate("/posts/create-post")}
           >
-            Create a new post
+            New Post
           </PrimaryButton>
         </section>
         <section className="home-posts">
@@ -78,10 +78,10 @@ const Home = () => {
                 }))
               );
             }}
-            placeholder="Select tags"
+            placeholder="Select Tags"
           />
           {!filteredPosts ? (
-            <h2 className="home-posts__none">No posts to show</h2>
+            <h2 className="home-posts__none">No Posts</h2>
           ) : selectedTags && filteredPosts.length === 0 ? (
             <NotFound content="No posts have that tag" />
           ) : (

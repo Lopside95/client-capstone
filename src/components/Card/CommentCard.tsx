@@ -23,8 +23,7 @@ const CommentCard = (post: Post) => {
     latitude,
     longitude,
     id,
-  }: // comments,
-  Post = post;
+  }: Post = post;
 
   const formatTime = (createdAt: Date) => {
     const date = new Date(created_at);
@@ -33,8 +32,6 @@ const CommentCard = (post: Post) => {
   };
 
   const comments = post.comments;
-
-  // formatTime();
 
   return (
     <section
@@ -45,10 +42,7 @@ const CommentCard = (post: Post) => {
     >
       <article className="card__heading">
         <h1 className="card__heading-title">{title}</h1>
-        {/* <MyPill color="red">{type}</MyPill> */}
         <MyPill className="card__heading-date">{formatTime(created_at)}</MyPill>
-        {/* <MyPill>{status}</MyPill> */}
-        {/* <MyPill>{status}</MyPill> */}
       </article>
       <article className="card__body">
         <div className="card__desc">
@@ -56,7 +50,6 @@ const CommentCard = (post: Post) => {
           <p className="card__desc-content">{description}</p>
         </div>
         <img className="card__img" src={img} />
-        {/* <img className="card__img" src={`${baseUrl}/images/${img}`} /> */}
       </article>
       <div className="card__bottom">
         {tags?.map((tag) => (
@@ -86,18 +79,6 @@ const CommentCard = (post: Post) => {
             );
           })}
       </article>
-      {/* <article className="comments">
-        <h5 className="comments-header">Comments</h5>
-        {comments &&
-          comments?.map((comment) => {
-            return (
-              <div key={comment.id} className="comment">
-                <p>{comment.content} </p>
-                <MyPill>{formatTime(comment.created_at)}</MyPill>
-              </div>
-            );
-          })}
-      </article> */}
     </section>
   );
 };

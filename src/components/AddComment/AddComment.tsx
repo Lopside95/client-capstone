@@ -97,7 +97,7 @@ const AddComment = () => {
             onClick={() => navigate("/users/login")}
             className="login-message"
           >
-            Log in
+            Log In
           </span>{" "}
           to comment
         </h4>

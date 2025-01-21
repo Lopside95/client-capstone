@@ -19,8 +19,8 @@ const postSchema = z.object({
 });
 
 const userSchema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
   email: z.string().trim().email().toLowerCase(),
   password: z
     .string()
@@ -37,7 +37,9 @@ const updateUserSchema = z.object({
 
 const loginSchema = z.object({
   email: z.string().email().toLowerCase(),
-  password: z.string(),
+  password: z
+    .string()
+    .min(5, { message: "Password must be at least 5 characters" }),
 });
 
 const commentSchema = z.object({

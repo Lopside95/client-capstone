@@ -13,7 +13,7 @@ const NotFoundPage = ({ content }: NotFoundProps) => {
         src="/src/assets/images/dog-404.png"
       />
       <h2 className="not-found-page__subheading">
-        {content ? content : "We can't this page"}
+        {content ? content : "We can't find this page"}
       </h2>
     </div>
   );

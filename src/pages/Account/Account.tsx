@@ -13,6 +13,7 @@ import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 import MyButton from "../../components/ui/Button/Button";
 import { Button, Dialog, Spinner } from "evergreen-ui";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import MyDialog from "../../components/Dialog/MyDialog";
 
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -126,57 +127,16 @@ const Account = () => {
           buttonWidth={"9.375rem"}
           className="primary__button primary__button-account"
         >
-          Update details
+          Update Details
         </PrimaryButton>
-        <Dialog
-          hasClose={false}
-          shouldAutoFocus={false}
-          overlayProps={{
-            style: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
-          }}
-          containerProps={{
-            className: "dialog",
-            style: { padding: 0 },
-          }}
-          contentContainerProps={{
-            className: "dialog__content ",
-            style: { padding: 0 },
-          }}
-          title="Are you sure?"
-          isShown={dialogIsShown}
-          hasFooter={false}
-          onCloseComplete={() => setDialogIsShown(false)}
-        >
-          <div className="dialog__content">
-            {isLoading ? (
-              <Spinner size={30} />
-            ) : (
-              <>
-                <Button
-                  onClick={() => setDialogIsShown(false)}
-                  borderRadius={10}
-                >
-                  Cancel
-                </Button>
-                <PrimaryButton
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsLoading(true);
-                    handleDelete();
-                  }}
-                  height={"2rem"}
-                  backColor={tertiary}
-                  buttonWidth={"9.375rem"}
-                  className={`primary__button primary__button-destructive ${
-                    isLoading && "hidden-button"
-                  }`}
-                >
-                  Delete Account
-                </PrimaryButton>
-              </>
-            )}
-          </div>
-        </Dialog>
+        <MyDialog
+          handleDelete={handleDelete}
+          dialogIsShown={dialogIsShown}
+          setDialogIsShown={setDialogIsShown}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          item="Account"
+        />
         <MyButton
           onClick={(e) => {
             e.preventDefault();
