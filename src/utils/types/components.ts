@@ -9,6 +9,7 @@ export type TagProps = {
 export interface TextProps extends TextInputOwnProps {
   name: string;
   label?: string;
+  labelName?: string;
   className?: string;
   type?: string;
   isRequired?: boolean;

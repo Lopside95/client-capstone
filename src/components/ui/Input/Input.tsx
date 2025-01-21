@@ -3,6 +3,7 @@ import { TextProps } from "../../../utils/types/components";
 import { Label, TextInput } from "evergreen-ui";
 import "./Input.scss";
 import { secondary } from "../../../pages/Home/Home";
+import { useEffect, useState } from "react";
 
 const Input = ({
   name,
@@ -14,17 +15,17 @@ const Input = ({
 }: TextProps) => {
   const { register, getFieldState, formState } = useFormContext();
 
-  const myState = getFieldState(name);
+  const formError = formState.errors[name];
 
   return (
     <div className="input__container">
       <Label
         fontSize={16}
         fontWeight={400}
-        color={!myState.invalid ? "" : "orange"}
-        htmlFor={label}
+        color={!formError ? "" : "orange"}
+        htmlFor={name}
       >
-        {myState.invalid ? `${label} is required` : label}
+        {formError ? formError.message?.toString() : label}
       </Label>
       <TextInput
         fontSize={16}

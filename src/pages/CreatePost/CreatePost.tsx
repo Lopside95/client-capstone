@@ -1,10 +1,4 @@
-import {
-  FormProvider,
-  SubmitHandler,
-  useForm,
-  FieldValues,
-  FieldErrors,
-} from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
 import { useEffect, useState } from "react";
@@ -141,14 +135,14 @@ const CreatePost = () => {
               onClick={() => navigate("/users/login")}
               className="login-message"
             >
-              Log in
+              Log In
             </span>{" "}
             or{" "}
             <span
               onClick={() => navigate("/users/signup")}
               className="login-message"
             >
-              sign up
+              Sign Up
             </span>{" "}
             to create posts
           </h3>
@@ -176,7 +170,7 @@ const CreatePost = () => {
             }));
             form.setValue("tags", selectedTags);
           }}
-          placeholder="Select tags"
+          placeholder="Select Tags"
         />
         <Label fontSize={16} fontWeight={400} className="map-label">
           Location

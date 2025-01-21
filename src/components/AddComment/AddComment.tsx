@@ -97,7 +97,7 @@ const AddComment = () => {
             onClick={() => navigate("/users/login")}
             className="login-message"
           >
-            Log in
+            Log In
           </span>{" "}
           to comment
         </h4>
@@ -107,7 +107,7 @@ const AddComment = () => {
 
   return (
     <FormProvider {...form}>
-      <form className="main add-comment" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="add-comment" onSubmit={form.handleSubmit(onSubmit)}>
         {!user ? (
           <h4>
             {" "}
@@ -127,7 +127,7 @@ const AddComment = () => {
           buttonWidth={"9.375rem"}
           className="primary__button primary__button-comment"
         >
-          Comment
+          Add Comment
         </PrimaryButton>
       </form>
     </FormProvider>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Input from "../../components/ui/Input/Input";
 import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
@@ -11,7 +11,6 @@ import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
 import { toaster } from "evergreen-ui";
 import MyButton from "../../components/ui/Button/Button";
-import SecondaryButton from "../../components/DefaultButton/SecondaryButton";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -55,11 +54,9 @@ const LogIn = () => {
             className="primary__button primary__button-next"
             marginTop={"1.25rem"}
           >
-            Log in
+            Log In
           </PrimaryButton>
-
           <h3 className="button-separator">or</h3>
-
           <MyButton
             fontSize="2rem"
             onClick={(e) => {
@@ -68,7 +65,7 @@ const LogIn = () => {
             }}
             className="primary__button primary__button-next"
           >
-            Sign up
+            Sign Up
           </MyButton>
         </form>
       </FormProvider>

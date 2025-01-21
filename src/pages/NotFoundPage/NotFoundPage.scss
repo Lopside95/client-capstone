@@ -1,7 +1,5 @@
 @use "../../styles/partials/mixins" as *;
 .not-found-page {
-  //   @include flex($direction: row, $justify: unset, $align: unset);
-
   @include flex($direction: column, $justify: unset, $align: center);
   padding-top: 4rem;
   height: 100vh;
