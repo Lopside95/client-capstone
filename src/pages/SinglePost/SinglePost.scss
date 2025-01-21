@@ -5,5 +5,5 @@
 .posts {
   @include flex($direction: column, $align: unset, $justify: unset);
 
-  min-height: 100vh;
+  // min-height: 100vh;
 }

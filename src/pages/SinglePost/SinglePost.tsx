@@ -11,11 +11,14 @@ import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { toaster } from "evergreen-ui";
 import NotFound from "../../components/NotFound/NotFound";
+import MyDialog from "../../components/Dialog/MyDialog";
+import MyButton from "../../components/ui/Button/Button";
 
 const SinglePost = () => {
   const [post, setPost] = useState<Post>();
   const [comments, setComments] = useState<UserComment[] | null>(null);
-
+  const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
   const authToken = localStorage.getItem("authToken");
 
@@ -97,14 +100,34 @@ const SinglePost = () => {
         <Card {...post} />
       </section>
       {post.user_id === user?.id && (
-        <PrimaryButton
-          backColor={primary}
-          buttonWidth={"9.375rem"}
-          className="primary__button primary__button-next"
-          onClick={handleDelete}
-        >
-          Delete post
-        </PrimaryButton>
+        <>
+          <MyDialog
+            handleDelete={handleDelete}
+            dialogIsShown={dialogIsShown}
+            setDialogIsShown={setDialogIsShown}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            item="Post"
+          />
+          <MyButton
+            onClick={(e) => {
+              e.preventDefault();
+              setDialogIsShown(true);
+            }}
+            backColor={primary}
+            buttonWidth={"9.375rem"}
+          >
+            Delete Post
+          </MyButton>
+        </>
+        // <PrimaryButton
+        //   backColor={primary}
+        //   buttonWidth={"9.375rem"}
+        //   className="primary__button primary__button-next"
+        //   onClick={handleDelete}
+        // >
+        //   Delete post
+        // </PrimaryButton>
       )}
       <AddComment />
     </main>
