@@ -1,13 +1,35 @@
-## Client repo of Find My Dog 
-### Server: https://github.com/Lopside95/server-capstone
+## Find My Dog client repository
 
-### Made with TypeScript, React, Sass, React-Hook-Form, Zod
+Find My Dog is a web-app that allows people to report missing dogs and list sightings of lost or stray dogs.
 
-### The live site is available here: https://findmydog.vercel.app
+TypeScript | React | Sass | Axios
 
-## To run locally: 
-#### 1: Clone repository.
-#### 2: Add .env variables as shown in the .env.example. 
-#### 3: Install dependencies with 'pnpm i'.
-#### 4: 'pnpm run dev'.
+<p>
+  <img
+      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+      width="40px"
+      height="40px"
+    />
+  &nbsp;
+    <img
+      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      width="40px"
+      height="40px"
+    />
+  &nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+      width="40px"
+      height="40px"
+    />
+  &nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg"
+              width="40px"
+     height="40px"
+              />
+  &nbsp;
 
+</p>
+
+### https://findmydog.vercel.app
+
+Server repo: https://github.com/Lopside95/findmydog-server
