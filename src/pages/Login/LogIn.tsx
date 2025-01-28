@@ -9,7 +9,7 @@ import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
-import { toaster } from "evergreen-ui";
+import { Button, toaster } from "evergreen-ui";
 import MyButton from "../../components/ui/Button/Button";
 import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
 
@@ -62,7 +62,20 @@ const LogIn = () => {
             Log In
           </PrimaryButton>
           <br />
-          <MyButton
+          <Button
+            fontSize={14}
+            padding={10}
+            borderRadius={30}
+            color="black"
+            intent="success"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/users/signup");
+            }}
+          >
+            Sign Up
+          </Button>
+          {/* <MyButton
             fontSize="2rem"
             onClick={(e) => {
               e.preventDefault();
@@ -71,7 +84,7 @@ const LogIn = () => {
             className="primary__button primary__button-next"
           >
             Sign Up
-          </MyButton>
+          </MyButton> */}
         </form>
       </FormProvider>
     </div>

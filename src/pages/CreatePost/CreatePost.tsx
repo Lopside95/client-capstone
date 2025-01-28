@@ -126,15 +126,29 @@ const CreatePost = () => {
     }
   }, []);
 
-  setTimeout(() => {
-    setToastShown(false);
-  }, 3000);
+  // setTimeout(() => {
+  //   setToastShown(false);
+  // }, 3000);
 
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         {/* {!isLoggedIn && <Toaster />} */}
-        {toastShown && !isLoggedIn && (
+
+        {!isLoggedIn && toastShown && (
+          <Button
+            marginTop={-10}
+            fontSize={14}
+            padding={10}
+            borderRadius={30}
+            color="black"
+            intent="success"
+            onClick={() => navigate("/users/login")}
+          >
+            Log In
+          </Button>
+        )}
+        {/* {toastShown && !isLoggedIn && (
           <InlineAlert
             intent="warning"
             className="login-alert"
@@ -145,7 +159,7 @@ const CreatePost = () => {
               </p>
             }
           />
-        )}
+        )} */}
         <Input label="Title" name="title" placeholder="Title" />
         <Input
           label="Description"

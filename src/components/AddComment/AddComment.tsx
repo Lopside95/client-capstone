@@ -91,17 +91,6 @@ const AddComment = () => {
   if (!user) {
     return (
       <div style={{ margin: "0 auto" }}>
-        {/* <Button
-          fontSize={14}
-          appearance="minimal"
-          intent="success"
-          onClick={() => navigate("/users/login")}
-        >
-          <span style={{ textDecoration: "underline", fontWeight: "bold" }}>
-            Log in
-          </span>{" "}
-          to comment
-        </Button> */}
         <Button
           fontSize={14}
           padding={10}

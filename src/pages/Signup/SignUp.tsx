@@ -8,7 +8,7 @@ import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { useNavigate } from "react-router";
 import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -32,6 +32,10 @@ const SignUp = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <FormProvider {...form}>
