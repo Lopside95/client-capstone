@@ -230,6 +230,7 @@ const Nav = () => {
         </SideSheet>
 
         <MenuIcon
+          cursor="pointer"
           className="menu-icon"
           onClick={() => {
             setDesktopIsShown(true);

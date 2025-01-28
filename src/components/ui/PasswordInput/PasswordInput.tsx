@@ -46,6 +46,7 @@ const PasswordInput = ({
           />
         ) : (
           <EyeOpenIcon
+            cursor="pointer"
             size={22}
             color="gray"
             className="password__input-eye"
