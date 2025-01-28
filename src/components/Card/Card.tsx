@@ -7,7 +7,6 @@ import mapsThumb from "../../assets/images/maps-thumb.png";
 
 const Card = (post: Post) => {
   const navigate = useNavigate();
-
   const location = useLocation();
 
   const {
@@ -88,7 +87,7 @@ const Card = (post: Post) => {
         {comments?.map((comment) => {
           return (
             <div key={comment.id} className="comment">
-              <p>{comment.content} </p>
+              <p>{comment.content}</p>
               <MyPill>{formatTime(comment.created_at)}</MyPill>
             </div>
           );

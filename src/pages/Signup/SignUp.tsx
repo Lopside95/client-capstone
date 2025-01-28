@@ -7,6 +7,8 @@ import "./SignUp.scss";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { useNavigate } from "react-router";
+import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
+import { useEffect, useState } from "react";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -31,18 +33,22 @@ const SignUp = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <FormProvider {...form}>
       <form className="main signup" onSubmit={form.handleSubmit(onSubmit)}>
         <Input name="firstName" label="First name" placeholder="First name" />
         <Input name="lastName" label="Last name" placeholder="Last name" />
         <Input name="email" label="Email" placeholder="your@email.com" />
-        <Input
-          type="password"
+        <PasswordInput
           name="password"
           label="Password"
           placeholder="Password"
         />
+
         <PrimaryButton
           backColor={primary}
           className="signup__button"

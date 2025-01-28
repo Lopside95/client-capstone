@@ -9,7 +9,7 @@ import axios from "axios";
 import "./AddComment.scss";
 import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
 import { primary } from "../../pages/Home/Home";
-import { toaster } from "evergreen-ui";
+import { Button, toaster } from "evergreen-ui";
 import { baseUrl } from "../../utils/api";
 
 const AddComment = () => {
@@ -91,16 +91,16 @@ const AddComment = () => {
   if (!user) {
     return (
       <div style={{ margin: "0 auto" }}>
-        <h4>
-          {" "}
-          <span
-            onClick={() => navigate("/users/login")}
-            className="login-message"
-          >
-            Log In
-          </span>{" "}
-          to comment
-        </h4>
+        <Button
+          fontSize={14}
+          padding={10}
+          borderRadius={30}
+          color="black"
+          intent="success"
+          onClick={() => navigate("/users/login")}
+        >
+          Log In
+        </Button>
       </div>
     );
   }

@@ -59,9 +59,21 @@ const Home = () => {
         <section className="subnav">
           <PrimaryButton
             className="subnav__button"
+            buttonWidth="fit-content"
+            onClick={() =>
+              document
+                .getElementById("home-posts")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Find a lost dog
+          </PrimaryButton>
+          <PrimaryButton
+            className="subnav__button"
+            buttonWidth="fit-content"
             onClick={() => navigate("/posts/create-post")}
           >
-            New Post
+            Report sighting of a lost dog
           </PrimaryButton>
         </section>
         <section className="home-posts">
@@ -78,14 +90,14 @@ const Home = () => {
                 }))
               );
             }}
-            placeholder="Select Tags"
+            placeholder="Apply Filters"
           />
           {!filteredPosts ? (
             <h2 className="home-posts__none">No Posts</h2>
           ) : selectedTags && filteredPosts.length === 0 ? (
             <NotFound content="No posts have that tag" />
           ) : (
-            <article className="home-posts__content">
+            <article className="home-posts__content" id="home-posts">
               {filteredPosts.map((post) => {
                 return <HomeCard key={post.id} {...post} />;
               })}

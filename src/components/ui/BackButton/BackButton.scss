@@ -1,0 +1,14 @@
+@use "../../../styles/partials/mixins" as *;
+
+.back-button {
+  @include tablet {
+    display: none;
+  }
+}
+
+.home-button {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}

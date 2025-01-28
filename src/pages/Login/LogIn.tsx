@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Input from "../../components/ui/Input/Input";
-import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,18 +8,16 @@ import "./LogIn.scss";
 import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
-import { toaster } from "evergreen-ui";
-import MyButton from "../../components/ui/Button/Button";
+import { Button, toaster } from "evergreen-ui";
+import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
 
 const LogIn = () => {
-  const [user, setUser] = useState<User>();
-
   const navigate = useNavigate();
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: user?.email || "",
+      email: "",
       password: "",
     },
   });
@@ -28,6 +25,10 @@ const LogIn = () => {
   // useEffect(() => {
   //   console.log("Form Errors:", form.formState.errors);
   // }, [form.formState]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
@@ -46,8 +47,12 @@ const LogIn = () => {
     <div>
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
-          <Input label="Email" name="email" />
-          <Input label="Password" name="password" type="password" />
+          <Input label="Email" name="email" placeholder="your@email.com" />
+          <PasswordInput
+            name="password"
+            label="Password"
+            placeholder="Password"
+          />
           <PrimaryButton
             type="submit"
             backColor={primary}
@@ -56,8 +61,21 @@ const LogIn = () => {
           >
             Log In
           </PrimaryButton>
-          <h3 className="button-separator">or</h3>
-          <MyButton
+          <br />
+          <Button
+            fontSize={14}
+            padding={10}
+            borderRadius={30}
+            color="black"
+            intent="success"
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              navigate("/users/signup");
+            }}
+          >
+            Sign Up
+          </Button>
+          {/* <MyButton
             fontSize="2rem"
             onClick={(e) => {
               e.preventDefault();
@@ -66,7 +84,7 @@ const LogIn = () => {
             className="primary__button primary__button-next"
           >
             Sign Up
-          </MyButton>
+          </MyButton> */}
         </form>
       </FormProvider>
     </div>

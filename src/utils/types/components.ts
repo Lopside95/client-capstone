@@ -16,6 +16,17 @@ export interface TextProps extends TextInputOwnProps {
   textWith?: string;
   defaultValue?: string;
 }
+export interface PasswordProps extends TextInputOwnProps {
+  name: string;
+  label?: string;
+  labelName?: string;
+  className?: string;
+  isRequired?: boolean;
+  textWith?: string;
+  defaultValue?: string;
+  isShowPassword?: boolean;
+  onClick?: () => void;
+}
 
 export interface MyButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
