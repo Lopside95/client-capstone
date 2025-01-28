@@ -11,6 +11,7 @@ import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
 import { toaster } from "evergreen-ui";
 import MyButton from "../../components/ui/Button/Button";
+import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
 
 const LogIn = () => {
   const [user, setUser] = useState<User>();
@@ -51,7 +52,8 @@ const LogIn = () => {
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
-          <Input label="Password" name="password" type="password" />
+          <PasswordInput name="password" label="Password" />
+          {/* <Input label="Password" name="password" type="password" /> */}
           <PrimaryButton
             type="submit"
             backColor={primary}
@@ -60,7 +62,8 @@ const LogIn = () => {
           >
             Log In
           </PrimaryButton>
-          <h3 className="button-separator">or</h3>
+          {/* <h3 className="button-separator">or</h3> */}
+          <br />
           <MyButton
             fontSize="2rem"
             onClick={(e) => {
