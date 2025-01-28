@@ -42,7 +42,6 @@ const PasswordInput = ({
           <EyeOffIcon
             size={22}
             color="gray"
-            //   color={isShown ? "gray" : "gray"}
             className="password__input-eye"
             onClick={() => setIsShown(!isShown)}
           />
@@ -50,7 +49,6 @@ const PasswordInput = ({
           <EyeOpenIcon
             size={22}
             color="gray"
-            //   color={isShown ? "gray" : "gray"}
             className="password__input-eye"
             onClick={() => setIsShown(!isShown)}
           />

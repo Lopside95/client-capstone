@@ -53,7 +53,6 @@ const LogIn = () => {
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
           <Input label="Email" name="email" />
           <PasswordInput name="password" label="Password" />
-          {/* <Input label="Password" name="password" type="password" /> */}
           <PrimaryButton
             type="submit"
             backColor={primary}
@@ -62,7 +61,6 @@ const LogIn = () => {
           >
             Log In
           </PrimaryButton>
-          {/* <h3 className="button-separator">or</h3> */}
           <br />
           <MyButton
             fontSize="2rem"

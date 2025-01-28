@@ -44,12 +44,7 @@ const SignUp = () => {
           label="Password"
           placeholder="Password"
         />
-        {/* <Input
-          type="password"
-          name="password"
-          label="Password"
-          placeholder="Password"
-        /> */}
+
         <PrimaryButton
           backColor={primary}
           className="signup__button"
