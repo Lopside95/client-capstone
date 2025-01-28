@@ -7,8 +7,12 @@ export interface ToastProps {
   hasCloseButton?: boolean;
 }
 
-const Toaster = () => {
+const SuccessToaster = () => {
   return <Button onClick={() => toaster.success("Success!")}>Success</Button>;
 };
 
-export default Toaster;
+const NotifyToaster = ({ message }: ToastProps) => {
+  return <Button onClick={() => toaster.notify(message)}>Success</Button>;
+};
+
+export { SuccessToaster, NotifyToaster };

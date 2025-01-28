@@ -1,24 +1,25 @@
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, set, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, Tag } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { Label } from "evergreen-ui";
+import { Alert, Button, InlineAlert, Label, toaster } from "evergreen-ui";
 import { baseUrl, getTags } from "../../utils/api";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
   const [userMarkers, setUserMarkers] = useState<UserMarker[]>([]);
   const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [toastShown, setToastShown] = useState<boolean>(false);
 
   const authToken = localStorage.getItem("authToken");
 
@@ -55,10 +56,6 @@ const CreatePost = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
   const fetchData = async () => {
     try {
       const res = await getTags();
@@ -68,11 +65,16 @@ const CreatePost = () => {
       console.error(error);
     }
   };
-
   useEffect(() => {
+    fetchUser();
     fetchData();
     window.scrollTo({ top: 0 });
   }, []);
+
+  // useEffect(() => {
+  //   fetchData();
+  //   window.scrollTo({ top: 0 });
+  // }, []);
 
   const form = useForm<PostSchema>({
     resolver: zodResolver(postSchema),
@@ -118,37 +120,38 @@ const CreatePost = () => {
 
   const { register, watch, formState } = form;
 
-  // const [formErrors, setFormErrors] = useState<FieldErrors<FieldValues>>();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setToastShown(true);
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   if (formState.errors) {
-  //     setFormErrors(formState.errors);
-  //   }
-  // }, [formState]);
+  setTimeout(() => {
+    setToastShown(false);
+  }, 3000);
 
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
-        {!isLoggedIn && (
-          <h3>
-            <span
-              onClick={() => navigate("/users/login")}
-              className="login-message"
-            >
-              Log In
-            </span>{" "}
-            or{" "}
-            <span
-              onClick={() => navigate("/users/signup")}
-              className="login-message"
-            >
-              Sign Up
-            </span>{" "}
-            to create posts
-          </h3>
+        {/* {!isLoggedIn && <Toaster />} */}
+        {toastShown && !isLoggedIn && (
+          <InlineAlert
+            intent="warning"
+            className="login-alert"
+            children={
+              <p>
+                <span onClick={() => navigate("/users/login")}>Log in</span> to
+                post
+              </p>
+            }
+          />
         )}
-        <Input label="Title" name="title" />
-        <Input label="Description" name="description" />
+        <Input label="Title" name="title" placeholder="Title" />
+        <Input
+          label="Description"
+          name="description"
+          placeholder="Description"
+        />
         <Label
           className="create__tags-label"
           htmlFor="tags"

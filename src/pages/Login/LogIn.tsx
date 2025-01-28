@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../components/ui/Input/Input";
 import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
@@ -20,14 +20,18 @@ const LogIn = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: user?.email || "",
-      password: "",
+      email: "james@email.com",
+      password: "passlp",
     },
   });
 
   // useEffect(() => {
   //   console.log("Form Errors:", form.formState.errors);
   // }, [form.formState]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
     try {
