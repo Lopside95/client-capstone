@@ -1,4 +1,3 @@
-// import { Pill } from "evergreen-ui";
 import MyPill from "../ui/Pill/MyPill";
 import { Post } from "../../utils/types/posts";
 import "./Card.scss";
@@ -22,6 +21,7 @@ const CommentCard = (post: Post) => {
     updated_at,
     latitude,
     longitude,
+    comments,
     id,
   }: Post = post;
 
@@ -30,8 +30,6 @@ const CommentCard = (post: Post) => {
     const timestamp = date.toLocaleDateString("en-GB");
     return timestamp;
   };
-
-  const comments = post.comments;
 
   return (
     <section
@@ -69,15 +67,14 @@ const CommentCard = (post: Post) => {
       </div>
       <article className="comments">
         <h5 className="comments-header">Comments</h5>
-        {comments &&
-          comments?.map((comment) => {
-            return (
-              <div key={comment.id} className="comment">
-                <p>{comment.content} </p>
-                <MyPill>{formatTime(comment.created_at)}</MyPill>
-              </div>
-            );
-          })}
+        {comments?.map((comment) => {
+          return (
+            <div key={comment.id} className="comment">
+              <p>{comment.content} </p>
+              <MyPill>{formatTime(comment.created_at)}</MyPill>
+            </div>
+          );
+        })}
       </article>
     </section>
   );

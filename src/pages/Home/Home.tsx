@@ -65,7 +65,6 @@ const Home = () => {
                 .getElementById("home-posts")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            // onClick={() => navigate("/posts/create-post")}
           >
             Find a lost dog
           </PrimaryButton>

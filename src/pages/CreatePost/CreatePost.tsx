@@ -1,18 +1,18 @@
-import { FormProvider, set, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/ui/Input/Input";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { PostSchema, postSchema, Tag } from "../../utils/types/schemas";
 import "./CreatePost.scss";
-import { Alert, Button, InlineAlert, Label, toaster } from "evergreen-ui";
+import { Button, Label } from "evergreen-ui";
 import { baseUrl, getTags } from "../../utils/api";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { primary } from "../Home/Home";
 import { User, UserMarker } from "../../utils/types/posts";
 import MapComponent from "../../components/Map/Map";
 import axios from "axios";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const CreatePost = () => {
   const [allTags, setAllTags] = useState<Tag[]>();
@@ -126,15 +126,9 @@ const CreatePost = () => {
     }
   }, []);
 
-  // setTimeout(() => {
-  //   setToastShown(false);
-  // }, 3000);
-
   return (
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
-        {/* {!isLoggedIn && <Toaster />} */}
-
         {!isLoggedIn && toastShown && (
           <Button
             marginTop={-10}
@@ -148,18 +142,6 @@ const CreatePost = () => {
             Log In
           </Button>
         )}
-        {/* {toastShown && !isLoggedIn && (
-          <InlineAlert
-            intent="warning"
-            className="login-alert"
-            children={
-              <p>
-                <span onClick={() => navigate("/users/login")}>Log in</span> to
-                post
-              </p>
-            }
-          />
-        )} */}
         <Input label="Title" name="title" placeholder="Title" />
         <Input
           label="Description"

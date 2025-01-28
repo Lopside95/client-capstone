@@ -2,8 +2,6 @@ import { useFormContext } from "react-hook-form";
 import { TextProps } from "../../../utils/types/components";
 import { Label, TextInput } from "evergreen-ui";
 import "./Input.scss";
-import { secondary } from "../../../pages/Home/Home";
-import { useEffect, useState } from "react";
 
 const Input = ({
   name,
@@ -13,7 +11,7 @@ const Input = ({
   type,
   defaultValue,
 }: TextProps) => {
-  const { register, getFieldState, formState } = useFormContext();
+  const { register, formState } = useFormContext();
 
   const formError = formState.errors[name];
 

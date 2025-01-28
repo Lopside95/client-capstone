@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Input from "../../components/ui/Input/Input";
-import { User } from "../../utils/types/posts";
 import { login } from "../../utils/api";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,12 +9,9 @@ import { primary } from "../Home/Home";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router";
 import { Button, toaster } from "evergreen-ui";
-import MyButton from "../../components/ui/Button/Button";
 import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
 
 const LogIn = () => {
-  const [user, setUser] = useState<User>();
-
   const navigate = useNavigate();
 
   const form = useForm<LoginSchema>({
@@ -31,7 +27,7 @@ const LogIn = () => {
   // }, [form.formState]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0 });
   }, []);
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data: LoginSchema) => {
@@ -51,8 +47,12 @@ const LogIn = () => {
     <div>
       <FormProvider {...form}>
         <form className="login main" onSubmit={form.handleSubmit(onSubmit)}>
-          <Input label="Email" name="email" />
-          <PasswordInput name="password" label="Password" />
+          <Input label="Email" name="email" placeholder="your@email.com" />
+          <PasswordInput
+            name="password"
+            label="Password"
+            placeholder="Password"
+          />
           <PrimaryButton
             type="submit"
             backColor={primary}

@@ -1,8 +1,7 @@
 import { useFormContext } from "react-hook-form";
-import { PasswordProps, TextProps } from "../../../utils/types/components";
+import { PasswordProps } from "../../../utils/types/components";
 import { EyeOffIcon, EyeOpenIcon, Label, TextInput } from "evergreen-ui";
-import { secondary } from "../../../pages/Home/Home";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./PasswordInput.scss";
 
 const PasswordInput = ({

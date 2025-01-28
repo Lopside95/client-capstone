@@ -1,7 +1,6 @@
 import { Button } from "evergreen-ui";
 import "./PrimaryButton.scss";
 import { MyButtonProps } from "../../../utils/types/components";
-import { tertiary } from "../../../pages/Home/Home";
 
 const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
   return (

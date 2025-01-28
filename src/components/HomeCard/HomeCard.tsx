@@ -90,7 +90,7 @@ const HomeCard = (post: Post) => {
           return (
             <div key={comment.id} className="homecard__comment">
               <p>{comment.content} </p>
-              <p>{comment.userId}</p>
+              {/* <p>{comment.userId}</p> */}
               <MyPill>{formatTime(comment.created_at)}</MyPill>
             </div>
           );

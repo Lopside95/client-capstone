@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import Input from "../../components/ui/Input/Input";
 import { User } from "../../utils/types/posts";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUserSchema, UpdateUserSchema } from "../../utils/types/schemas";
 import axios from "axios";
 import PrimaryButton from "../../components/ui/PrimaryButton/PrimaryButton";
-import { primary, secondary, tertiary } from "../Home/Home";
+import { primary } from "../Home/Home";
 import "./Account.scss";
 import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 import MyButton from "../../components/ui/Button/Button";
-import { Button, Dialog, Spinner } from "evergreen-ui";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import MyDialog from "../../components/Dialog/MyDialog";
 
@@ -52,6 +51,7 @@ const Account = () => {
 
   useEffect(() => {
     fetchUser();
+    window.scrollTo({ top: 0 });
   }, []);
 
   const form = useForm<UpdateUserSchema>({
@@ -97,7 +97,7 @@ const Account = () => {
   };
 
   if (!user) {
-    return <NotFoundPage />;
+    return <NotFoundPage content="Couldn't find that user" />;
   }
 
   return (

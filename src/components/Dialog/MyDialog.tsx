@@ -1,5 +1,4 @@
 import { Button, Dialog, Spinner } from "evergreen-ui";
-import { useState } from "react";
 import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
 import { tertiary } from "../../pages/Home/Home";
 import "./MyDialog.scss";

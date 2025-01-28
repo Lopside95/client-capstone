@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Post, User, UserComment } from "../../utils/types/posts";
+import { Post, User } from "../../utils/types/posts";
 import "./SinglePost.scss";
 import Card from "../../components/Card/Card";
 import { getPostById } from "../../utils/posts";
@@ -9,13 +9,12 @@ import axios from "axios";
 import { baseUrl } from "../../utils/api";
 import { primary } from "../Home/Home";
 import { toaster } from "evergreen-ui";
-import NotFound from "../../components/NotFound/NotFound";
 import MyDialog from "../../components/Dialog/MyDialog";
 import MyButton from "../../components/ui/Button/Button";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const SinglePost = () => {
   const [post, setPost] = useState<Post>();
-  const [comments, setComments] = useState<UserComment[] | null>(null);
   const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
@@ -26,6 +25,10 @@ const SinglePost = () => {
   const { id } = useParams();
 
   const fetchUser = async () => {
+    if (!authToken) {
+      return;
+    }
+
     try {
       const { data } = await axios.get(`${baseUrl}/users/account`, {
         headers: {
@@ -51,23 +54,22 @@ const SinglePost = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
   const fetchPost = async () => {
     try {
       const postsData = await getPostById(id!);
 
       setPost(postsData);
-      setComments(postsData.comments);
     } catch (error) {
       console.error(error);
     }
   };
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     fetchPost();
+    window.scrollTo({ top: 0 });
   }, []);
 
   const handleDelete = async () => {
@@ -90,7 +92,7 @@ const SinglePost = () => {
   };
 
   if (!post) {
-    return <NotFound content="Couldn't find that post" />;
+    return <NotFoundPage content="Couldn't find that post" />;
   }
 
   return (
