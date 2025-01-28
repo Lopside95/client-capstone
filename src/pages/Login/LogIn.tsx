@@ -17,8 +17,8 @@ const LogIn = () => {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "james@email.com",
-      password: "passlp",
+      email: "",
+      password: "",
     },
   });
 
@@ -68,7 +68,7 @@ const LogIn = () => {
             borderRadius={30}
             color="black"
             intent="success"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
               navigate("/users/signup");
             }}
