@@ -64,10 +64,6 @@ const Account = () => {
     },
   });
 
-  // useEffect(() => {
-  //   console.log("Form Errors:", form.formState.errors);
-  // }, [form.formState]);
-
   const onSubmit: SubmitHandler<UpdateUserSchema> = async (
     data: UpdateUserSchema
   ) => {

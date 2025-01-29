@@ -7,7 +7,6 @@ import { Post } from "../../utils/types/posts";
 import Select from "react-select";
 import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
-import HomeCard from "../../components/HomeCard/HomeCard";
 import NotFound from "../../components/NotFound/NotFound";
 import Card from "../../components/Card/Card";
 

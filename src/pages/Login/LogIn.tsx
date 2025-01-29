@@ -75,16 +75,6 @@ const LogIn = () => {
           >
             Sign Up
           </Button>
-          {/* <MyButton
-            fontSize="2rem"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/users/signup");
-            }}
-            className="primary__button primary__button-next"
-          >
-            Sign Up
-          </MyButton> */}
         </form>
       </FormProvider>
     </div>

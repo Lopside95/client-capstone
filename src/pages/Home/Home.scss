@@ -42,12 +42,6 @@
   }
 }
 
-// .filters {
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 0.3125rem;
-// }
-
 .home-posts {
   width: 100%;
 
@@ -74,12 +68,6 @@
       }
     }
   }
-
-  // @include tablet {
-  //   @include flex($direction: row, $justify: unset, $align: unset);
-  // }
-  // &__content {
-  // }
 }
 
 .spinner {
@@ -93,15 +81,3 @@
     }
   }
 }
-
-// .select {
-//   &.css-13cymwt-control {
-//     // border-radius: 11px;
-//     width: 95%;
-//   }
-// }
-// .css-13cymwt-control {
-//   width: 95%;
-//   // align-self: center;
-//   // margin: 1rem auto;
-// }
