@@ -6,7 +6,10 @@ const tag = z.object({
 });
 
 const postSchema = z.object({
-  title: z.string().min(1, { message: "Title is required" }),
+  title: z
+    .string()
+    .min(1, { message: "Title is required" })
+    .max(40, { message: "Must be less than 40 characters" }),
   img: z.string().optional(),
   description: z.string().min(1, { message: "Description is required" }),
   urgency: z.number().min(1),

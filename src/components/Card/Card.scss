@@ -14,6 +14,7 @@
 
     &-title {
       font-weight: 500;
+      max-width: 70%;
     }
 
     &-right {
@@ -60,6 +61,10 @@
     object-fit: contain;
     height: 9.375rem;
     padding-top: 1rem;
+
+    @include tablet {
+      width: 15rem;
+    }
   }
 
   &__desc {
@@ -72,9 +77,14 @@
     }
 
     &-content {
+      font-size: 0.9rem;
       padding-top: 0.5rem;
       margin: 0;
       padding-right: 1rem;
+
+      @include tablet {
+        width: 75%;
+      }
     }
   }
 
@@ -82,10 +92,10 @@
     border: none;
   }
 
-  @include desktop {
-    width: 50%;
-    margin: 0 auto;
-  }
+  // @include desktop {
+  //   width: 50%;
+  //   margin: 0 auto;
+  // }
 }
 
 .comments-header {

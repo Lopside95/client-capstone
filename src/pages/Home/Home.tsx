@@ -9,6 +9,7 @@ import { Tag } from "../../utils/types/schemas";
 import { getTags } from "../../utils/api";
 import HomeCard from "../../components/HomeCard/HomeCard";
 import NotFound from "../../components/NotFound/NotFound";
+import Card from "../../components/Card/Card";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -99,7 +100,8 @@ const Home = () => {
           ) : (
             <article className="home-posts__content" id="home-posts">
               {filteredPosts.map((post) => {
-                return <HomeCard key={post.id} {...post} />;
+                return <Card key={post.id} {...post} />;
+                // return <HomeCard key={post.id} {...post} />;
               })}
             </article>
           )}

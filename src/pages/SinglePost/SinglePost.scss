@@ -5,3 +5,10 @@
 .posts {
   @include flex($direction: column, $align: unset, $justify: unset);
 }
+
+.post-single {
+  @include desktop {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

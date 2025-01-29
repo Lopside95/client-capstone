@@ -8,10 +8,11 @@ import AddComment from "../../components/AddComment/AddComment";
 import axios from "axios";
 import { baseUrl } from "../../utils/api";
 import { primary } from "../Home/Home";
-import { toaster } from "evergreen-ui";
+import { Spinner, toaster } from "evergreen-ui";
 import MyDialog from "../../components/Dialog/MyDialog";
 import MyButton from "../../components/ui/Button/Button";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import { set } from "react-hook-form";
 
 const SinglePost = () => {
   const [post, setPost] = useState<Post>();
@@ -19,6 +20,7 @@ const SinglePost = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
   const authToken = localStorage.getItem("authToken");
+  const [postLoading, setPostLoading] = useState<boolean>(true);
 
   const navigate = useNavigate();
 
@@ -91,16 +93,24 @@ const SinglePost = () => {
     }
   };
 
-  if (!post) {
+  setTimeout(() => {
+    setPostLoading(false);
+  }, 500);
+
+  if (!post && !postLoading) {
     return <NotFoundPage content="Couldn't find that post" />;
   }
 
   return (
     <main className="main posts">
-      <section className="post">
-        <Card {...post} />
+      <section className="post post-single">
+        {postLoading ? (
+          <Spinner size={50} alignSelf={"center"} margin="auto" />
+        ) : (
+          post && <Card {...post} />
+        )}
       </section>
-      {post.user_id === user?.id && (
+      {post?.user_id === user?.id && (
         <>
           <MyDialog
             handleDelete={handleDelete}
@@ -110,16 +120,18 @@ const SinglePost = () => {
             setIsLoading={setIsLoading}
             item="Post"
           />
-          <MyButton
-            onClick={(e) => {
-              e.preventDefault();
-              setDialogIsShown(true);
-            }}
-            backColor={primary}
-            buttonWidth={"9.375rem"}
-          >
-            Delete Post
-          </MyButton>
+          {!postLoading && (
+            <MyButton
+              onClick={(e) => {
+                e.preventDefault();
+                setDialogIsShown(true);
+              }}
+              backColor={primary}
+              buttonWidth={"9.375rem"}
+            >
+              Delete Post
+            </MyButton>
+          )}
         </>
       )}
       <AddComment />
