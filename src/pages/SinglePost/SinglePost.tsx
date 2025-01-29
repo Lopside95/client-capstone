@@ -105,7 +105,12 @@ const SinglePost = () => {
     <main className="main posts">
       <section className="post post-single">
         {postLoading ? (
-          <Spinner size={50} alignSelf={"center"} margin="auto" />
+          <Spinner
+            size={50}
+            alignSelf={"center"}
+            marginX="auto"
+            marginY="10rem"
+          />
         ) : (
           post && <Card {...post} />
         )}

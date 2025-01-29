@@ -18,6 +18,7 @@ const Account = () => {
   const [user, setUser] = useState<User | null>(null);
   const [dialogIsShown, setDialogIsShown] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [userLoading, setUserLoading] = useState<boolean>(true);
 
   const authToken = localStorage.getItem("authToken");
 
@@ -92,7 +93,11 @@ const Account = () => {
     }
   };
 
-  if (!user) {
+  setTimeout(() => {
+    setUserLoading(false);
+  }, 400);
+
+  if (!user && !userLoading) {
     return <NotFoundPage content="Couldn't find that user" />;
   }
 
