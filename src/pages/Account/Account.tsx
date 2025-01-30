@@ -13,6 +13,7 @@ import { baseUrl, deleteUser, updateUser } from "../../utils/api";
 import MyButton from "../../components/ui/Button/Button";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import MyDialog from "../../components/Dialog/MyDialog";
+import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
 
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -58,10 +59,10 @@ const Account = () => {
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      email: user?.email,
-      password: user?.password || "pass123",
+      // firstName: user?.firstName,
+      // lastName: user?.lastName,
+      // email: user?.email,
+      active: user?.active || true,
     },
   });
 
@@ -93,6 +94,10 @@ const Account = () => {
     }
   };
 
+  const errors = form.formState.errors;
+
+  console.log("errors", errors);
+
   setTimeout(() => {
     setUserLoading(false);
   }, 400);
@@ -115,13 +120,18 @@ const Account = () => {
           defaultValue={user?.lastName}
         />
         <Input label="Email" name="email" defaultValue={user?.email} />
-        <Input
+        <PasswordInput
+          name="password"
+          label="Password"
+          placeholder="Password"
+        />
+        {/* <Input
           label="Password"
           name="password"
           defaultValue={user?.password}
           placeholder="Password"
           type="password"
-        />
+        /> */}
         <PrimaryButton
           type="submit"
           backColor={primary}

@@ -31,11 +31,11 @@ const userSchema = z.object({
   active: z.boolean().optional(),
 });
 const updateUserSchema = z.object({
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  email: z.string().trim().email().toLowerCase().optional(),
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string().trim().email(),
   password: z.string().optional(),
-  active: z.boolean().optional(),
+  active: z.boolean().default(true),
 });
 
 const loginSchema = z.object({
