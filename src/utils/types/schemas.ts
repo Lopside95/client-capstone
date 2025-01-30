@@ -30,6 +30,7 @@ const userSchema = z.object({
     .min(5, { message: "Password must be at least 5 characters" }),
   active: z.boolean().optional(),
 });
+
 const updateUserSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),

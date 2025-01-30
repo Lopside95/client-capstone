@@ -99,9 +99,15 @@ const getAuthedUser = async () => {
   }
 };
 
-const updateUser = async (updateData: UpdateUserSchema) => {
+const updateUser = async (data: UpdateUserSchema) => {
   try {
-    const res = await axios.put(`${baseUrl}/users/account`, updateData);
+    // const res = await axios.put(`${baseUrl}/users/account`, updateData);
+    const authToken = localStorage.getItem("authToken");
+    const res = await axios.put(`${baseUrl}/users/account`, data, {
+      headers: {
+        authorisation: `Bearer ${authToken}`,
+      },
+    });
 
     if (res.status === 200) {
       toaster.success("Details updated successfully!");

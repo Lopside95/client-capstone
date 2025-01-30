@@ -14,6 +14,7 @@ import MyButton from "../../components/ui/Button/Button";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import MyDialog from "../../components/Dialog/MyDialog";
 import PasswordInput from "../../components/ui/PasswordInput/PasswordInput";
+import { toaster } from "evergreen-ui";
 
 const Account = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -45,7 +46,11 @@ const Account = () => {
         updated_at: data.updated_at,
       };
 
+      console.log("authToken", authToken);
+
       setUser(userData);
+
+      console.log("data", data);
     } catch (error: unknown) {
       console.error(error);
     }
@@ -70,7 +75,17 @@ const Account = () => {
     data: UpdateUserSchema
   ) => {
     try {
-      await updateUser(data);
+      const res = await axios.put(`${baseUrl}/users/account`, data, {
+        headers: {
+          authorisation: `Bearer ${authToken}`,
+        },
+      });
+
+      if (res.status === 200) {
+        toaster.success("User updated");
+      }
+
+      // await updateUser(data);
     } catch (error) {
       console.error(error);
     }
@@ -96,6 +111,14 @@ const Account = () => {
 
   const errors = form.formState.errors;
 
+  useEffect(() => {
+    form.setValue("firstName", user?.firstName || "");
+    form.setValue("lastName", user?.lastName || "");
+    form.setValue("email", user?.email || "");
+    form.setValue("password", user?.password || "");
+    // form.setValue("active", user?.active || true);
+  }, [user]);
+
   console.log("errors", errors);
 
   setTimeout(() => {
@@ -112,14 +135,14 @@ const Account = () => {
         <Input
           label="First name"
           name="firstName"
-          defaultValue={user?.firstName}
+          // defaultValue={user?.firstName}
         />
         <Input
           label="Last name"
           name="lastName"
-          defaultValue={user?.lastName}
+          // defaultValue={user?.lastName}
         />
-        <Input label="Email" name="email" defaultValue={user?.email} />
+        <Input label="Email" name="email" />
         <PasswordInput
           name="password"
           label="Password"
