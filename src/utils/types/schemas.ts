@@ -34,8 +34,9 @@ const userSchema = z.object({
 const updateUserSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
-  email: z.string().trim().email(),
-  password: z.string().optional(),
+  email: z.string().trim().email().toLowerCase().optional(),
+  password: z.string(),
+  newPassword: z.string().optional(),
   active: z.boolean().default(true),
 });
 

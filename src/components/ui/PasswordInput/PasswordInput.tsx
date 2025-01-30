@@ -11,7 +11,7 @@ const PasswordInput = ({
   className,
   defaultValue,
 }: PasswordProps) => {
-  const { register, getFieldState, formState } = useFormContext();
+  const { register, formState } = useFormContext();
 
   const [isShown, setIsShown] = useState<boolean>();
 

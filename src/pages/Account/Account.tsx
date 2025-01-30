@@ -46,11 +46,7 @@ const Account = () => {
         updated_at: data.updated_at,
       };
 
-      console.log("authToken", authToken);
-
       setUser(userData);
-
-      console.log("data", data);
     } catch (error: unknown) {
       console.error(error);
     }
@@ -64,9 +60,6 @@ const Account = () => {
   const form = useForm<UpdateUserSchema>({
     resolver: zodResolver(updateUserSchema),
     defaultValues: {
-      // firstName: user?.firstName,
-      // lastName: user?.lastName,
-      // email: user?.email,
       active: user?.active || true,
     },
   });
@@ -75,17 +68,20 @@ const Account = () => {
     data: UpdateUserSchema
   ) => {
     try {
-      const res = await axios.put(`${baseUrl}/users/account`, data, {
-        headers: {
-          authorisation: `Bearer ${authToken}`,
-        },
-      });
+      const res = await axios.put(
+        `${baseUrl}/users/account`,
+        data,
+
+        {
+          headers: {
+            authorisation: `Bearer ${authToken}`,
+          },
+        }
+      );
 
       if (res.status === 200) {
         toaster.success("User updated");
       }
-
-      // await updateUser(data);
     } catch (error) {
       console.error(error);
     }
@@ -109,17 +105,12 @@ const Account = () => {
     }
   };
 
-  const errors = form.formState.errors;
-
   useEffect(() => {
     form.setValue("firstName", user?.firstName || "");
     form.setValue("lastName", user?.lastName || "");
     form.setValue("email", user?.email || "");
     form.setValue("password", user?.password || "");
-    // form.setValue("active", user?.active || true);
   }, [user]);
-
-  console.log("errors", errors);
 
   setTimeout(() => {
     setUserLoading(false);
@@ -132,29 +123,14 @@ const Account = () => {
   return (
     <FormProvider {...form}>
       <form className="account main" onSubmit={form.handleSubmit(onSubmit)}>
-        <Input
-          label="First name"
-          name="firstName"
-          // defaultValue={user?.firstName}
-        />
-        <Input
-          label="Last name"
-          name="lastName"
-          // defaultValue={user?.lastName}
-        />
+        <Input label="First name" name="firstName" />
+        <Input label="Last name" name="lastName" />
         <Input label="Email" name="email" />
         <PasswordInput
-          name="password"
-          label="Password"
-          placeholder="Password"
+          name="newPassword"
+          label="New Password"
+          placeholder="New Password"
         />
-        {/* <Input
-          label="Password"
-          name="password"
-          defaultValue={user?.password}
-          placeholder="Password"
-          type="password"
-        /> */}
         <PrimaryButton
           type="submit"
           backColor={primary}
