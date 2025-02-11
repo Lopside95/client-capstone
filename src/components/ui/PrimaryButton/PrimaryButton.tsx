@@ -16,6 +16,9 @@ const PrimaryButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
       height={props.height || "2.5rem"}
       fontSize={props.fontSize || "1.25rem"}
       marginTop={props.marginTop || ""}
+      // boxShadow={"2px 2px 2px 2px rgba(0, 0, 0, 0.25)"}
+      // boxShadow={"0px 0px 2px 1px rgba(0, 0, 0, 0.25)"}
+      boxShadow={"0px 0px 2px 1px rgba(0, 0, 0, 0.2)"}
     >
       {children}
     </Button>

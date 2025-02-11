@@ -33,6 +33,7 @@ const Input = ({
         type={type}
         placeholder={placeholder}
         {...register(name)}
+        boxShadow={"0px 0px 1px 0.5px rgba(0, 0, 0, 0.1)"}
       />
     </div>
   );

@@ -129,6 +129,14 @@ const Nav = () => {
           >
             Log out
           </span>
+          <span
+            className="nav__item"
+            onClick={() =>
+              (window.location.href = "mailto:findmydogdev@gmail.com")
+            }
+          >
+            Contact
+          </span>
         </SideSheet>
 
         <MenuIcon
@@ -226,6 +234,14 @@ const Nav = () => {
             onClick={handleLogOut}
           >
             Log out
+          </span>
+          <span
+            className="nav__item"
+            onClick={() =>
+              (window.location.href = "mailto:findmydogdev@gmail.com")
+            }
+          >
+            Contact
           </span>
         </SideSheet>
 
