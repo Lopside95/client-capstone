@@ -8,9 +8,6 @@
   @include tablet {
     margin-bottom: 4rem;
   }
-
-  @include desktop {
-  }
 }
 
 .landing {
@@ -71,7 +68,6 @@
     );
     padding: 2rem;
     &__content {
-      // max-width: 28.125rem;
       max-width: 50%;
     }
 
@@ -81,7 +77,6 @@
 
     &__tags {
       &-select {
-        // width: 6.25rem;
         width: 100%;
         max-width: 28.125rem;
         height: fit-content;

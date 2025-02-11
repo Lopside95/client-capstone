@@ -12,12 +12,9 @@
 
   @include desktop {
     flex-direction: row-reverse;
-    // flex-direction: row;
-    // max-width: 90%;
     max-width: 1200px;
     padding-left: 1rem;
     padding-right: 1rem;
-    // background-color: gray;
   }
 
   min-height: 100vh;
@@ -28,10 +25,7 @@
     width: 98%;
     align-self: center;
 
-    // background-color: red;
-
     @include desktop {
-      // width: 70%;
       height: 20rem;
       justify-content: space-between;
     }
@@ -62,20 +56,23 @@
     }
 
     &-select {
-      // width: 100%;s
       padding: 0.5rem 0;
       margin: 0;
-      // border-radius: 20px;
     }
   }
 
-  @include desktop {
-    &__login {
+  &__login {
+    &--desktop {
       display: none;
     }
-    // &__login--hidden {
-    //   display: none;
-    // }
+
+    @include desktop {
+      display: none;
+
+      &--desktop {
+        display: block;
+      }
+    }
   }
 }
 
@@ -86,7 +83,6 @@
   z-index: 0;
 
   @include desktop {
-    // width: 40%;
   }
 }
 

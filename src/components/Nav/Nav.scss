@@ -23,9 +23,6 @@
 
   &__header {
     @include flex($direction: row, $justify: space-between, $align: unset);
-
-    &-title {
-    }
   }
 
   &__item {

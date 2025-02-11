@@ -179,6 +179,22 @@ const CreatePost = () => {
           >
             Post
           </PrimaryButton>
+          {!isLoggedIn && toastShown && (
+            <div className="create__login create__login--desktop">
+              <Button
+                marginTop={10}
+                marginBottom={-20}
+                fontSize={14}
+                padding={10}
+                borderRadius={30}
+                color="black"
+                intent="success"
+                onClick={() => navigate("/users/login")}
+              >
+                Log In
+              </Button>
+            </div>
+          )}
         </section>
         <section className="create__right">
           <Label fontSize={16} fontWeight={400} className="map-label">
@@ -190,6 +206,7 @@ const CreatePost = () => {
               setUserMarkers={setUserMarkers}
             />
           </article>
+
           <PrimaryButton
             type="submit"
             backColor={primary}

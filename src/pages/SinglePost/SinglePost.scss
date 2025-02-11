@@ -8,7 +8,9 @@
 
 .post-single {
   @include desktop {
-    width: 50%;
+    max-width: 990px;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin: 0 auto;
   }
 }

@@ -160,7 +160,6 @@ const Nav = () => {
             flexDirection: "row",
             padding: "1.5rem",
             gap: "1rem",
-            // alignItems: "end",
           }}
           onCloseComplete={() => setDesktopIsShown(false)}
         >
@@ -170,7 +169,6 @@ const Nav = () => {
                 ? "nav__item nav-desktop__item nav__item--active"
                 : "nav__item"
             }
-            // className="nav__item nav-desktop__item"
             onClick={() => handleNavigate("/")}
           >
             Home
@@ -182,7 +180,6 @@ const Nav = () => {
                 ? "nav__item nav-desktop__item nav__item--active"
                 : "nav__item"
             }
-            // className="nav__item nav-desktop__item"
             onClick={() => handleNavigate("/posts/create-post")}
           >
             New post
@@ -235,14 +232,14 @@ const Nav = () => {
           >
             Log out
           </span>
-          <span
+          {/* <span
             className="nav__item"
             onClick={() =>
               (window.location.href = "mailto:findmydogdev@gmail.com")
             }
           >
             Contact
-          </span>
+          </span> */}
         </SideSheet>
 
         <MenuIcon
