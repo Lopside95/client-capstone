@@ -4,6 +4,11 @@
   @include flex($direction: column, $justify: unset, $align: center);
   gap: 1rem;
 
+  @include tablet {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
   padding-bottom: 0;
 
   &__cover {
@@ -14,9 +19,10 @@
   }
 
   @include desktop {
-    max-width: 50%;
+    max-width: 1200px;
     margin: 0 auto;
     gap: 1rem;
+    padding: 0 3rem;
     padding-top: 10rem;
   }
 }

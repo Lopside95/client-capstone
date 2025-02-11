@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
 *,
 *::before,
 *::after {
@@ -27,6 +29,10 @@ body {
     &.css-13cymwt-control {
       border-radius: 8px;
       margin: 0 auto;
+
+      @include desktop {
+        margin: 0;
+      }
     }
   }
 }

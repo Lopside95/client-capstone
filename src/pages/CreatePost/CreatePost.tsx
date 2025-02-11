@@ -125,64 +125,80 @@ const CreatePost = () => {
     <FormProvider {...form} control={form.control}>
       <form className="create main" onSubmit={form.handleSubmit(onSubmit)}>
         {!isLoggedIn && toastShown && (
-          <Button
-            marginTop={-10}
-            fontSize={14}
-            padding={10}
-            borderRadius={30}
-            color="black"
-            intent="success"
-            onClick={() => navigate("/users/login")}
-          >
-            Log In
-          </Button>
+          <div className="create__login create__login--mobile">
+            <Button
+              marginTop={-10}
+              fontSize={14}
+              padding={10}
+              borderRadius={30}
+              color="black"
+              intent="success"
+              onClick={() => navigate("/users/login")}
+            >
+              Log In
+            </Button>
+          </div>
         )}
-        <Input label="Title" name="title" placeholder="Title" />
-        <Input
-          label="Description"
-          name="description"
-          placeholder="Description"
-        />
-        <Label
-          className="create__tags-label"
-          htmlFor="tags"
-          fontSize={16}
-          fontWeight={400}
-        >
-          Tags
-        </Label>
-        <Select
-          isMulti
-          options={tagOptions}
-          className="create__tags-select"
-          classNamePrefix="select"
-          {...register("tags")}
-          onChange={(selectedOptions) => {
-            const selectedTags = selectedOptions.map((option) => ({
-              name: option.label,
-              id: option.value,
-            }));
-            form.setValue("tags", selectedTags);
-          }}
-          placeholder="Select Tags"
-        />
-        <Label fontSize={16} fontWeight={400} className="map-label">
-          Location
-        </Label>
-        <section className="map-container-div">
-          <MapComponent
-            userMarkers={userMarkers}
-            setUserMarkers={setUserMarkers}
+        <section className="create__inputs">
+          <Input label="Title" name="title" placeholder="Title" />
+          <Input
+            label="Description"
+            name="description"
+            placeholder="Description"
           />
+          <div className="create__inputs-tags">
+            <Label
+              className="create__tags-label"
+              htmlFor="tags"
+              fontSize={16}
+              fontWeight={400}
+            >
+              Tags
+            </Label>
+            <Select
+              isMulti
+              options={tagOptions}
+              className="create__tags-select"
+              classNamePrefix="select"
+              {...register("tags")}
+              onChange={(selectedOptions) => {
+                const selectedTags = selectedOptions.map((option) => ({
+                  name: option.label,
+                  id: option.value,
+                }));
+                form.setValue("tags", selectedTags);
+              }}
+              placeholder="Select Tags"
+            />
+          </div>
+          <PrimaryButton
+            type="submit"
+            backColor={primary}
+            buttonWidth={"9.375rem"}
+            className="post__button--desktop"
+          >
+            Post
+          </PrimaryButton>
         </section>
-        <PrimaryButton
-          type="submit"
-          backColor={primary}
-          buttonWidth={"9.375rem"}
-          className="primary__button primary__button-next"
-        >
-          Post
-        </PrimaryButton>
+        <section className="create__right">
+          <Label fontSize={16} fontWeight={400} className="map-label">
+            Location
+          </Label>
+          <article className="map-container-div">
+            <MapComponent
+              userMarkers={userMarkers}
+              setUserMarkers={setUserMarkers}
+            />
+          </article>
+          <PrimaryButton
+            type="submit"
+            backColor={primary}
+            buttonWidth={"9.375rem"}
+            className="post__button--mobile"
+          >
+            Post
+          </PrimaryButton>
+        </section>
       </form>
     </FormProvider>
   );

@@ -8,6 +8,9 @@
   @include tablet {
     margin-bottom: 4rem;
   }
+
+  @include desktop {
+  }
 }
 
 .landing {
@@ -21,6 +24,10 @@
 
   &__image {
     align-self: flex-end;
+  }
+
+  @include desktop {
+    max-width: 1200px;
   }
 }
 
@@ -47,6 +54,15 @@
 
   padding: 1rem 0;
 
+  &__tags-select {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  @include tablet {
+    max-width: 90%;
+    margin: 0 auto;
+  }
   @include desktop {
     @include flex(
       $direction: row-reverse,
@@ -59,6 +75,10 @@
       max-width: 50%;
     }
 
+    &-select {
+      width: 100%;
+    }
+
     &__tags {
       &-select {
         // width: 6.25rem;
@@ -67,6 +87,8 @@
         height: fit-content;
       }
     }
+
+    max-width: 1200px;
   }
 }
 
@@ -77,7 +99,7 @@
 .select {
   &__control {
     &.css-13cymwt-control {
-      width: 95%;
+      width: 100%;
     }
   }
 }

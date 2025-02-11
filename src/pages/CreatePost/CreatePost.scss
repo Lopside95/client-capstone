@@ -6,29 +6,76 @@
   @include flex($direction: column, $justify: unset, $align: center);
 
   @include tablet {
-    max-width: 70%;
+    max-width: 90%;
     margin: 0 auto;
+  }
+
+  @include desktop {
+    flex-direction: row-reverse;
+    // flex-direction: row;
+    // max-width: 90%;
+    max-width: 1200px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    // background-color: gray;
   }
 
   min-height: 100vh;
 
+  &__inputs {
+    @include flex($direction: column, $justify: space-between, $align: center);
+
+    width: 98%;
+    align-self: center;
+
+    // background-color: red;
+
+    @include desktop {
+      // width: 70%;
+      height: 20rem;
+      justify-content: space-between;
+    }
+
+    &-tags {
+      width: 95%;
+    }
+  }
+
+  &__right {
+    width: 98%;
+    @include flex($direction: column, $justify: unset, $align: center);
+
+    @include desktop {
+      width: 90%;
+    }
+  }
+
   &__tags {
     &-label {
       align-self: flex-start;
-      padding-left: 0.9rem;
+      padding-left: 0.1rem;
       font-weight: 300;
 
       @include desktop {
-        padding-left: 1.5rem;
+        padding-left: 0;
       }
     }
 
     &-select {
-      width: 100%;
+      // width: 100%;s
       padding: 0.5rem 0;
       margin: 0;
       // border-radius: 20px;
     }
+  }
+
+  @include desktop {
+    &__login {
+      display: none;
+    }
+    // &__login--hidden {
+    //   display: none;
+    // }
   }
 }
 
@@ -39,7 +86,7 @@
   z-index: 0;
 
   @include desktop {
-    width: 95%;
+    // width: 40%;
   }
 }
 
@@ -57,7 +104,7 @@
 .select {
   &__control {
     width: 100%;
-    margin: 0;
+    margin: 0 !important;
   }
 }
 
@@ -73,4 +120,26 @@
 .login-alert {
   position: absolute;
   top: 1.5rem;
+}
+
+.post__button {
+  &--mobile {
+    align-self: center;
+    justify-self: center;
+  }
+
+  &--desktop {
+    display: none !important;
+  }
+
+  @include desktop {
+    &--mobile {
+      display: none !important;
+    }
+
+    &--desktop {
+      display: block !important;
+      align-self: center;
+    }
+  }
 }
